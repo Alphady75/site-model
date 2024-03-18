@@ -1,0 +1,46 @@
+{{ form_start(form) }}
+
+<div class="mb-4">
+    <div class="row">
+        <div class="col-sm-12">
+            {{ form_row(form.name) }}
+        </div>
+        <div class="col-sm-6">
+            {{ form_row(form.categorie) }}
+        </div>
+        <div class="col-sm-6">
+            {{ form_row(form.imageFile) }}
+        </div>
+    </div>
+    {{ form_row(form.description) }}
+</div>
+
+<h3 class="text-dark py-3">Médias</h3>
+<div id="medias" class="row" data-prototype="{{ include("admin/projet/collection/_media.html.twig",
+    {form: form.medias.vars.prototype})|e("html_attr") }}"
+    data-index="{{ form.medias|length > 0 ? form.medias|last.vars.name + 1 : 0 }}">
+
+    {% for communaute in form.medias %}
+    <div class="col-12">
+        {{ include("admin/projet/collection/_media.html.twig", {form: communaute}) }}
+    </div>
+    {% endfor %}
+    {{ form_errors(form.medias) }}
+
+</div>
+
+<div class="py-3">
+    <button type="button" class="btn-new btn btn-light py-3" data-collection="#medias">
+        <i class="fa fa-plus-circle"></i> Ajouter une image
+    </button>
+</div>
+
+<div>
+    {{ form_widget(form._token) }}
+    {{ form_errors(form) }}
+</div>
+
+{{ form_row(form.online) }}
+
+<button class="btn btn-primary py-3">{{ button_label|default('Enregistrer') }}</button>
+{{ form_end(form, {render_rest: false}) }}

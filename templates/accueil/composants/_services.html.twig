@@ -1,0 +1,16 @@
+<!-- Service Start -->
+<div class="container bg-light py-6" id="service">
+	<div class="row mb-5 wow fadeInUp" data-wow-delay="0.1s">
+		<div class="col-lg-6">
+			<h1 class="display-5 center-sm mb-0">{{ 'services'|trans }}</h1>
+		</div>
+	</div>
+	<div class="row">
+		{% for service in services %}
+		<div class="col-lg-6 col-md-6 wow fadeInUp pb-3" data-wow-delay="0.1s">
+			{% include "service/composants/_card.html.twig" %}
+		</div>
+		{% endfor %}
+	</div>
+</div>
+<!-- Service End -->

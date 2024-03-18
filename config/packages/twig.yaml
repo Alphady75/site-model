@@ -1,0 +1,18 @@
+twig:
+    default_path: '%kernel.project_dir%/templates'
+    form_themes: ['bootstrap_5_layout.html.twig']
+    #form_themes: ['bootstrap_4_Horizontal_layout.html.twig']
+    globals:
+        appName: "Ruglech construction"
+        currency: " $"
+        codepays: "+242"
+        pays: "Congo-Brazzaville"
+        concepteur: "Peniel communication"
+        mtnMomo: "+242 06 535 65 26"
+        airtelMomo: "En attente"
+        fonction: "Web developer"
+        locales: '%app.locales%'
+
+when@test:
+    twig:
+        strict_variables: true

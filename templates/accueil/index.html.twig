@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <!-- Carousel Start -->
+    {% include "accueil/composants/_banner.html.twig" %}
+    <!-- Carousel End -->
+
+    <!-- About Start -->
+    {% include "apropos/composants/_section.html.twig" %}
+    <!-- About End -->
+
+    <!-- Facts Start -->
+    {% include "service/composants/_section.html.twig" %}
+    <!-- Facts End -->
+
+    <!-- Features Start -->
+    {% include "apropos/composants/_section_two.html.twig" %}
+    <!-- Features End -->
+
+    <!-- Service Start -->
+    {% include "realisation/composants/_section.html.twig" %}
+    <!-- Service End -->
+
+    <!-- Appointment Start -->
+    <div class="container-fluid appointment my-5 py-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-lg-7 col-md-7 wow fadeIn mx-auto text-center" data-wow-delay="0.3s">
+                    <div class="border-start border-5 border-primary ps-4 mb-5">
+                        <h6 class="text-white text-uppercase mb-2">Rendez-vous</h6>
+                        <h1 class="display-6 text-white mb-0">
+                            Une entreprise impliquée dans le service et la maintenance
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Appointment End -->
+
+    <!-- Team Start -->
+    {% include "apropos/composants/_membre.html.twig" %}
+    <!-- Team End -->
+
+    <!-- Testimonial Start --
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 mx-auto wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="border-start border-5 border-primary ps-4 mb-5 text-center">
+                        <h6 class="text-body text-uppercase mb-2">Témoignages</h6>
+                        <h1 class="display-6 mb-0">Ce que disent nos clients satisfaits</h1>
+                    </div>
+                </div>
+                <div class="col-lg-7 wow fadeInUp text-center mx-auto" data-wow-delay="0.5s">
+                    <div class="owl-carousel testimonial-carousel">
+                        <div class="testimonial-item text-center">
+                            <img class="img-fluid mb-4" src="{{ asset('themes/base/img/testimonial-1.jpg') }}" alt="" style="margin: auto;border-radius: 50%" />
+                            <p class="fs-5">
+                                Dolores sed duo clita tempor justo dolor et stet lorem kasd
+                                labore dolore lorem ipsum. At lorem lorem magna ut et, nonumy
+                                et labore et tempor diam tempor erat.
+                            </p>
+                            <div class="bg-primary mb-3" style="width: 60px; height: 5px;margin:auto;"></div>
+                            <h5>Client Name</h5>
+                            <span>Profession</span>
+                        </div>
+                        <div class="testimonial-item text-center">
+                            <img class="img-fluid mb-4" src="{{ asset('themes/base/img/testimonial-2.jpg') }}" alt="" style="margin: auto;border-radius: 50%" />
+                            <p class="fs-5">
+                                Dolores sed duo clita tempor justo dolor et stet lorem kasd
+                                labore dolore lorem ipsum. At lorem lorem magna ut et, nonumy
+                                et labore et tempor diam tempor erat.
+                            </p>
+                            <div class="bg-primary mb-3" style="width: 60px; height: 5px;margin:auto;"></div>
+                            <h5>Client Name</h5>
+                            <span>Profession</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Testimonial End -->
+
+{% endblock %}

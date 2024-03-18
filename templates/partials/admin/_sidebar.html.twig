@@ -1,0 +1,113 @@
+<aside class="left-sidebar">
+   <!-- Sidebar scroll-->
+   <div>
+      <div class="brand-logo d-flex align-items-center justify-content-between">
+         <a href="{{ path('dashboard') }}" class="text-nowrap logo-img">
+            <img src="{{ asset('img/logo.png') }}" width="180" alt="" />
+         </a>
+         <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+            <i class="ti ti-x fs-8"></i>
+         </div>
+      </div>
+
+      <!-- Sidebar navigation-->
+      <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+         <ul id="sidebarnav">
+            <li class="nav-small-cap">
+               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+               <span class="hide-menu">CONTENU</span>
+            </li>
+            <li class="sidebar-item">
+               <a class="sidebar-link" href="{{ path('dashboard') }}" aria-expanded="false">
+                  <span>
+                     <i class="ti ti-layout-dashboard"></i>
+                  </span>
+                  <span class="hide-menu">Tableau de bord</span>
+               </a>
+            </li>
+            <li class="sidebar-item">
+               <a class="sidebar-link" href="{{ path('apropos_index') }}" aria-expanded="false">
+                  <span>
+                     <i class="ti ti-article"></i>
+                  </span>
+                  <span class="hide-menu">A propos</span>
+               </a>
+            </li>
+            <li class="sidebar-item">
+               <a class="sidebar-link" href="{{ path('service_index') }}" aria-expanded="false">
+                  <span>
+                     <i class="ti ti-typography"></i>
+                  </span>
+                  <span class="hide-menu">Services</span>
+               </a>
+            </li>
+            <li class="sidebar-item">
+               <a class="sidebar-link" href="{{ path('architecture_index') }}" aria-expanded="false">
+                  <span>
+                     <i class="fa fa-home"></i>
+                  </span>
+                  <span class="hide-menu">Architectures</span>
+               </a>
+            </li>
+            <li class="sidebar-item">
+               <a class="sidebar-link" href="{{ path('membre_index') }}" aria-expanded="false">
+                  <span>
+                     <i class="fa fa-users"></i>
+                  </span>
+                  <span class="hide-menu">Membres</span>
+               </a>
+            </li>
+            <li class="sidebar-item">
+               <a class="sidebar-link" href="{{ path('categorie_index') }}" aria-expanded="false">
+                  <span>
+                     <i class="fa fa-tags"></i>
+                  </span>
+                  <span class="hide-menu">Catégories</span>
+               </a>
+            </li>
+            <li class="sidebar-item">
+               <a class="sidebar-link" href="{{ path('projet_index') }}" aria-expanded="false">
+                  <span>
+                     <i class="fa fa-folder-open"></i>
+                  </span>
+                  <span class="hide-menu">Réalisations</span>
+               </a>
+            </li>
+            <li class="nav-small-cap">
+               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+               <span class="hide-menu">RACOURCIS</span>
+            </li>
+            <li class="sidebar-item">
+               <a class="sidebar-link" href="{{ path('accueil') }}" target="_blank" aria-expanded="false">
+                  <span>
+                     <i class="ti ti-login"></i>
+                  </span>
+                  <span class="hide-menu">Ouvrire site</span>
+               </a>
+            </li>
+            <li class="nav-small-cap">
+               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+               <span class="hide-menu">COMPTES</span>
+            </li>
+            <li class="sidebar-item">
+               <a class="sidebar-link" href="{{ path('user_index') }}" aria-expanded="false">
+                  <span>
+                     <i class="ti ti-user-plus"></i>
+                  </span>
+                  <span class="hide-menu">Comptes utilisateurs</span>
+               </a>
+            </li>
+            <li class="sidebar-item">
+               <a class="sidebar-link" href="{{ path('app_logout') }}" aria-expanded="false">
+                  <span>
+                     <i class="ti ti-aperture"></i>
+                  </span>
+                  <span class="hide-menu">Déconnexion</span>
+               </a>
+            </li>
+         </ul>
+      </nav>
+      <!-- End Sidebar navigation -->
+   </div>
+   <!-- End Sidebar scroll-->
+</aside>

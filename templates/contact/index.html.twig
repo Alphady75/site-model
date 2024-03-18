@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+{{ parent() }}
+- Contact
+{% endblock %}
+
+{% block body %}
+
+<!-- Contact Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="{{ path('accueil') }}">Accueil</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">Contact</li>
+            </ol>
+        </nav>
+
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="border-start border-5 border-primary ps-4 mb-5">
+                    <h1 class="display-6 mb-0">
+                        Si vous avez des questions <br> veuillez nous contacter
+                    </h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 wow fadeInUp" data-wow-delay="0.5s">
+                {% include "contact/composants/_form.html.twig" %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-7 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 450px">
+                <div class="position-relative h-100">
+                    <iframe class="position-relative w-100 h-100"
+                        src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=Brazzaville la gare&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+                        frameborder="0" style="min-height: 450px; border: 0" allowfullscreen="" aria-hidden="false"
+                        tabindex="0"></iframe>
+                </div>
+            </div>
+            <div class="col-sm-5">
+                <div>
+                    {% if apropo != null %}
+                    <p class="mb-2">Bureau</p>
+                    <h6 class="fw-bold mb-3">{{ apropo.bureau }}</h6>
+
+                    <p class="mb-1">E-mail</p>
+                    <a href="mailto:{{ apropo.email }}">
+                        <h6 class="fw-bold mb-3">{{ apropo.email }}</h6>
+                    </a>
+
+                    <p class="mb-1">Téléphone</p>
+                    <a href="tel:{{ apropo.telephone }}">
+                        <h6 class="fw-bold mb-4">{{ apropo.telephone }}</h6>
+                    </a>
+
+                    <p class="mb-2">Nous suivre</p>
+                    <div class="d-flex pt-2">
+                        {% for communaute in apropo.communautes %}
+                        <a class="btn btn-square btn-primary me-2" href="{{ communaute.lien }}" target="_blank">
+                            <i class="fab fa-{{ communaute.icon }}"></i>
+                        </a>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Contact End -->
+
+{% endblock %}

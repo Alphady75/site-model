@@ -1,0 +1,54 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Projet{% endblock %}
+
+{% block body %}
+    <h1>Projet</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ projet.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ projet.name }}</td>
+            </tr>
+            <tr>
+                <th>Slug</th>
+                <td>{{ projet.slug }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ projet.image }}</td>
+            </tr>
+            <tr>
+                <th>Lien</th>
+                <td>{{ projet.lien }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ app.request.locale == 'fr' ? projet.description|raw : projet.descriptionEn|raw }}</td>
+            </tr>
+            <tr>
+                <th>Online</th>
+                <td>{{ projet.online ? 'En ligne' : 'Hors ligne' }}</td>
+            </tr>
+            <tr>
+                <th>Date de création</th>
+                <td>{{ projet.created ? projet.created|ago : '' }}</td>
+            </tr>
+            <tr>
+                <th>Dernière mise à jour</th>
+                <td>{{ projet.updated ? projet.updated|ago : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('projet_index') }}" class="btn btn-primary">Retourner à la liste</a>
+
+    <a href="{{ path('projet_edit', {'id': projet.id}) }}" class="btn btn-light"><i class="fa fa-edit"></i> Mettre à jour</a>
+
+    {{ include('admin/projet/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Publier dans le blog{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-sm-12 mx-auto p-4">
+        <h1>Publier dans le blog</h1>
+        {{ include('admin/actualite/_form.html.twig') }}
+    </div>
+</div>
+{% endblock %}

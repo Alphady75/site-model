@@ -1,0 +1,66 @@
+.portfolio-item {
+   margin-bottom: 10px;
+}
+
+.portfolio-title {
+   position: absolute;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   height: 120px;
+   padding: 0 30px;
+   right: 30px;
+   left: 30px;
+   bottom: -60px;
+   background: #FFFFFF;
+   z-index: 3;
+}
+
+.portfolio-btn {
+   position: absolute;
+   display: inline-block;
+   top: 50%;
+   left: 50%;
+   margin-top: -60px;
+   margin-left: -60px;
+   font-size: 120px;
+   line-height: 0;
+   transition: .1s;
+   transition-delay: .3s;
+   z-index: 2;
+   opacity: 0;
+}
+
+.portfolio-item:hover .portfolio-btn {
+   opacity: 1;
+}
+
+.portfolio-box::before,
+.portfolio-box::after {
+   position: absolute;
+   content: "";
+   width: 0;
+   height: 100%;
+   top: 0;
+   transition: .5s;
+   z-index: 1;
+   background: rgba(4, 15, 40, .7);
+}
+
+.portfolio-box::before {
+   left: 0;
+}
+
+.portfolio-box::after {
+   right: 0;
+}
+
+.portfolio-item:hover .portfolio-box::before {
+   left: 0;
+   width: 50%;
+}
+
+.portfolio-item:hover .portfolio-box::after {
+   right: 0;
+   width: 50%;
+}

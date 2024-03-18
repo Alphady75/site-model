@@ -1,0 +1,11 @@
+<div class="team-item position-relative">
+   <img class="img-fluid rounded"
+      src="{% if apropo().photo %}{{ vich_uploader_asset(apropo(), 'imageFile' ) | imagine_filter('large') }}{% else %}{{ asset('img/img-def-min.png') | imagine_filter('large') }}{% endif %}"
+      alt="{{ apropo() }}">
+   <div class="team-text bg-white rounded-end p-4">
+      <div>
+         <h5>{{ apropo() }}</h5>
+         <span>{{ app.request.locale == 'fr' ? apropo().fonction : apropo().fonctionEn }}</span>
+      </div>
+   </div>
+</div>

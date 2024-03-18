@@ -1,0 +1,54 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Architecture{% endblock %}
+
+{% block body %}
+    <h1>Architecture</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ architecture.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ architecture.name }}</td>
+            </tr>
+            <tr>
+                <th>VideoId</th>
+                <td>{{ architecture.videoId }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ architecture.type }}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ architecture.image }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ architecture.description }}</td>
+            </tr>
+            <tr>
+                <th>Online</th>
+                <td>{{ architecture.online ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Created</th>
+                <td>{{ architecture.created ? architecture.created|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Updated</th>
+                <td>{{ architecture.updated ? architecture.updated|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('architecture_index') }}">back to list</a>
+
+    <a href="{{ path('architecture_edit', {'id': architecture.id}) }}">edit</a>
+
+    {{ include('admin/architecture/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Architectures{% endblock %}
+
+{% block body %}
+
+	<div class="row d-flex align-items-center">
+		<div class="col-sm-6">
+			<h1>Architectures</h1>
+		</div>
+		<div class="col-sm-6 text-end">
+			<a href="{{ path('architecture_new') }}" class="btn btn-primary">Ajouter du contenu</a>
+		</div>
+	</div>
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Titre</th>
+				<th>Video Youtube</th>
+				<th>Type</th>
+				<th>Image</th>
+				<th>Statut</th>
+				<th>Date de création</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for architecture in architectures %}
+				<tr>
+					<td>{{ architecture.id }}</td>
+					<td>{{ architecture.name }}</td>
+					<td>
+                        <iframe width="150px" height="150px" style="border-radius: 10px;" src="https://www.youtube.com/embed/{{ architecture.videoId }}" title="" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </td>
+					<td>{{ architecture.type }}</td>
+					<td>
+						<img src="{% if architecture.image %}{{ vich_uploader_asset(architecture, 'imageFile' ) | imagine_filter('small') }}{% else %}{{ asset('img/img-def-min.png') | imagine_filter('small') }}{% endif %}" alt="" class="img-fluid rounded border">
+					</td>
+					<td>
+						<span class="badge bg-{{ architecture.online ? 'success' : 'light text-dark' }}">{{ architecture.online ? 'En ligne' : 'Hors ligne' }}</span>
+					</td>
+					<td>{{ architecture.created ? architecture.created|date('Y-m-d H:i:s') : '' }}</td>
+					<td>
+						<a href="{{ path('architecture_edit', {'id': architecture.id}) }}" class="btn btn-light">
+							<i class="fa fa-edit"></i>
+							Mettre à jour
+						</a>
+						{{ include('admin/architecture/_delete_form.html.twig') }}
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="8">Aucun contenu</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

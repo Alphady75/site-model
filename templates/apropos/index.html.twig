@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	a propos
+{% endblock %}
+
+{% block body %}
+	<!-- About Start -->
+    {% include "apropos/composants/_section.html.twig" %}
+    {% include "apropos/composants/_section_two.html.twig" %}
+	<!-- About End -->
+
+	<!-- Team Start -->
+	{% include "apropos/composants/_membre.html.twig" %}
+	<!-- Team End -->
+{% endblock %}

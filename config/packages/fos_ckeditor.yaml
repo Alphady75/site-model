@@ -1,0 +1,9 @@
+twig:
+    form_themes:
+        - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
+
+fos_ck_editor:
+    configs:
+        main_config:
+            toolbar:
+                - { name: "styles", items: ['Bold', 'Italic', 'Underline', '-', 'Link', '-', 'RemoveFormat', '-', 'Outdent', 'Indent', 'NumberedList', 'BulletedList', '-', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'Image', '-', 'Format', 'FontSize', '-', 'TextColor', 'BGColor', 'Maximize'] }

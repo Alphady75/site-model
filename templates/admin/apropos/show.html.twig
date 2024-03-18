@@ -1,0 +1,82 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}A propos de
+{{ appName }}
+{% endblock %}
+
+{% block body %}
+
+<div class="row">
+	<div class="col-sm-12 mx-auto">
+		<h1>A propos de {{ appName }}</h1>
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="row">
+					<div class="col-sm-6">
+						<strong class="d-block py-3">Photo du président</strong>
+						<img
+							src="{% if apropo.image %}{{ vich_uploader_asset(apropo, 'imageFile' ) | imagine_filter('large') }}{% else %}{{ asset('img/img-def-min.png') | imagine_filter('large') }}{% endif %}"
+							alt="" class="img-fluid">
+					</div>
+					<div class="col-sm-6">
+						<strong class="d-block py-3">Photo de l'équipe</strong>
+						<img
+							src="{% if apropo.photo %}{{ vich_uploader_asset(apropo, 'photoFile' ) | imagine_filter('large') }}{% else %}{{ asset('img/img-def-min.png') | imagine_filter('large') }}{% endif %}"
+							alt="" class="img-fluid">
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="row">
+					<div class="col-sm-6 py-3">
+						<strong class="d-block py-3">Email</strong>
+						<span>{{ apropo.email }}</span>
+					</div>
+					<div class="col-sm-6 py-3">
+						<strong class="d-block py-3">telephone</strong>
+						<span>{{ apropo.telephone }}</span>
+					</div>
+					<div class="col-sm-6 py-3">
+						<strong class="d-block py-3">whatsapp</strong>
+						<span>{{ apropo.whatsapp }}</span>
+					</div>
+					<div class="col-sm-6 py-3">
+						<strong class="d-block py-3">Bureau</strong>
+						<span>{{ apropo.bureau }}</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="py-3">
+			<strong class="d-block py-3">Présentation</strong>
+			<span>{{ apropo.presentation }}</span>
+		</div>
+		<div class="mb-4">
+			<h3 class="text-dark py-3">Communautés / réseaux sociaux</h3>
+			{% for communaute in apropo.communautes %}
+			<a href="{{ communaute.lien }}" target="_blank" class="btn btn-dark fa-2x">
+				<i class="{{ communaute.icon }}"></i>
+				{{ communaute.name }}</a>
+			{% endfor %}
+		</div>
+
+		<div>
+			<span>Date de création</span>
+			<p>{{ apropo.created ? apropo.created|ago : '' }}</p>
+		</div>
+		<div>
+			<span>Dernière mise à jour</span>
+			<p>{{ apropo.updated ? apropo.updated|ago : '' }}</p>
+		</div>
+		<div class="mb-4">
+			<h3 class="text-dark py-3">Actions</h3>
+			<a href="{{ path('apropos_edit', {'id': apropo.id}) }}" class="btn btn-primary p-3">
+				<i class="fa fa-edit"></i>
+				Mettre à jour
+			</a>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Services{% endblock %}
+
+{% block body %}
+<div class="row d-flex align-items-center">
+    <div class="col-sm-6">
+        <h1>Services</h1>
+    </div>
+    <div class="col-sm-6 text-end">
+        <a href="{{ path('service_new') }}" class="btn btn-primary">Ajouter un service</a>
+    </div>
+</div>
+
+<table class="table">
+    <thead class="bg-light">
+        <tr>
+            <th>#ID</th>
+            <th>Image</th>
+            <th>Titre</th>
+            <th>Position</th>
+            <th>Statut</th>
+            <th>Mise à jour</th>
+            <th class="text-end">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for service in services %}
+        <tr>
+            <td>{{ service.id }}</td>
+            <td>
+                <img src="{% if service.image %}{{ vich_uploader_asset(service, 'imageFile' ) | imagine_filter('small') }}{% else %}{{ asset('img/img-def-min.png') | imagine_filter('small') }}{% endif %}"
+                    alt="" class="img-fluid rounded border">
+            </td>
+            <td>{{ service.name }}</td>
+            <td>{{ service.position }}</td>
+            <td>
+                <span class="badge bg-{{ service.online ? 'success' : 'light' }}">{{ service.online ? 'En ligne' : 'Hors
+                    ligne' }}</span>
+            </td>
+            <td>{{ service.updated ? service.updated|ago : '' }}</td>
+            <td class="text-end">
+                <a href="{{ path('services_details', {'slug': service.slug}) }}" target="_blank"
+                    class="btn btn-light"><i class="ti ti-article"></i> Détails</a>
+                <a href="{{ path('service_edit', {'id': service.id}) }}" class="btn btn-light"><i
+                        class="fa fa-edit"></i> Mettre à jour</a>
+            </td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="7">Aucune données</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

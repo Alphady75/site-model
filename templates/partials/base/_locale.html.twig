@@ -1,0 +1,14 @@
+{% for locale in locales %}
+   {% if locale != app.request.locale %}
+      <a class="py-2 d-block text-muted" href="{{ path('change_locale', {'locale': locale}) }}"
+         style="text-transform: capitalize!important;">
+         {% if locale == 'fr' %}
+         <img src="{{ asset('images/base/fr.png') }}" width="20px" height="15px" class="me-2" alt="">
+         {{ 'francais'|trans }}
+         {% else %}
+         <img src="{{ asset('images/base/en.png') }}" width="20px" height="15px" class="me-2" alt="">
+         {{ 'englais'|trans }}
+         {% endif %}
+      </a>
+   {% endif %}
+{% endfor %}

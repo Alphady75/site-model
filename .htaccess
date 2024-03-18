@@ -1,0 +1,53 @@
+<IfModule mod_rewrite.c >
+
+    ExpiresActive on
+   
+    ExpiresDefault                          "access plus 1 week"
+    ExpiresByType image/x-icon              "access plus 1 year"
+    ExpiresByType image/gif                 "access plus 1 month"
+    ExpiresByType image/png                 "access plus 1 month"
+    ExpiresByType image/jpg                 "access plus 1 month"
+    ExpiresByType image/jpeg                "access plus 1 month"
+    ExpiresByType video/mp4                 "access plus 1 month"
+    ExpiresByType text/x-component          "access plus 1 month"
+    ExpiresByType font/truetype             "access plus 1 month"
+    ExpiresByType font/opentype             "access plus 1 month"
+    ExpiresByType application/x-font-woff   "access plus 1 month"
+    ExpiresByType application/vnd.ms-fontobject "access plus 1 month"
+    ExpiresByType text/css                  "access plus 1 year"
+    ExpiresByType application/javascript    "access plus 1 year"
+    ExpiresByType text/javascript           "access plus 1 year" 
+    ExpiresByType text/js                   "access plus 1 year"
+    ExpiresByType application/x-javascript  "access plus 1 year"
+    
+    Header set Cache-Control: max-age=31536000
+	
+    Header set X-XSS-Protection "1; mode=block"	
+
+    Header always append X-Frame-Options SAMEORIGIN    
+
+    Header set X-Content-Type-Options nosniff
+
+    Header set Strict-Transport-Security "max-age=31536000" env=HTTPS
+
+    RewriteEngine on
+    RewriteOptions inherit
+
+    # SSL and let's encrypt
+    RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/.+$
+    RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+    RewriteRule ^.well-known/acme-challenge - [L]
+
+    # redirect to no-www
+    RewriteBase /
+    RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+    RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+
+    # https redirect
+    RewriteCond %{HTTPS} !=on
+    RewriteRule .* https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+    # redirect all requests to public directory
+    RewriteCond %{REQUEST_URI} !public/
+    RewriteRule (.*) /public/$1 [L]
+</IfModule>

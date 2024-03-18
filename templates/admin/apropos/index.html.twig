@@ -1,0 +1,55 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Apropos index{% endblock %}
+
+{% block body %}
+    <h1>Apropos index</h1>
+
+    <table class="table">
+        <thead class="bg-light">
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Email</th>
+                <th>Telephone</th>
+                <th>Photo</th>
+                <th>Couverture</th>
+                <th>Introduction</th>
+                <th>Presentation</th>
+                <th>Cv</th>
+                <th>Date de création</th>
+                <th>Dernière mise à jour</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for apropo in apropos %}
+            <tr>
+                <td>{{ apropo.id }}</td>
+                <td>{{ apropo.nom }}</td>
+                <td>{{ apropo.prenom }}</td>
+                <td>{{ apropo.email }}</td>
+                <td>{{ apropo.telephone }}</td>
+                <td>{{ apropo.photo }}</td>
+                <td>{{ apropo.couverture }}</td>
+                <td>{{ apropo.introduction }}</td>
+                <td>{{ apropo.presentation }}</td>
+                <td>{{ apropo.cv }}</td>
+                <td>{{ apropo.created ? apropo.created|ago : '' }}</td>
+                <td>{{ apropo.updated ? apropo.updated|ago : '' }}</td>
+                <td>
+                    <a href="{{ path('apropos_show', {'id': apropo.id}) }}" class="btn btn-light"><i class="ti ti-article"></i> Détails</a>
+                    <a href="{{ path('apropos_edit', {'id': apropo.id}) }}" class="btn btn-light"><i class="fa fa-edit"></i> Mettre à jour</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="13">Aucune donnée</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('apropos_new') }}" class="btn btn-primary">Ajouter</a>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Service #{{ service }}
+{% endblock %}
+
+{% block body %}
+<!-- Facts Start -->
+<div class="container my-5 p-0">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="mb-4">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+                <a href="{{ path('accueil') }}">Accueil</a>
+            </li>
+            <li class="breadcrumb-item">
+                <a href="{{ path('services') }}">{{ 'services'|trans }}</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">
+                {{ app.request.locale == 'fr' ? service.name : service.nameEn }}
+            </li>
+        </ol>
+    </nav>
+    <div class="row align-items-end mb-5">
+        <div class="col-lg-8 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="border-start border-5 border-primary ps-4">
+                <h1 class="display-6 mb-0">
+                    {{ service.name }}
+                </h1>
+            </div>
+        </div>
+        <div class="col-lg-4 text-lg-end wow fadeInUp" data-wow-delay="0.3s">
+            <a class="btn btn-primary py-3 px-5" href="{{ path('contact') }}">Obtenir un devis</a>
+        </div>
+    </div>
+    <div class="row g-0">
+        <div class="col-sm-7 me-auto">
+            <div class="mb-4">
+                <img src="{% if service.image %}{{ vich_uploader_asset(service, 'imageFile' ) | imagine_filter('midle') }}{% else %}{{ asset('img/1.png') | imagine_filter('midle') }}{% endif %}" class="img-fluid rounded" alt="">
+            </div>
+            <p style="text-align: justify;">
+                {{ service.description|raw }}
+            </p>
+        </div>
+        <div class="col-sm-4">
+            <h4 class="pb-4">Services</h4>
+            <div class="list-group list-group-numbered">
+                {% for serv in services() %}
+                <a href="{{ path('services_details', {slug: serv.slug}) }}"
+                    class="list-group-item py-2 {{ serv.id == service.id ? 'active' : '' }}">
+                    {{ serv.name }}
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Facts End -->
+{% endblock %}

@@ -1,0 +1,50 @@
+<div class="container py-5">
+	<div class="row">
+		<div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+			<div class="border-start border-5 border-primary ps-4 mb-5">
+				<h6 class="text-body text-uppercase mb-2">Pourquoi nous choisir!</h6>
+				<h1 class="display-6 mb-0">
+					Notre spécialisation et les caractéristiques de notre entreprise
+				</h1>
+			</div>
+			<div class="row gy-5 gx-4">
+				<div class="col-sm-6 wow fadeIn" data-wow-delay="0.1s">
+					<div class="d-flex align-items-center mb-3">
+						<i class="fa fa-check fa-2x text-primary flex-shrink-0 me-3"></i>
+						<h6 class="mb-0">Un grand nombre de services fournis</h6>
+					</div>
+				</div>
+				<div class="col-sm-6 wow fadeIn" data-wow-delay="0.2s">
+					<div class="d-flex align-items-center mb-3">
+						<i class="fa fa-check fa-2x text-primary flex-shrink-0 me-3"></i>
+						<h6 class="mb-0">{{ apropo() ? apropo().anneeExperience : 10 }}+ ans d'expérience professionnelle</h6>
+					</div>
+				</div>
+				<div class="col-sm-6 wow fadeIn" data-wow-delay="0.3s">
+					<div class="d-flex align-items-center mb-3">
+						<i class="fa fa-check fa-2x text-primary flex-shrink-0 me-3"></i>
+						<h6 class="mb-0">Un grand nombre de clients reconnaissants</h6>
+					</div>
+				</div>
+				<div class="col-sm-6 wow fadeIn" data-wow-delay="0.4s">
+					<div class="d-flex align-items-center mb-3">
+						<i class="fa fa-check fa-2x text-primary flex-shrink-0 me-3"></i>
+						<h6 class="mb-0">Des prix toujours fiables et abordables</h6>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+			<div class="position-relative overflow-hidden ps-5 pt-5 h-100" style="min-height: 400px">
+				<img class="position-absolute w-100 h-100" src="{% if apropo().photo %}{{ vich_uploader_asset(apropo(), 'photoFile' ) }}{% else %}{{ asset('img/slide-1.png') }}{% endif %}" alt="" style="object-fit: cover"/>
+				<div class="position-absolute top-0 start-0 bg-white pe-3 pb-3" style="width: 200px; height: 200px">
+					<div class="d-flex flex-column justify-content-center text-center bg-primary h-100 p-3">
+						<h1 class="text-white">{{ apropo() ? apropo().anneeExperience : 10 }}</h1>
+						<h2 class="text-white">ans</h2>
+						<h5 class="text-white mb-0">D'expériences</h5>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

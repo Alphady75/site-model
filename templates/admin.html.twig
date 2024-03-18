@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{{ apropo().siteName }}{% endblock %}</title>
+    <link rel="shortcut icon" type="image/png" href="{{ asset('img/favicon.png') }}" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('themes/admin/assets/css/styles.min.css') }}" />
+    <style>
+        h1{
+            font-size: 2em;
+            padding: 30px 0;
+            font-weight: 700;
+        }
+        h2,h3,h4,h5,h6{
+            font-size: 1.5em;
+            font-weight: 700;
+        }
+        .form-control-color{
+            width: 100%!important;
+        }
+        .vich-image img{
+            display: block!important;
+            width: 200px!important;
+            margin: 20px auto;
+            border-radius: 15px;
+        }
+        fieldset .col-form-label{
+            padding: 0.25rem!important;
+        }
+        .card .btn{
+            display: inline-block!important;
+            width: max-content!important;
+        }
+        table{
+            font-size: 12px!important;
+        }
+        table th{
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        table .btn{
+            padding: 8px 6px!important;
+        }
+        table .badge{
+            border-radius: 10px!important;
+            font-size: .8em!important;
+            text-transform: uppercase;
+        }
+        textarea{
+            height: 200px!important;
+        }
+    </style>
+</head>
+<body>
+    <!--  Body Wrapper -->
+    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+        data-sidebar-position="fixed" data-header-position="fixed">
+        <!-- Sidebar Start -->
+        {% include "partials/admin/_sidebar.html.twig" %}
+        <!--  Sidebar End -->
+        <!--  Main wrapper -->
+        <div class="body-wrapper">
+            <!--  Header Start -->
+            {% include "partials/admin/_header.html.twig" %}
+            <!--  Header End -->
+            <div class="container-fluid">
+                <!--  Row 1 -->
+                {% include "partials/_flash.html.twig" %}
+                {% block body %}{% endblock %}
+                <div class="py-6 px-6 text-center">
+                    <p class="mb-0 fs-4">&copy;<small>{{ appName }}</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ asset('themes/admin/assets/libs/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ asset('themes/admin/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('themes/admin/assets/js/sidebarmenu.js') }}"></script>
+    <script src="{{ asset('themes/admin/assets/js/app.min.js') }}"></script>
+    <script src="{{ asset('themes/admin/assets/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
+    <script src="{{ asset('themes/admin/assets/libs/simplebar/dist/simplebar.js') }}"></script>
+    <script src="{{ asset('themes/admin/assets/js/dashboard.js') }}"></script>
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+        {{ encore_entry_script_tags('collection') }}
+    {% endblock %}
+</body>
+
+</html>

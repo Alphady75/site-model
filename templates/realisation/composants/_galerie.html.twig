@@ -1,0 +1,9 @@
+<div class="row" id="lightgallery">
+	{% for media in projet.medias %}
+		<div class="col-sm-3 col-6 pb-3">
+			<a href="{% if media.image %}{{ vich_uploader_asset(media, 'imageFile' ) | imagine_filter('couverture') }}{% else %}{{ asset('img/img-def-min.png') | imagine_filter('midle') }}{% endif %}" class="venobox" data-gall="gallery01">
+				<img src="{% if media.image %}{{ vich_uploader_asset(media, 'imageFile' ) | imagine_filter('realisation') }}{% else %}{{ asset('img/img-def-min.png') | imagine_filter('midle') }}{% endif %}" class="img-fluid rounded" alt="{{ projet }}"/>
+			</a>
+		</div>
+	{% endfor %}
+</div>

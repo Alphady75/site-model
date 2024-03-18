@@ -1,0 +1,8 @@
+{{ form_start(form, {attr: {class: 'card card-body'}}) }}
+{{ form_row(form.name) }}
+{{ form_row(form.position) }}
+{{ form_row(form.imageFile) }}
+{{ form_row(form.description) }}
+{{ form_row(form.online) }}
+<button class="btn btn-primary py-3">{{ button_label|default('Enregistrer') }}</button>
+{{ form_end(form) }}

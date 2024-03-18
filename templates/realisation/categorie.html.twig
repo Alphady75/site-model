@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+{{ apropo().siteName }}
+-
+{{ categorie.name }}
+{% endblock %}
+
+{% block body %}
+
+<!-- Projects Start -->
+<div class="container-xxl py-6 bg-white" id="project">
+    <div class="container">
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb pt-0 pb-0">
+                <li class="breadcrumb-item">
+                    <a href="{{ path('accueil') }}">Accueil</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="{{ path('realisations') }}">Nos réalisations</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">{{ 'categories'|trans }}</li>
+                <li class="breadcrumb-item active" aria-current="page">{{ app.request.locale == 'fr' ? categorie.name :
+                    categorie.nameEn }}</li>
+            </ol>
+        </nav>
+        <div class="row mb-5 align-items-center wow fadeInUp" data-wow-delay="0.1s">
+            <div class="col-lg-6">
+                <h1 class="display-5 mb-0">{{ app.request.locale == 'fr' ? categorie.name : categorie.nameEn }}</h1>
+                <p>{{ 'realpar'|trans }}</p>
+            </div>
+            <div class="col-lg-6 text-lg-end">
+                <ul class="list-inline ps-3 mx-n3 mb-0" id="portfolio-flters">
+                    <li class="mx-1" data-filter="*">
+                        <a href="{{ path('realisations') }}" class="btn btn-light btn-sm mb-2">{{ 'tout'|trans }}</a>
+                    </li>
+                    {% for cat in categories() %}
+                    <li class="mx-1 {{ categorie.slug == cat.slug ? 'active' : '' }}" data-filter=".{{ cat.slug }}">
+                        <a href="{{ path('realisations_categorie', {slug: cat.slug}) }}"
+                            class="btn btn-{{ categorie.slug == cat.slug ? 'primary' : 'light' }} btn-sm mb-2">
+                            {{ app.request.locale == 'fr' ? cat.name : cat.nameEn }}
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        {% include "realisation/composants/_contenu.html.twig" %}
+    </div>
+</div>
+<!-- Projects End -->
+
+{% endblock %}

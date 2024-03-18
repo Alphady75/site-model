@@ -1,0 +1,14 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Mettre a jour le contenu architecture {{ architecture }} {% endblock %}
+
+{% block body %}
+
+    <h1>Mettre a jour le contenu architecture {{ architecture }} </h1>
+
+    {{ include('admin/architecture/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+    <br>
+
+    {{ include('admin/architecture/_delete_form.html.twig') }}
+
+{% endblock %}
