@@ -1,16 +1,14 @@
 {% extends 'admin.html.twig' %}
 
-{% block title %}Nouveau service{% endblock %}
+{% block title %}Nouveau service
+{% endblock %}
+{% block titre %}Nouveau service
+{% endblock %}
+{% block text %}Nouveau service
+{% endblock %}
 
 {% block body %}
 
-<div class="row">
-    <div class="col-sm-12 mx-auto p-4">
-        <h1>Nouveau service</h1>
-
-        {{ include('admin/service/_form.html.twig') }}
-
-    </div>
-</div>
+	{{ include('admin/service/_form.html.twig') }}
 
 {% endblock %}

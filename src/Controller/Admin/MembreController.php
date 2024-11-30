@@ -3,21 +3,33 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Membre;
-use App\Form\MembreType;
+use App\Form\Admin\MembreType;
 use App\Repository\MembreRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/admin/membre')]
+#[Route('/moderation/membre')]
 class MembreController extends AbstractController
 {
-    #[Route('/', name: 'membre_index', methods: ['GET'])]
-    public function index(MembreRepository $membreRepository): Response
+    #[Route('/', name: 'membre_index', methods: ['GET', 'POST'])]
+    public function index(MembreRepository $membreRepository, Request $request): Response
     {
+        $membre = new Membre();
+        $form = $this->createForm(MembreType::class, $membre);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $membreRepository->save($membre, true);
+            $this->addFlash('success', 'Le contenu a bien été enregistrer');
+            return $this->redirectToRoute('membre_index', [], Response::HTTP_SEE_OTHER);
+        }
+
         return $this->render('admin/membre/index.html.twig', [
+            'membre' => $membre,
             'membres' => $membreRepository->findAll(),
+            'form' => $form->createView()
         ]);
     }
 
@@ -30,7 +42,7 @@ class MembreController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $membreRepository->save($membre, true);
-
+            $this->addFlash('success', 'Le contenu a bien été enregistrer');
             return $this->redirectToRoute('membre_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -56,7 +68,7 @@ class MembreController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $membreRepository->save($membre, true);
-
+            $this->addFlash('success', 'Le contenu a bien été mis à jour');
             return $this->redirectToRoute('membre_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -69,8 +81,9 @@ class MembreController extends AbstractController
     #[Route('/{id}', name: 'membre_delete', methods: ['POST'])]
     public function delete(Request $request, Membre $membre, MembreRepository $membreRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$membre->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $membre->getId(), $request->request->get('_token'))) {
             $membreRepository->remove($membre, true);
+            $this->addFlash('success', 'Le contenu a bien été supprimer');
         }
 
         return $this->redirectToRoute('membre_index', [], Response::HTTP_SEE_OTHER);

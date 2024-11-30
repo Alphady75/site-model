@@ -1,0 +1,84 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Formules
+{% endblock %}
+{% block titre %}Formules ({{ tarifications.getTotalItemCount }})
+{% endblock %}
+{% block text %}Formules ({{ tarifications.getTotalItemCount }})
+{% endblock %}
+
+{% block right %}
+	<button type="button" class="theme-btn btn-style-one radius-btn" data-toggle="modal" data-target="#staticBackdrop">
+		<span class="btn-title">
+			<i class="fa fa-plus-circle mr-2"></i>
+			Ajouter
+		</span>
+	</button>
+{% endblock %}
+
+{% block body %}
+	<!-- Modal -->
+	<div class="modal" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="staticBackdropLabel">Ajouter une #formule</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					{% include "admin/tarification/_form.html.twig" %}
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-light border" data-dismiss="modal">Fermer</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="card card-body p-0 border-0 mb-3">
+		<div class="table-responsive">
+			<table class="table table-hover">
+				<tr>
+					<th>#ID</th>
+					<th>Formule</th>
+					<th>Coût</th>
+					<th>Forme juridique</th>
+					<th>Visibilité</th>
+					<th>Mise à jour</th>
+					<th class="text-right">Actions</th>
+				</tr>
+				<tbody>
+					{% for tarification in tarifications %}
+						<tr>
+							<td>{{ tarification.id }}</td>
+							<td>{{ tarification.name }}</td>
+							<td>{{ tarification.cout|number_format(0, '', ' ') ~ currency }} {{ tarification.typeCout }}</td>
+							<td>{{ tarification.statut }}</td>
+							<td>
+								<span class="badge badge-{{ tarification.online ? 'success' : 'light' }} badge-pill">
+									<i class="fa fa-{{ tarification.online ? 'eye' : 'eye-slash' }}"></i>
+									{{ tarification.online ? 'En ligne' : 'Hors ligne' }}
+								</span>
+							</td>
+							<td>{{ tarification.updated ? tarification.updated|ago : '' }}</td>
+							<td class="text-right">
+								<a href="{{ path('tarification_edit', {'id': tarification.id}) }}" class="btn btn-light border">
+									<i class="fa fa-edit"></i>
+								</a>
+								{{ include('admin/tarification/_delete_form.html.twig') }}
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+	{{ knp_pagination_render(tarifications, null, {}, {
+                    'align': 'center',
+                    'size': 'medium',
+                    'rounded': true,
+                    }) }}
+
+{% endblock %}

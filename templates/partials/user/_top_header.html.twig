@@ -1,0 +1,35 @@
+<div class="header-top">
+	<div class="auto-container">
+		<div class="inner-container">
+			<div class="top-left w-100">
+				<!-- Info List -->
+				<ul class="list-style-one light">
+					<li>
+						<a href="{{path('accueil')}}">
+							<strong class="text-light font-weight-800 text-uppercase">{{appName}}</strong>
+						</a>
+					</li>
+					<li>
+						<i class="fa fa-envelope"></i>
+						<a href="mailto:{{apropo().email}}">{{apropo().email}}</a>
+					</li>
+					<li>
+						<i class="fa fa-map-marker-alt"></i>
+						{{pays}}</li>
+					<li>
+						<i class="fa fa-phone"></i>
+						<a href="tel:{{apropo().telephone}}">{{apropo().telephone}}</a>
+					</li>
+					<li class="border radius pe-2">
+						<i class="fa fa-user-circle ms-2"></i>
+						{% if app.user %}
+							<a href="{{path('app_redirection')}}">Espace {{app.user.compte}}</a>
+						{% else %}
+							<a href="{{path('app_login')}}">Se connecter</a>
+						{% endif %}
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

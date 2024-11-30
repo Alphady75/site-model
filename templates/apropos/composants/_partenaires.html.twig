@@ -1,0 +1,18 @@
+<!-- Sponsors Section -->
+<section class="clients-section pt-0">
+	<div class="auto-container">
+		<div class="clients-outer">
+			<!-- Sponsors Carousel -->
+			<ul class="clients-carousel owl-carousel owl-theme">
+				{% for partenaire in partenaires() %}
+					<li class="slide-item">
+						<figure class="image">
+							<a href="{{partenaire.siteUrl}}" target="_blank"><img src="{% if partenaire.logo %}{{ vich_uploader_asset(partenaire, 'imageFile' ) }}{% else %}{{ asset('img/document.svg') }}{% endif %}" width="70" alt="{{partenaire}}"></a>
+						</figure>
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+</section>
+<!--End Sponsors Section -->

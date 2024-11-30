@@ -1,0 +1,52 @@
+{{ form_start(form) }}
+<h6>Noms, prénoms et professions des fondateurs</h6>
+<div class="row">
+	<div class="col-sm-12">{{ form_row(form.fondateur) }}</div>
+	<div class="col-sm-12">{{ form_row(form.fondateur2) }}</div>
+	<div class="col-sm-12">{{ form_row(form.fondateur3) }}</div>
+	<div class="col-sm-12">{{ form_row(form.denomination) }}</div>
+	<div class="col-sm-6">{{ form_row(form.duree) }}</div>
+	<div class="col-sm-12">{{ form_row(form.siegesociale) }}</div>
+	<div class="col-sm-12">{{ form_row(form.objetsocial) }}</div>
+</div>
+
+<h6>CAPITAL SOCIAL
+</h6>
+{{ form_row(form.capitalsocial) }}
+{{ form_row(form.partintervale) }}
+<div class="row">
+	<div class="col-6">{{ form_row(form.numeraires) }}</div>
+	<div class="col-6">{{ form_row(form.nature) }}</div>
+	<div class="col-6">{{ form_row(form.industrie) }}</div>
+	<div class="col-6">{{ form_row(form.part) }}</div>
+</div>
+
+<h6>PRESIDENT</h6>
+<p>Nom et prénom du Président</p>
+<div class="row">
+	<div class="col-sm-12">{{ form_row(form.president) }}</div>
+	<div class="col-sm-12">{{ form_row(form.prestelephone) }}</div>
+</div>
+
+<h6>SECRETAIRE ADMINISTRATIF</h6>
+<p>Nom et prénom du Secrétaire Administratif
+</p>
+<div class="row">
+	<div class="col-sm-12">{{ form_row(form.sectadmin) }}</div>
+	<div class="col-sm-12">{{ form_row(form.sectadmintelephone) }}</div>
+</div>
+<h6>TRESORIER GENERAL</h6>
+<p>Nom et prénom du Trésorier Général</p>
+<div class="row">
+	<div class="col-sm-12">{{ form_row(form.tresorier) }}</div>
+	<div class="col-sm-12">{{ form_row(form.tresoriertelephone) }}</div>
+</div>
+{{ form_rest(form) }}
+<div class="text-center pt-4">
+	<button class="theme-btn btn-style-one">
+		<span class="btn-title">{{ button_label|default('Envoyer') }}
+			<i class="fa fa-long-arrow-right"></i>
+		</span>
+	</button>
+</div>
+{{ form_end(form) }}

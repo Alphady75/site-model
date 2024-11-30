@@ -1,0 +1,1190 @@
+/***
+
+====================================================================
+    Services Section
+====================================================================
+
+***/
+
+.services-section{
+    position: relative;
+    padding: 120px 0 90px;
+    .sec-title{
+        margin-bottom: 74px;
+        @include media-breakpoint-down(sm){margin-bottom: 60px;}
+    }
+}
+
+//Service Block
+.service-block{
+    position: relative;
+    margin-bottom: 30px;
+    .inner-box{
+        position: relative;
+        padding: 40px 40px 35px;
+        height: 100%;
+        background-color: var(--theme-color-gray);
+        transition: all 300ms ease;
+        @include media-breakpoint-down(xxl){
+            padding: 30px;
+        }
+        @include media-breakpoint-down(xl){
+            padding: 30px 20px;
+        }
+        &:hover{
+            .icon-box{
+                transform: scaleX(-1);
+            }
+        }
+        .icon-box{
+            position: relative;
+            display: inline-block;
+            margin-bottom: 30px;
+            transition: all 300ms ease;
+        }
+        .count{
+            position: absolute;
+            right: 0;
+            top: 0;
+            background: var(--bg-theme-color1);
+            width: 51px;
+            height: 52px;
+            font-weight: 700;
+            font-size: 27px;
+            line-height: 52px;
+            text-align: center;
+            color: var(--theme-color-light);
+            border-radius: 0px 0px 0px 10px;
+        }
+        .title{
+            margin-bottom: 15px;
+            @include media-breakpoint-down(xl){font-size: 24px;}
+            &:hover{
+                color: var(--theme-color1);
+            }
+        }
+        .text{
+            margin-bottom: 20px;
+        }
+        .read-more{
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 1em;
+            color: var(--theme-color-dark);
+            transform: all 300ms ease;
+            @include media-breakpoint-down(xl){font-size: 18px;}
+            i{
+                margin-left: 10px;
+                font-size: 18px;
+                @include media-breakpoint-down(xl){font-size: 16px;}
+            }
+            &:hover{
+                color: var(--theme-color1);
+            }
+        }
+    }
+}
+
+
+/***
+
+====================================================================
+    Services Section two
+====================================================================
+
+***/
+
+.services-section-two{
+    position: relative;
+    padding: 120px 0 90px;
+}
+
+//Service Block Two
+.service-block-two{
+    margin-bottom: 30px;
+    .inner-box{
+        position: relative;
+        border: 1px solid #e1e1e1;
+        padding: 40px 40px 60px;
+        margin-bottom: 22px;
+        transition: all 300ms ease;
+        @include media-breakpoint-down(sm){
+            padding: 20px 15px 40px;
+        }
+        &:hover{
+            box-shadow: 0 15px 40px rgba(0,0,0,.10);
+            .theme-btn{
+                box-shadow: 0 15px 40px rgba(0, 0, 0, .10);
+            }
+            .icon{
+                transform: scale(-1) rotate(180deg);
+            }
+        }
+        .count{
+            font-size: 55px;
+            line-height: 60px;
+            color: #E1E1E1;
+            font-weight: 700;
+            margin-bottom: 38px;
+            display: inline-block;
+        }
+        .icon{
+            position: absolute;
+            right: 40px;
+            top: 40px;
+            font-size: 64px;
+            line-height: 1em;
+            color: var(--theme-color1);
+            transition: all 300ms ease;
+        }
+        .title{
+            color: var(--theme-color-dark);
+            margin-bottom: 15px;
+            &:hover{
+                color: var(--theme-color1);
+            }
+        }
+        .text{
+            margin-bottom: 0;
+        }
+        .theme-btn{
+            position: absolute;
+            left: 112px;
+            bottom: -22px;
+            padding: 20px 30px;
+            @include media-breakpoint-down(sm){
+                left: 20px;
+                padding: 15px 30px;
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+
+
+
+/***
+
+====================================================================
+    Services Section Three
+====================================================================
+
+***/
+
+.services-section-three{
+    position: relative;
+    padding: 120px 0 90px;
+    margin-bottom: 30px;
+}
+
+//Service Block Three
+.service-block-three{
+    margin-bottom: 30px;
+    .inner-box{
+        position: relative;
+        padding: 40px 41px 30px;
+        height: 100%;
+        background: var(--theme-color-light);
+        border: 1px solid #E1E1E1;
+        text-align: center;
+        transition: all 300ms ease;
+        @include media-breakpoint-down(xl){
+            padding: 30px 15px;
+        }
+        @include media-breakpoint-down(sm){
+            padding: 20px 10px;
+        }
+        &::before{
+            content: "";
+            @include overlay;
+            background-color: var(--bg-theme-color1);
+            height: 0;
+            transition: all 300ms ease;
+        }
+        &:hover {
+            &::before{
+                height: 100%;
+            }
+            .icon-box {
+                color: var(--theme-color-light);
+                transform: scaleX(-1);
+            }
+            .title {
+                color: var(--theme-color-light);
+            }
+            .text {
+                color: var(--theme-color-light);
+            }
+        }
+        .icon-box{
+            position: relative;
+            display: inline-block;
+            font-size: 60px;
+            margin-bottom: 40px;
+            color: var(--bg-theme-color1);
+            transition: all 0.3s ease;
+            text-align: center;
+            line-height: 100px;
+            transition: all 300ms ease;
+            @include media-breakpoint-down(xl){margin-bottom: 0px;}
+            &:before {
+                display: block;
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                background: var(--theme-color-light);
+                width: 100px;
+                height: 100px;
+                border-radius: 100%;
+                opacity: 0.2;
+                transform: translateX(-19%);
+            }
+        }
+        .count{
+            position: absolute;
+            right: 30px;
+            bottom: 40px;
+            font-weight: 700;
+            font-size: 32px;
+            color: #E1E1E1;
+            line-height: 42px;
+            @include media-breakpoint-down(sm){
+                display: none;
+            }
+        }
+        .title{
+            margin-bottom: 20px;
+        }
+        .text{
+            position: relative;
+            margin-bottom: 18px;
+            transition: all 300ms ease;
+        }
+        .theme-btn{
+            color: var(--text-color);
+            border-color: var(--theme-color-dark);
+            border-radius: 0;
+            @include media-breakpoint-down(sm){
+                padding: 15px 20px;
+                font-size: 18px;
+            }
+            &:before{border-radius: 0;}
+            &:hover{
+                color: var(--theme-color-light);
+                border-color: var(--theme-color-light);
+            }
+        }
+    }
+}
+
+
+
+/***
+
+====================================================================
+    Services Section Four
+====================================================================
+
+***/
+
+.services-section-four{
+    position: relative;
+    padding: 120px 0 90px;
+}
+
+.service-block-four{
+    margin-bottom: 30px;
+    .inner-box{
+        position: relative;
+        padding-bottom: 30px;
+        &:hover{
+            .content-box{
+                box-shadow: 0px 0px 18px 3px rgba(0, 0, 0, 0.09);
+            }
+            .image{
+                img{
+                    transform: scale(1.1);
+                }
+            }
+        }
+        .image-box{
+            position: relative;
+            .image{
+                position: relative;
+                overflow: hidden;
+                margin: 0;
+                img{
+                    width: 100%;
+                    transition: all 300ms ease;
+                }
+            }
+        }
+        .content-box{
+            position: relative;
+            background-color: var(--theme-color-light);
+            padding: 40px 41px 55px;
+            box-shadow: 0px 0px 18px 3px rgba(0, 0, 0, 0.05);
+            margin-top: -115px;
+            margin-right: 29px;
+            transition: all 300ms ease;
+            @include media-breakpoint-down(lg){
+                margin: 0;
+            }
+            @include media-breakpoint-down(sm){
+                padding: 40px 20px;
+            }
+            .icon{
+                position: absolute;
+                right: 24px;
+                top: -35px;
+                height: 65px;
+                width: 65px;
+                background-color: var(--bg-theme-color1);
+                color: var(--theme-color2);
+                @include flex-center;
+                font-size: 42px;
+                line-height: 1em;
+                transition: all 300ms ease;
+            }
+            .title{
+                color: var(--theme-color-dark);
+                margin-bottom: 15px;
+                &:hover{
+                    color: var(--theme-color1);
+                }
+            }
+            .text{
+                line-height: 32px;
+            }
+        }
+        .read-more {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -33px;
+            display: block;
+            width: 65px;
+            height: 65px;
+            line-height: 65px;
+            margin-bottom: -50px;
+            border: 1px solid #E1E1E1;
+            background-color: var(--theme-color-light);
+            color: var(--bg-theme-color1);
+            font-size: 20px;
+            text-align: center;
+            margin: 0 auto;
+            &:hover {
+                background-color: var(--bg-theme-color1);
+                color: var(--theme-color-light);
+            }
+        }
+    }
+}
+
+
+
+/***
+
+====================================================================
+    Services Section Five
+====================================================================
+
+***/
+
+.services-section-five{
+    position: relative;
+    padding: 120px 0 90px;
+    .sec-title{
+        margin-bottom: 74px;
+        @include media-breakpoint-down(sm){margin-bottom: 60px;}
+    }
+}
+
+//Service Block Five
+.service-block-five{
+    position: relative;
+    margin-bottom: 30px;
+    .inner-box{
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+        padding: 53px 40px 40px;
+        height: 100%;
+        box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.05);
+        transition: all 300ms ease;
+        @include media-breakpoint-down(lg){
+            padding: 30px 20px;
+        }
+        @include media-breakpoint-down(sm){
+            padding: 30px 10px;
+        }
+        &:before{
+            position: absolute;
+            left: 50%;
+            right: 0;
+            top: 0px;
+            margin-left: -222px;
+            width: 444px;
+            height: 444px;
+            background-image: url(../images/icons/shadow-1.png);
+            opacity: 0.8;
+            pointer-events: none;
+            transform: scale(0);
+            background-repeat: no-repeat;
+            background-position: center;
+            transition: all 300ms ease;
+            content: "";
+        }
+        &:hover{
+            &:before{
+                transform: scale(1);
+            }
+            .icon-box{
+                &:before{
+                    transform: translate(7px,7px);
+                }
+            }
+            .title{
+                color: var(--theme-color-dark);
+            }
+        }
+        
+        .icon-box{
+            position: relative;
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            background-color: var(--bg-theme-color2);
+            margin-bottom: 55px;
+            transition: all 300ms ease;
+            @include media-breakpoint-down(lg){margin-bottom: 20px;}
+            &:before{
+                @include overlay;
+                background-color: var(--theme-color1);
+                transition: all 300ms ease;
+                content: "";
+            }
+            .icon{
+                position: relative;
+                @include flex-center;
+                height: 100%;
+                width: 100%;
+                text-align: center;
+                background: var(--bg-theme-color2);
+                color: var(--theme-color-dark);
+                font-size: 58px;
+                position: relative;
+                z-index: 99;
+            }
+        }
+        .title{
+            margin-bottom: 15px;
+            &:hover{
+                color: var(--theme-color1);
+            }
+        }
+        .text{
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .read-more{
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 26px;
+            color: var(--theme-color-dark);
+            transform: all 300ms ease;
+            i{
+                margin-left: 10px;
+                font-size: 18px;
+            }
+            &:hover{
+                color: var(--theme-color1);
+            }
+        }
+    }
+}
+
+/***
+
+====================================================================
+    Services Section Six
+====================================================================
+
+***/
+
+.services-section-six{
+    position: relative;
+    padding: 120px 0 70px;
+}
+
+.service-block-six{
+    margin-bottom: 50px;
+    .inner-box{
+        position: relative;
+        margin-bottom: 37px;
+        transition: all 300ms ease;
+        &:hover{
+            .icon{
+                background-color: var(--bg-theme-color1);
+                color: var(--theme-color-light);
+            }
+            .image{
+                img{
+                    transform: scale(1.1);
+                }
+            }
+            .theme-btn,
+            .content{
+                box-shadow: 0 10px 30px rgba(0, 0, 0, .10);
+            }
+        }
+        .image{
+            margin: 0;
+            overflow: hidden;
+            img{
+                width: 100%;
+                transition: all 300ms ease;
+            }
+        }
+        .content{
+            position: relative;
+            background-color: var(--theme-color-light);
+            margin-top: -140px;
+            margin-left: 26px;
+            margin-right: 26px;;
+            padding: 60px 45px 50px;
+            text-align: center;
+            transition: all 300ms ease;
+            @include media-breakpoint-down(xxl){
+                margin: 0;
+                padding: 60px 40px;
+            }
+            @include media-breakpoint-down(lg){
+                padding: 60px 25px;
+            }
+            @include media-breakpoint-down(sm){
+                padding: 60px 10px 40px;
+            }
+        }
+        .icon{
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: -32px;
+            margin: 0 auto;
+            height: 65px;
+            width: 65px;
+            background-color: var(--theme-color2);
+            color: var(--theme-color-dark);
+            @include flex-center;
+            font-size: 42px;
+            line-height: 1em;
+            transition: all 300ms ease;
+        }
+        .title{
+            color: var(--theme-color-dark);
+            margin-bottom: 10px;
+            @include media-breakpoint-down(sm){font-size: 24px;}
+            &:hover{
+                color: var(--theme-color1);
+            }
+        }
+        .text{
+            margin-bottom: 0;
+        }
+        .theme-btn{
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 20px 30px;
+            bottom: -37px;
+            @include media-breakpoint-down(sm){
+                padding: 15px 20px;
+                font-size: 18px;
+            }
+        }
+    }
+}
+
+
+
+/***
+
+====================================================================
+    Services Section Seven
+====================================================================
+
+***/
+
+.services-section-seven{
+    position: relative;
+    padding: 120px 0 90px;
+    .sec-title{
+        margin-bottom: 84px;
+        @include media-breakpoint-down(sm){
+            margin-bottom: 60px;
+        }
+    }
+}
+
+.service-block-seven{
+    margin-bottom: 30px;
+    .inner-box{
+        position: relative;
+        border: 1px solid #E1E1E1;
+        transition: all 300ms ease;
+        &:hover{
+            .theme-btn,
+            .content{
+                box-shadow: 0 10px 30px rgba(0, 0, 0, .10);
+            }
+            .image{
+                img{
+                    transform: scale(1.1);
+                }
+            }
+        }
+        .image{
+            position: relative;
+            overflow: hidden;
+            margin: 0;
+            img{
+                width: 100%;
+                transition: all 300ms ease;
+            }
+        }
+        .content{
+            position: relative;
+            background-color: var(--theme-color-light);
+            padding: 40px 40px 40px;
+            transition: all 300ms ease;
+            @include media-breakpoint-down(xxl){
+                padding: 30px;
+            }
+            @include media-breakpoint-down(sm){
+                padding: 30px 15px;
+            }
+        }
+        .icon{
+            position: absolute;
+            right: 40px;
+            top: -32px;
+            margin: 0 auto;
+            height: 65px;
+            width: 65px;
+            border-radius: 5px;
+            background-color: var(--bg-theme-color1);
+            color: var(--theme-color-light);
+            @include flex-center;
+            font-size: 42px;
+            line-height: 1em;
+            transition: all 300ms ease;
+            @include media-breakpoint-down(sm){
+                right: 30px;
+                top: -50px;
+            }
+        }
+        .title{
+            color: var(--theme-color-dark);
+            padding-bottom: 20px;
+            border-bottom: 1px solid #E1E1E1;
+            margin-bottom: 15px;
+            @include media-breakpoint-down(sm){font-size: 24px;}
+            &:hover{
+                color: var(--theme-color1);
+            }
+        }
+        .text{
+            margin-bottom: 18px;
+        }
+        .theme-btn{
+            border-color: var(--theme-color1);
+            @include media-breakpoint-down(lg){
+                padding: 15px 20px;
+                font-size: 18px;
+            }
+        }
+    }
+}
+
+/***
+
+====================================================================
+    Services Section Eight
+====================================================================
+
+***/
+
+.services-section-eight{
+    position: relative;
+    padding: 120px 0 90px;
+    background-color: var(--bg-theme-color1);
+    overflow: hidden;
+    .bg-shape{
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 304px;
+        height: 608px;
+        background-image: url(../images/icons/shape-4.png);
+    }
+    .content-column{
+        @include media-breakpoint-down(lg){margin-bottom: 50px;}
+        .sec-title{
+            margin-bottom: 28px;
+            .sub-title{
+                color: var(--theme-color-light);
+                &:after{background-color: var(--theme-color-light);}
+            }
+            .text{
+                margin-top: 40px;
+            }
+        }
+        .theme-btn {
+            border-color: var(--theme-color-light);
+            color: var(--theme-color-light);
+            padding: 14px 30px;
+            line-height: 30px;
+            &:hover{color: var(--theme-color-dark);}
+        }
+    }
+
+
+    .slider-column{
+        .carousel-outer{
+            margin-right: -330px;
+            @include media-breakpoint-down(lg){
+                margin: 0;
+            }
+        }
+        .default-navs {
+            .owl-nav{
+                position: absolute;
+                left: -660px;
+                bottom: 40px;
+                z-index: 8;
+                @include media-breakpoint-down(xxl){
+                    bottom: 20px;
+                    left: -600px;
+                    justify-content: flex-start;
+                }
+                @include media-breakpoint-down(xl){
+                    left: -500px;
+                }
+                @include media-breakpoint-down(lg){
+                    position: relative;
+                    left: 0;
+                    bottom: 0;
+                    justify-content: center;
+                }
+                .owl-next,
+                .owl-prev{
+                    background-color: rgba(255,255,255,.10);
+                    height: 60px;
+                    width: 60px;
+                    line-height: 60px;
+                    color: var(--theme-color-light);
+                    &:hover{
+                        background-color: var(--theme-color-light);
+                        color: var(--theme-color1);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.service-block-eight{
+    position: relative;
+    margin-bottom: 30px;
+    .inner-box {
+        position: relative;
+        background-color: var(--theme-color-light);
+        padding: 20px 20px 20px;
+        &:hover{
+            .image{
+                img{
+                    transform: scale(1.1);
+                }
+            }
+            .icon-box{
+                background-color: var(--bg-theme-color2);
+                color: var(--theme-color-dark);
+            }
+        }
+        .image{
+           position: relative;
+           overflow: hidden;
+           margin-bottom: 0;
+           img{
+            width: 100%;
+            transition: all 300ms ease;
+           }
+        }
+        .content{
+            position: relative;
+            padding: 65px 10px 15px;
+            @include media-breakpoint-down(xxl){
+                padding: 65px 5px 15px;
+            }
+        }
+        .icon-box{
+            position: absolute;
+            top: -32px;
+            left: 10px;;
+            font-size: 45px;
+            width: 65px;
+            height: 65px;
+            line-height: 65px;
+            background-color: var(--bg-theme-color1);
+            color: var(--theme-color-light);
+            text-align: center;
+            transition: all 300ms ease;
+        }
+        .title {
+            margin-bottom: 5px;
+            @include media-breakpoint-down(xxl){font-size: 24px;}
+            &:hover {
+                color: var(--bg-theme-color1);
+            }
+        }
+        .text {
+            margin-bottom: 11px;
+        }
+        .read-more {
+            position: relative;
+            font-size: 20px;
+            font-weight: 700;
+            i{
+                color: var(--bg-theme-color1);
+                font-size: 16px;
+                margin-right: 7px;
+            }
+            &:hover {
+                color: var(--bg-theme-color1);
+            }
+        }
+    }
+}
+
+
+/***
+
+====================================================================
+    Services Section Nine
+====================================================================
+
+***/
+
+.service-section-nine{
+    position: relative;
+    padding: 120px 0 90px;
+    background: var(--theme-color3);
+}
+
+// Service block Nine
+.service-block-nine{
+    margin-bottom: 30px;
+    .inner-box{
+        position: relative;
+        padding: 58px 30px 33px;
+        background: rgba(255,255,255,.05);
+        transition: all 300ms ease;
+        margin-top: 32px;
+        &:hover{
+            .icon{
+                background-color: var(--theme-color2);
+                color: var(--theme-color-dark);
+            }
+        }
+        .icon{
+            margin-bottom: 30px;
+            position: absolute;
+            top: -32px;
+            left: 30px;
+            font-size: 38px;
+            width: 60px;
+            height: 60px;
+            background-color: var(--theme-color1);
+            line-height: 60px;
+            text-align: center;
+            color: var(--theme-color-light);
+            transition: all 300ms ease;
+        }
+        .title{
+            color: var(--theme-color-light);
+        }
+        .text{
+            color: var(--theme-color-light);
+            margin-bottom: 37px;
+        }
+        .read-more{
+            font-size: 20px;
+            color: var(--theme-color-light);
+            line-height: 26px;
+            transition: all 300ms ease;
+            @include media-breakpoint-down(sm){font-size: 18px}
+            &:hover{color: var(--theme-color2);}
+            i{
+                font-size: 16px;
+                color: var(--theme-color1);
+                margin-right: 10px;
+            }
+        }
+    }
+}
+
+/***
+
+====================================================================
+    Services Section Ten
+====================================================================
+
+***/
+
+.services-section-ten{
+    position: relative;
+    padding: 120px 0 90px;
+}
+
+//Service Block Ten
+.service-block-ten{
+    position: relative;
+    margin-bottom: 30px;
+    .inner-box{
+        position: relative;
+        padding: 40px 40px 38px;
+        height: 100%;
+        box-shadow: 0px 0px 18px 3px rgba(0, 0, 0, 0.05);
+        transition: all 300ms ease;
+        @include media-breakpoint-down(sm){
+            padding: 30px 20px;
+        }
+        &:hover{
+            .icon-box{
+                color: var(--theme-color-dark);
+                &::before{background-color: var(--bg-theme-color2);opacity: .5;}
+                &::after{background-color: var(--bg-theme-color2);}
+            }
+        }
+        .icon-box{
+            position: relative;
+            height: 90px;
+            width: 90px;
+            margin-bottom: 30px;
+            font-size: 60px;
+            color: var(--theme-color-light);
+            @include flex-center;
+            transition: all 300ms ease;
+            &:before,
+            &:after{
+                @include overlay;
+                background-color: var(--bg-theme-color1);
+                content: "";
+                transition: all 300ms ease;
+            }
+            &:after{
+                transform: rotate(12.07deg);
+                opacity: .2;
+            }
+            .icon{
+                position: relative;
+            }
+        }
+        .count{
+            position: absolute;
+            right: 40px;
+            top: 40px;
+            font-weight: 700;
+            font-size: 32px;
+            line-height: 42px;
+            text-align: center;
+            @include text-outline(var(--theme-color-dark));
+            border-radius: 0px 0px 0px 10px;
+        }
+        .title{
+            font-size: 20px;
+            margin-bottom: 15px;
+            &:hover{
+                color: var(--theme-color1);
+            }
+        }
+        .text{
+            margin-bottom: 18px;
+        }
+        .read-more{
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 1em;
+            color: var(--theme-color1);
+            transform: all 300ms ease;
+            i{
+                margin-left: 10px;
+                font-size: 18px;
+            }
+            &:hover{
+                color: var(--theme-color-dark);
+            }
+        }
+    }
+}
+
+/***
+
+====================================================================
+    Services Section Eleven
+====================================================================
+
+***/
+
+.services-section-eleven{
+    position: relative;
+    padding: 120px 0 90px;
+}
+
+//Service Block Eleven
+.service-block-eleven{
+    position: relative;
+    margin-bottom: 30px;
+    .inner-box{
+        position: relative;
+        padding: 35px 30px 40px;
+        height: 100%;
+        background: #FFFFFF;
+        border: 1px solid #E1E1E1;
+        transition: all 300ms ease;
+        @include media-breakpoint-down(sm){
+            padding: 30px 20px;
+        }
+        &:hover{
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .10);
+            transform: translateY(-10px);
+            .icon-box{
+                transform: scaleX(-1);
+            }
+        }
+        .icon-box{
+            position: relative;
+            display: inline-block;
+            margin-bottom: 30px;
+            transition: all 300ms ease;
+        }
+        .count{
+            position: absolute;
+            right: 30px;
+            bottom: 40px;
+            font-weight: 700;
+            font-size: 32px;
+            color: #E1E1E1;
+            line-height: 42px;
+            @include media-breakpoint-down(sm){
+                display: none;
+            }
+        }
+        .title{
+            margin-bottom: 10px;
+            @include media-breakpoint-down(sm){font-size: 24px;}
+            &:hover{
+                color: var(--theme-color1);
+            }
+        }
+        .text{
+            margin-bottom: 24px;
+        }
+        .read-more{
+            position: relative;
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 26px;
+            color: var(--theme-color-dark);
+            transform: all 300ms ease;
+            @include media-breakpoint-down(sm){font-size: 18px;}
+            &::before{
+                content: "";
+                position: absolute;
+                width: 86px;
+                height: 1px;
+                background-color: #E1E1E1;
+                top: 14px;
+                right: -95px;
+                @include media-breakpoint-down(sm){display: none;}
+            }
+            i{
+                margin-left: 10px;
+                font-size: 18px;
+            }
+            &:hover{
+                color: var(--theme-color1);
+            }
+        }
+    }
+}
+
+
+
+/***
+
+====================================================================
+    Services Section Twelve
+====================================================================
+
+***/
+
+.services-section-twelve{
+    position: relative;
+    background-color: var(--bg-theme-color3);
+    padding: 120px 0 70px;
+    .sec-title{
+        margin-bottom: 68px;
+    }
+}
+.service-block-twelve{
+    margin-bottom: 50px;
+    .inner-box {
+        &:hover {
+            .title-box{
+                .icon {
+                    background-color: var(--bg-theme-color1);
+                    color: var(--theme-color-light);
+                    transform: scaleX(-1);
+                }
+            }
+        }
+        .title-box{
+            display: flex;
+            flex-direction: row;
+            .icon {
+                display: inline-block;
+                background-color: var(--bg-theme-color2);
+                color: var(--theme-color-dark);
+                font-size: 45px;
+                width: 65px;
+                height: 65px;
+                line-height: 65px;
+                margin-bottom: 22px;
+                margin-right: 25px;
+                text-align: center;
+                transition: all 300ms ease 0s;
+            }
+            .title {
+                color: var(--theme-color-light);
+                font-size: 27px;
+                font-weight: 700;
+                line-height: 35px;
+            }
+        }
+        .text {
+            color: var(--theme-color-light);
+            margin-bottom: 34px;
+        }
+        .theme-btn {
+            &:before{background-color: var(--bg-theme-color2);}
+            &:hover {
+                border-color: var(--theme-color2);
+            }
+        }
+    }
+}

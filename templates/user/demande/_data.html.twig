@@ -1,0 +1,56 @@
+<div class="table-responsive">
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Démarches</th>
+				<th>Mise à jour</th>
+				<th>Statut</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for demande in demandes %}
+				<tr>
+					<td>{{demande.demarche}}
+						<span class="text-uppercase">{{ demande.statut }}</span>
+						<span class="badge bg-warning rounded-pill text-light">N°de dossier : {{demande.id}}</span>
+					</td>
+					<td>
+						<span class="badge bg-info rounded-pill text-light">
+							Mise à jour le :{{ demande.updated ? demande.updated|date('d/m/Y') : '' }}
+						</span>
+					</td>
+					<td>
+						<span class="badge badge-{{demande.statutBg}} rounded-pill text-light">{{demande.etat}}</span>
+					</td>
+					<td>
+						{% if demande.completed %}
+							<a href="{{ path('demande_dossier_juridique', {'id': demande.id}) }}" class="btn btn-primary">
+								<i class="fa fa-folder-open"></i>
+								Ouvrir le dossier</a>
+						<a href="{{path('user_demande_show', {'id': demande.id}) }}" class="btn btn-light border">Détails</a>
+						{% else %}
+							{{ include('user/demande/_consulter_form.html.twig') }}
+						{% endif %}
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="4" class="text-center">
+						<p class="mb-4">Aucune démarche pour le moment</p>
+						<a href="{{path('demande_create', {requete: 1})}}" class="theme-btn btn-style-three radius-btn">
+							<span class="btn-title">Nouvelle demarche
+								<i class="fa fa-long-arrow-right"></i>
+							</span>
+						</a>
+					</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+{{ knp_pagination_render(demandes, null, {}, {
+                    'align': 'center',
+                    'size': 'medium',
+                    'rounded': true,
+                    }) }}

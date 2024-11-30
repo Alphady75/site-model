@@ -3,7 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Apropos;
-use App\Form\AproposType;
+use App\Form\Admin\AproposType;
 use App\Repository\AproposRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,7 +23,7 @@ class AproposController extends AbstractController
     {
         $apropo = $aproposRepository->findOneBy(['online' => $this->getUser()]);
         if ($apropo) {
-            return $this->redirectToRoute('apropos_show', ['id' => $apropo->getId()], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('apropos_edit', ['id' => $apropo->getId()], Response::HTTP_SEE_OTHER);
         }
         return $this->redirectToRoute('apropos_new', [], Response::HTTP_SEE_OTHER);
     }
@@ -38,7 +38,7 @@ class AproposController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $apropo->setUser($this->getUser());
             $aproposRepository->save($apropo, true);
-
+            $this->addFlash('success', 'Le contenu a bien été enregistrer');
             return $this->redirectToRoute('apropos_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -48,15 +48,7 @@ class AproposController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'apropos_show', methods: ['GET'])]
-    public function show(Apropos $apropo): Response
-    {
-        return $this->render('admin/apropos/show.html.twig', [
-            'apropo' => $apropo,
-        ]);
-    }
-
-    #[Route('/{id}/edit', name: 'apropos_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}', name: 'apropos_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Apropos $apropo, AproposRepository $aproposRepository): Response
     {
         $form = $this->createForm(AproposType::class, $apropo);
@@ -64,7 +56,7 @@ class AproposController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $aproposRepository->save($apropo, true);
-            $this->addFlash('success', "Le contenu a bien été mis à jour");
+            $this->addFlash('success', "Le contenu a bien été modifié");
             return $this->redirectToRoute('apropos_edit', ['id' => $apropo->getId()], Response::HTTP_SEE_OTHER);
         }
 

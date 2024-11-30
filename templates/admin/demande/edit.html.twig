@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Demande
+{% endblock %}
+
+{% block body %}
+	<h1>Edit Demande</h1>
+
+	{{ include('admin/demande/_form.html.twig', {'button_label': 'Update'}) }}
+
+	<a href="{{ path('admin_demande_index') }}">back to list</a>
+
+	{{ include('admin/demande/_delete_form.html.twig') }}
+{% endblock %}

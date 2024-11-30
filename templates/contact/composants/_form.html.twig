@@ -1,37 +1,17 @@
-{{ form_start(form) }}
-<div class="row g-3">
-   <div class="col-sm-6 pb-3">
-      <div class="form-floating">
-         {{ form_widget(form.nom) }}
-         <label for="contact_non">{{ 'nom'|trans }}</label>
-      </div>
-      {{ form_errors(form.nom) }}
-   </div>
+{{ form_start(form, {attr: {class: 'contact-form style-five'}}) }}
 
-   <div class="col-sm-6 pb-3">
-      <div class="form-floating">
-         {{ form_widget(form.email) }}
-         <label for="contact_email">E-mail</label>
-      </div>
-      {{ form_errors(form.email) }}
-   </div>
+<div class="row clearfix">
+	<div class="col-sm-6 column">{{ form_row(form.nom) }}</div>
+	<div class="col-sm-6 column">{{ form_row(form.email) }}</div>
+	<div class="col-sm-12 column">{{ form_row(form.sujet) }}</div>
 </div>
-<div class="pb-3">
-   <div class="form-floating">
-      {{ form_widget(form.sujet) }}
-      <label for="contact_sujet">{{ 'raison'|trans }}</label>
 
-   </div>
-   {{ form_errors(form.sujet) }}
+{{ form_rest(form) }}
+
+<div class="contact-section-btn pt-4">
+	<button type="submit" class="theme-btn btn-style-one">
+		<span class="btn-title">Send message</span>
+	</button>
 </div>
-<div class="pb-3">
-   <div class="form-floating">
-      {{ form_widget(form.message) }}
-      <label for="contact_message">{{ 'ecriremessage'|trans }}</label>
-   </div>
-   {{ form_errors(form.message) }}
-</div>
-<div class="text-center pb-5">
-   <button type="submit" class="btn btn-primary py-3"><i class="fa fa-paper-plane"></i> Envoyer</button>
-</div>
+
 {{ form_end(form) }}

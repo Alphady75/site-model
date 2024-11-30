@@ -1,9 +1,0 @@
-<div class="news-thumb w-100" data-aos="fade-up">
-    <a href="{{ path('realisations_details', {slug: similar.slug}) }}"
-        class="news-image-hover news-image-hover-warning">
-        <img src="{% if similar.image %}{{ vich_uploader_asset(similar, 'imageFile' ) | imagine_filter('realisation') }}{% else %}{{ asset('img/img-def-min.png') | imagine_filter('realisation') }}{% endif %}"
-            class="img-fluid large-news-image news-image w-100" alt="">
-    </a>
-
-    <div class="news-category text-white"><small>{{ similar.name }}</small></div>
-</div>

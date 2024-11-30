@@ -1,0 +1,31 @@
+{% extends 'demande.html.twig' %}
+
+{% block titre %}Envoyez-nous votre procuration signée{% endblock %}
+{% block col %}7{% endblock %}
+
+{% block body %}
+
+{{ form_start(form, {attr: {class: 'questionnaire'}}) }}
+
+{% if document and document.fichierFile %}
+<div class="row mb-3">
+  {% if document.fichierFile %}
+  <div class="col-12 col-sm-4">
+    <a href="{{ vich_uploader_asset(document, 'fichierFile')}}"></a>
+  </div>
+  {% endif %}
+</div>
+{% endif %}
+
+{{ form_rest(form) }}
+
+<div class="text-center pt-4">
+  <button class="theme-btn btn-style-one" data-turbo="false">
+    <span class="btn-title">{{ button_label|default('Envoyer') }}
+      <i class="fa fa-long-arrow-right"></i>
+    </span>
+  </button>
+</div>
+{{ form_end(form) }}
+
+{% endblock %}

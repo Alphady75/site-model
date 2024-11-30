@@ -1,0 +1,40 @@
+{% extends 'demande.html.twig' %}
+
+{% block titre %}Qui effectue la démarche sur
+	<span class="text-primary">{{appName}}</span>?
+{% endblock %}
+{% block col %}4{% endblock %}
+{% block text %}
+	<p>Ces informations nous permettront de vous assister au cours de votre processus de création, et seront nécessaires pour constituer votre dossier.</p>
+{% endblock %}
+
+{% block body %}
+
+	{{ form_start(form) }}
+	<div class="row">
+		<div class="col-sm-6">
+			{{ form_row(form.prenom) }}
+		</div>
+		<div class="col-sm-6">
+			{{ form_row(form.nom) }}
+		</div>
+	</div>
+	{{ form_row(form.email) }}
+	<div class="input-group flex-nowrap radius phone-input">
+		<span class="input-group-text bg-transparent border-0 pays" id="addon-wrapping">
+			{{ form_widget(form.pays) }}
+		</span>
+		{{ form_widget(form.telephone) }}
+	</div>
+	{{ form_errors(form.telephone) }}
+
+	<div class="text-center pt-4">
+		<button class="theme-btn btn-style-one">
+			<span class="btn-title">{{ button_label|default('Continuez') }}
+				<i class="fa fa-long-arrow-right"></i>
+			</span>
+		</button>
+	</div>
+	{{ form_end(form) }}
+
+{% endblock %}

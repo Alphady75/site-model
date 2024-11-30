@@ -1,0 +1,64 @@
+{% extends 'demande.html.twig' %}
+
+{% block titre %}La création de
+	<span class="text-primary">{{demande.nomSociete}}</span>
+	avance bien
+{% endblock %}
+{% block col %}12{% endblock %}
+{% block text %}
+	<p>Vous allez bientôt pouvoir compléter votre dossier juridique et finaliser la création de votre société.</p>
+{% endblock %}
+
+{% block body %}
+
+	<div class="sc-1v4fhqc-1 UwYUO">
+		<div class="ya12m5-0 bZpeIZ">
+			<div class="ya12m5-1 LlrgY">
+				<div color="#A4AAAE" class="ya12m5-2 ebYRYV">1</div>
+				<h4 class="sc-fzoaKM iYpeeA ya12m5-3 kuqrNd">
+					<span class="step-label">Projet</span>
+				</h4>
+				<svg width="1em" height="1em" viewbox="0 0 78 56" color="#16A974" class="ya12m5-4 jnkvAh">
+					<path d="M76.0077 11.4559L33.6705 53.461C31.1801 55.9515 27.1954 56.1175 24.539 53.6271L2.12516 33.2056C-0.531291 30.7152 -0.697317 26.5645 1.62708 23.908C4.1175 21.2516 8.2682 21.0856 10.9246 23.576L28.6897 39.8467L66.5441 1.99234C69.2005 -0.664112 73.3512 -0.664112 76.0077 1.99234C78.6641 4.64879 78.6641 8.79949 76.0077 11.4559Z" fill="#16A974"></path>
+				</svg>
+			</div>
+			<div class="ya12m5-1 LlrgY">
+				<div color="#A4AAAE" class="ya12m5-2 ebYRYV">2</div>
+				<h4 class="sc-fzoaKM iYpeeA ya12m5-3 kuqrNd">
+					<span class="step-label">Services</span>
+				</h4>
+				<svg width="1em" height="1em" viewbox="0 0 78 56" color="#16A974" class="ya12m5-4 jnkvAh">
+					<path d="M76.0077 11.4559L33.6705 53.461C31.1801 55.9515 27.1954 56.1175 24.539 53.6271L2.12516 33.2056C-0.531291 30.7152 -0.697317 26.5645 1.62708 23.908C4.1175 21.2516 8.2682 21.0856 10.9246 23.576L28.6897 39.8467L66.5441 1.99234C69.2005 -0.664112 73.3512 -0.664112 76.0077 1.99234C78.6641 4.64879 78.6641 8.79949 76.0077 11.4559Z" fill="#16A974"></path>
+				</svg>
+			</div>
+			<div class="ya12m5-1 LlrgY">
+				<div color="#A78FFF" class="ya12m5-2 kBzkCD">3</div>
+				<h4 class="sc-fzoaKM iYpeeA ya12m5-3 kuqrNd">
+					<span class="step-label">Dossier Juridique</span>
+				</h4>
+				<p class="sc-Axmtr egTqke ya12m5-5 hZgHYg">Constituez votre dossier juridique avec l'aide de nos experts (fiscalité, justificatifs, etc.)</p>
+			</div>
+			<div class="ya12m5-1 LlrgY">
+				<div color="#CECECE" class="ya12m5-2 eWZruW">4</div>
+				<h4 class="sc-fzoaKM iYpeeA ya12m5-3 kuqrNd">
+					<span class="step-label">Commande</span>
+				</h4>
+				<p class="sc-Axmtr egTqke ya12m5-5 hZgHYg">Choisissez votre formule d'accompagnement et finalisez votre commande</p>
+			</div>
+			<div class="ya12m5-1 LlrgY">
+				<div color="#CECECE" class="ya12m5-2 eWZruW">5</div>
+				<h4 class="sc-fzoaKM iYpeeA ya12m5-3 kuqrNd">
+					<span class="step-label">Validation</span>
+				</h4>
+				<p class="sc-Axmtr egTqke ya12m5-5 hZgHYg">Nos experts valident votre dossier et s'occupent des démarches administratives.</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="text-center">
+		<a href="{{path('demande_dossier')}}" class="theme-btn btn-style-one">
+			<span class="btn-title">Continuez <i class="fa fa-long-arrow-right"></i></span>
+		</a>
+	</div>
+
+{% endblock %}

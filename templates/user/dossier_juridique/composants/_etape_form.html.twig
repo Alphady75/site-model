@@ -1,0 +1,35 @@
+{{ form_start(form) }}
+<h3 class="titre-md pt-0 pb-0">A quel niveau se situe le dossier juridique de cette démarche?</h3>
+{{ form_row(form.name) }}
+<div class="mb-3">
+	<h3 class="text-dark py-2 h5">Documents</h3>
+	<div id="documentJuridiques" class="row" data-prototype="{{ include("user/dossier_juridique/collection/_dossier.html.twig", {form: form.documentJuridiques.vars.prototype})|e("html_attr") }}" data-index="{{ form.documentJuridiques|length > 0 ? form.documentJuridiques|last.vars.name + 1 : 0 }}">
+
+		{% for communaute in form.documentJuridiques %}
+			<div class="col-sm-6">
+				{{ include("user/dossier_juridique/collection/_dossier.html.twig", {form: communaute}) }}
+			</div>
+		{% endfor %}
+
+	</div>
+	{{ form_errors(form.documentJuridiques) }}
+	<div class="py-3">
+		<button type="button" class="btn-new btn btn-light radius-btn" data-collection="#documentJuridiques">
+			<i class="fa fa-link"></i>
+			Ajouter une pièce jointe
+		</button>
+	</div>
+</div>
+
+{{ form_row(form.description) }}
+
+<div>
+	{{ form_widget(form._token) }}
+	{{ form_errors(form) }}
+</div>
+<button type="submit" class="theme-btn btn-style-one radius-btn">
+	<span class="btn-title">
+		Enregistrer
+	</span>
+</button>
+{{ form_end(form, {render_rest: false}) }}

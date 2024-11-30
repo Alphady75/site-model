@@ -1,0 +1,21 @@
+{{ form_start(form) }}
+<div class="row">
+	<div class="col-sm-12">{{ form_row(form.civilite) }}</div>
+	<div class="col-sm-12">{{ form_row(form.fondateur) }}</div>
+	<div class="col-sm-12">{{ form_row(form.profession) }}</div>
+	<div class="col-sm-12">{{ form_row(form.nomCommercial) }}</div>
+	<div class="col-sm-12">{{ form_row(form.objetsocial) }}</div>
+</div>
+{{ form_row(form.sitmat) }}
+<div class="row">
+	<div class="col-sm-12">{{ form_row(form.prestelephone) }}</div>
+</div>
+{{ form_rest(form) }}
+<div class="text-center pt-4">
+	<button class="theme-btn btn-style-one">
+		<span class="btn-title">{{ button_label|default('Envoyer') }}
+			<i class="fa fa-long-arrow-right"></i>
+		</span>
+	</button>
+</div>
+{{ form_end(form) }}

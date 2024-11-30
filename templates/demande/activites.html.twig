@@ -1,0 +1,36 @@
+{% extends 'demande.html.twig' %}
+
+{% block titre %}Quelle sera
+	<span class="text-primary">l'activité</span>
+	de votre société ?
+{% endblock %}
+{% block col %}8{% endblock %}
+{% block text %}
+	<p>Choisissez votre activité principale. Celle-ci servira de base à l'objet social, qui sera rédigé dans un second temps.</p>
+{% endblock %}
+
+{% block body %}
+	<div class="grid-four">
+		{% for activite in activites() %}
+			<!-- Service Block Two -->
+			<div class="service-block-two {{demande.activite and activite.id == demande.activite.id ? 'active' : ''}} wow fadeInUp">
+				<a href="{{path('demande_activites', {reponse: activite.id})}}">
+					<div class="inner-box d-block">
+						<h4 class="title">
+							{{activite}}
+						</h4>
+					</div>
+				</a>
+			</div>
+		{% endfor %}
+	</div>
+	{% if demande.activite %}
+		<div class="text-center pt-5">
+			<a href="{{path('demande_services')}}" class="theme-btn btn-style-one">
+				<span class="btn-title">Continuez
+					<i class="fa fa-long-arrow-right"></i>
+				</span>
+			</a>
+		</div>
+	{% endif %}
+{% endblock %}

@@ -1,56 +1,82 @@
 {% extends 'admin.html.twig' %}
 
-{% block title %}Services{% endblock %}
+{% block title %}Services
+{% endblock %}
+{% block titre %}Services ({{ services.getTotalItemCount }})
+{% endblock %}
+
+{% block right %}
+	<button type="button" class="theme-btn btn-style-one radius-btn" data-toggle="modal" data-target="#staticBackdrop">
+		<span class="btn-title">
+			<i class="fa fa-plus-circle mr-2"></i>
+			Ajouter
+		</span>
+	</button>
+{% endblock %}
 
 {% block body %}
-<div class="row d-flex align-items-center">
-    <div class="col-sm-6">
-        <h1>Services</h1>
-    </div>
-    <div class="col-sm-6 text-end">
-        <a href="{{ path('service_new') }}" class="btn btn-primary">Ajouter un service</a>
-    </div>
-</div>
+	<!-- Modal -->
+	<div class="modal" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="staticBackdropLabel">Ajouter un #service</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					{% include "admin/service/_form.html.twig" %}
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-light border" data-dismiss="modal">Fermer</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
-<table class="table">
-    <thead class="bg-light">
-        <tr>
-            <th>#ID</th>
-            <th>Image</th>
-            <th>Titre</th>
-            <th>Position</th>
-            <th>Statut</th>
-            <th>Mise à jour</th>
-            <th class="text-end">Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for service in services %}
-        <tr>
-            <td>{{ service.id }}</td>
-            <td>
-                <img src="{% if service.image %}{{ vich_uploader_asset(service, 'imageFile' ) | imagine_filter('small') }}{% else %}{{ asset('img/img-def-min.png') | imagine_filter('small') }}{% endif %}"
-                    alt="" class="img-fluid rounded border">
-            </td>
-            <td>{{ service.name }}</td>
-            <td>{{ service.position }}</td>
-            <td>
-                <span class="badge bg-{{ service.online ? 'success' : 'light' }}">{{ service.online ? 'En ligne' : 'Hors
-                    ligne' }}</span>
-            </td>
-            <td>{{ service.updated ? service.updated|ago : '' }}</td>
-            <td class="text-end">
-                <a href="{{ path('services_details', {'slug': service.slug}) }}" target="_blank"
-                    class="btn btn-light"><i class="ti ti-article"></i> Détails</a>
-                <a href="{{ path('service_edit', {'id': service.id}) }}" class="btn btn-light"><i
-                        class="fa fa-edit"></i> Mettre à jour</a>
-            </td>
-        </tr>
-        {% else %}
-        <tr>
-            <td colspan="7">Aucune données</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+	<div class="card card-body p-0 border-0 mb-3">
+		<div class="table-responsive">
+			<table class="table table-hover">
+				<tr>
+					<th>#ID</th>
+					<th>Image</th>
+					<th>Titre</th>
+					<th>Statut</th>
+					<th>Mise à jour</th>
+					<th class="text-right">Actions</th>
+				</tr>
+				<tbody>
+					{% for service in services %}
+						<tr>
+							<td>{{ service.id }}</td>
+							<td>
+								<img src="{% if service.image %}{{ vich_uploader_asset(service, 'imageFile' )}}{% else %}{{ asset('img/document.svg')}}{% endif %}" alt="" class="img-fluid img-thumbnail" width="60">
+							</td>
+							<td>{{ service.name }}</td>
+							<td>
+								<span class="badge badge-{{ service.online ? 'success' : 'light' }} badge-pill">
+									<i class="fa fa-{{ service.online ? 'eye' : 'eye-slash' }}"></i>
+									{{ service.online ? 'En ligne' : 'Hors ligne' }}
+								</span>
+							</td>
+							<td>{{ service.updated ? service.updated|ago : '' }}</td>
+							<td class="text-right">
+								<a href="{{ path('service_edit', {'slug': service.slug}) }}" class="btn btn-light border">
+									<i class="fa fa-edit"></i>
+								</a>
+								{{ include('admin/service/_delete_form.html.twig') }}
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+	{{ knp_pagination_render(services, null, {}, {
+                    'align': 'center',
+                    'size': 'medium',
+                    'rounded': true,
+                    }) }}
+
 {% endblock %}

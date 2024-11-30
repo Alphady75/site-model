@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New DossierJuridique
+{% endblock %}
+
+{% block body %}
+	<h1>Create new DossierJuridique</h1>
+
+	{{ include('user/dossier_juridique/_form.html.twig') }}
+
+	<a href="{{ path('dossier_juridique_index') }}">back to list</a>
+{% endblock %}

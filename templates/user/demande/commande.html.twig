@@ -1,0 +1,35 @@
+{% extends 'dossier.html.twig' %}
+
+{% block title %}Commande
+{% endblock %}
+{% block titre %}Commande
+{% endblock %}
+
+{% block body %}
+	<h5 class="titre-md">La
+		<span class="text-primary">formule</span>
+		qui correspond le mieux</h5>
+	<div class="row">
+		<div class="col-sm-6 pricing-block active">
+			<div class="inner-box">
+				<div class="title-box">
+					<h4 class="title {{demande.tarification.recommander ? 'text-primary'}}">{{demande.tarification}}</h4>
+					<h4 class="price">{{ demande.tarification.cout|number_format(0, '', ' ') ~ currency }}<sub>
+							{{ demande.tarification.typeCout }}</sub>
+					</h4>
+					<div class="text">{{demande.tarification.description}}</div>
+				</div>
+				<ul class="features-list border-0">
+					{% for formule in demande.tarification.formules %}
+						<li>
+							<i class="fa fa-check {{formule.etat == 'Exclu' ? 'text-light' : ''}}"></i>
+							{{formule}}</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+	</div>
+	{% if demande.commande and demande.commande.payer == false %}
+		{{ include('user/demande/_payer_form.html.twig') }}
+	{% endif %}
+{% endblock %}

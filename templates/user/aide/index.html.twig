@@ -1,0 +1,26 @@
+{% extends 'espace.html.twig' %}
+
+{% block title %}
+	Besoin d'aides ?
+{% endblock %}
+{% block col %}7
+{% endblock %}
+{% block titre %}Besoin d'aides ?
+{% endblock %}
+
+{% block body %}
+	{% form_theme form 'bootstrap_4_layout.html.twig' %}
+	{{ form_start(form) }}
+	<div class="pt-4">
+		{{ form_widget(form) }}
+	</div>
+	<div class="text-center pt-4">
+		<button type="submit" class="theme-btn btn-style-one radius-btn button">
+			<span class="btn-title">
+				{{ button_label|default('Enregistrer') }}
+			</span>
+		</button>
+	</div>
+	{{ form_end(form) }}
+
+{% endblock %}

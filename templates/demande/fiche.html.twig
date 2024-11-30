@@ -1,0 +1,40 @@
+{% extends 'demande.html.twig' %}
+
+{% block titre %}Fiche pour personne physique{% endblock %}
+{% block col %}7{% endblock %}
+
+{% block body %}
+
+{{ form_start(form, {attr: {class: 'questionnaire'}}) }}
+<div class="row">
+  <div class="col-sm-12">{{ form_row(form.civilite) }}</div>
+  <div class="col-sm-6">{{ form_row(form.nom) }}</div>
+  <div class="col-sm-6">{{ form_row(form.prenom) }}</div>
+
+  <div class="col-sm-6">{{ form_row(form.dateNaissance) }}</div>
+  <div class="col-sm-6">{{ form_row(form.dateLettre) }}</div>
+  <div class="col-sm-6">{{ form_row(form.lieuNaissance) }}</div>
+  <div class="col-sm-6">{{ form_row(form.nationalite) }}</div>
+  <div class="col-sm-6">{{ form_row(form.profession) }}</div>
+  <div class="col-sm-6">{{ form_row(form.adresse) }}</div>
+  <div class="col-sm-6">{{ form_row(form.sitMat) }}</div>
+  <div class="col-sm-6">{{ form_row(form.regimeMat) }}</div>
+  <div class="col-sm-6">{{ form_row(form.email) }}</div>
+  <div class="col-sm-6">{{ form_row(form.telephone) }}</div>
+</div>
+<h6 class="text-uppercase mt-5 pb-0 mb-0">Informations de la Piece d'identité</h6>
+<div class="row">
+  <div class="col-sm-6">{{ form_row(form.typePiece) }}</div>
+  <div class="col-sm-6">{{ form_row(form.numPiece) }}</div>
+  <div class="col-sm-6">{{ form_row(form.pieceDelivre) }}</div>
+</div>
+{{ form_rest(form) }}
+<div class="text-center pt-4">
+  <button class="theme-btn btn-style-one">
+    <span class="btn-title">{{ button_label|default('Continuer') }}
+      <i class="fa fa-long-arrow-right"></i>
+    </span>
+  </button>
+</div>
+{{ form_end(form) }}
+{% endblock %}

@@ -1,4 +1,32 @@
-{{ form_start(form, {attr: {class: 'card card-body'}}) }}
-    {{ form_widget(form) }}
-    <button class="btn btn-primary py-3">{{ button_label|default('Enregistrer') }}</button>
+{{ form_start(form, {attr: {class: ''}}) }}
+<div class="text-center">
+	<i class="fa fa-user-circle fa-5x" style="color: #ededed;"></i>
+</div>
+<p class="small">
+	<strong class="text-warning">
+		<i class="fa fa-exclamation-circle"></i>
+		Attention !
+	</strong>
+  {{ app.request.attributes.get('_route') == 'user_edit' ? 'modifier' : 'création' }}
+	d'un nouveau compte utilisateur
+	<br>
+
+	Vous êtes sur le point de {{ app.request.attributes.get('_route') == 'user_edit' ? 'créer' : 'modifier' }} un nouveau compte utilisateur. Les utilisateurs ont des privilèges étendus, y compris l'accès complet à toutes les fonctionnalités et paramètres du système.
+	<br>
+
+	Veuillez vérifier les informations saisies et confirmer que vous souhaitez accorder des droits administratifs à cet utilisateur.
+	<br>
+
+	Assurez-vous de protéger les informations de connexion et de limiter cet accès uniquement aux utilisateurs de confiance.
+</p>
+<div class="row">
+	<div class="col-sm">{{ form_row(form.nom) }}</div>
+	<div class="col-sm">{{ form_row(form.prenom) }}</div>
+</div>
+{{ form_rest(form) }}
+<button type="submit" class="theme-btn btn-style-one radius-btn">
+	<span class="btn-title">
+		{{ button_label|default('Enregistrer') }}
+	</span>
+</button>
 {{ form_end(form) }}

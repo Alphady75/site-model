@@ -1,0 +1,42 @@
+{% extends 'demande.html.twig' %}
+
+{% block titre %}Souhaitez-vous être mis en relation avec un
+	<span class="text-primary">expert-comptable</span>
+	?
+{% endblock %}
+{% block col %}5{% endblock %}
+{% block text %}
+	<p>Démarrez votre activité sur de bonnes bases en profitant des avantages que vous offre notre réseau d'experts‑comptables partenaires.</p>
+{% endblock %}
+
+{% block body %}
+	<div class="grid-two">
+		<div class="service-block-two {{demande.comptastart == "Oui" ? 'active' : ''}} wow fadeInUp">
+			<a href="{{path('demande_espertcomptable', {reponse: 1})}}">
+				<div class="inner-box d-block">
+					<h4 class="title">
+						Oui
+					</h4>
+				</div>
+			</a>
+		</div>
+		<div class="service-block-two {{demande.comptastart == "Non" ? 'active' : ''}} wow fadeInUp">
+			<a href="{{path('demande_espertcomptable', {reponse: 2})}}">
+				<div class="inner-box d-block">
+					<h4 class="title">
+						Non
+					</h4>
+				</div>
+			</a>
+		</div>
+	</div>
+	{% if demande.comptastart %}
+		<div class="text-center pt-5">
+			<a href="{{path('demande_presentation')}}" class="theme-btn btn-style-one">
+				<span class="btn-title">Continuez
+					<i class="fa fa-long-arrow-right"></i>
+				</span>
+			</a>
+		</div>
+	{% endif %}
+{% endblock %}

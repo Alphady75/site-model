@@ -1,0 +1,22 @@
+{% extends 'demande.html.twig' %}
+
+{% block titre %}Votre Dossier juridique{% endblock %}
+{% block col %}8{% endblock %}
+{% block text %}
+	<p>Constituez votre dossier juridique avec l'aide de nos experts (fiscalité, justificatifs, etc.)</p>
+{% endblock %}
+
+{% block body %}
+	<div class="text-center">
+		<i class="fa fa-folder-open fa-3x"></i>
+		<h5 class="lead">Nos experts valident votre dossier
+			<br> et s'occupent des démarches administratives.</h5>
+	</div>
+	<div class="text-center pt-5 dossier">
+		<a href="{{path('demande_formules')}}" class="theme-btn btn-style-one">
+			<span class="btn-title">Continuez
+				<i class="fa fa-long-arrow-right"></i>
+			</span>
+		</a>
+	</div>
+{% endblock %}

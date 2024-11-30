@@ -1,0 +1,266 @@
+/***
+
+====================================================================
+    Faq's Section
+====================================================================
+
+***/
+
+.faq-section {
+    position: relative;
+    padding: 120px 0 70px;
+    .content-column {
+        position: relative;
+        margin-bottom: 50px;
+        .inner-column {
+            padding-right: 40px;
+            @include media-breakpoint-down(lg){
+                padding-right: 0;
+            }
+        }
+    }
+    .image-column {
+        margin-bottom: 50px;
+        .inner-column{
+            margin-left: -30px;
+            @include media-breakpoint-down(lg){
+                margin-left: 0;
+                text-align: center;
+            }
+        }
+        .image{
+            overflow: hidden;
+            display: inline-block;
+            img{
+                border-radius: 200px;
+            }
+        }
+    }
+}
+
+// Accodion box
+.accordion-box {
+	position: relative;
+    counter-reset: count;
+	.block {
+		position: relative;
+		&:last-child{margin-bottom: 0;}
+        margin-bottom: 25px;
+		.acc-btn {
+            position: relative;
+            border: 1px solid #E1E1E1;
+            border-radius: 5px;
+            color: var(--theme-color-dark);
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 35px;
+            padding: 18px 50px;
+            padding-right: 72px;
+			transition: all 500ms ease;
+            @include media-breakpoint-down(lg){
+                font-size: 24px;
+            }
+            @include media-breakpoint-down(sm){
+                font-size: 20px;
+                line-height: 28px;
+            }
+            &:before{
+                position: absolute;
+                left: 20px;
+                top: 18px;
+                counter-increment: count;
+                content: counter(count) ".";
+            }
+			.icon {
+				position: absolute;
+				right: 0px;
+				top: 0px;
+				height: 71px;
+                width: 70px;
+				line-height: 70px;
+				font-size: 18px;
+				color: var(--theme-color-dark);
+				text-align: center;
+				transition: all 500ms ease;
+			}
+		}
+		.acc-btn.active {
+            background-color: var(--bg-theme-color1);
+            color: var(--theme-color-light);
+			.icon {
+				color: var(--theme-color1);
+				&:before {content: "\f068";}
+			}
+		}
+		.acc-content {
+			position: relative;
+			display: none;
+			.content {
+				padding: 20px 40px 0px;
+                .text{
+                    margin-bottom: 0px;
+                }
+			}
+		}
+		.acc-content.current {display: block;}
+	}
+
+    &.style-two{
+        .block{
+            border: 1px solid #E1E1E1;
+            .acc-btn{
+                font-size: 18px;
+                font-weight: 500;
+                border: 0;
+                margin-bottom: 0;
+                &:before{color: var(--theme-color1);}
+                .icon{
+                    position: absolute;
+                    top: 0px;
+                    right: 0;
+                    width: 70px;
+                    height: 70px;
+                    line-height: 70px;
+                    text-align: center;
+                    color: var(--theme-color1);
+                }
+                &.active{
+                    background-color: transparent;
+                    color: var(--theme-color-dark);
+                }
+            }
+            .acc-content{
+                .content{
+                    padding: 0 50px 30px;
+                    margin-top: -13px;
+                }
+            }
+        }
+    }
+
+    &.style-three{
+        .block{
+            margin-bottom: 30px;
+            .acc-btn{
+                border: 0;
+                background-color: var(--theme-color-gray);
+                padding-left: 64px;
+                padding-right: 50px;
+                &:before{
+                    left:30px;
+                }
+                &.active{
+                    background-color: var(--bg-theme-color1);
+                    color: var(--theme-color-light);
+                }
+            }
+            .acc-content{
+                .content{
+                    padding: 15px 30px 15px;
+                }
+            }
+
+            &.active-block{
+                box-shadow: 0 10px 30px rgba(0,0,0,.05);
+            }
+        }
+    }
+}
+
+/***
+
+====================================================================
+    Faq's Section Two
+====================================================================
+
+***/
+
+.faq-section-two {
+    padding: 120px 0 70px;
+    .content-column {
+        margin-bottom: 50px;
+        .inner-column {
+            padding-left: 40px;
+            padding-top: 5px;
+            @include media-breakpoint-down(xl){
+                padding-left: 0;
+                padding-top: 0;
+            }
+        }
+    }
+    .images-column {
+        margin-bottom: 50px;
+        .inner-column{
+            position: relative;
+            text-align: right;
+            @include media-breakpoint-down(xl){
+                text-align: center;
+            }
+        }
+        .image{
+            position: relative;
+            display: inline-block;
+            border-radius: 500px;
+            overflow: hidden;
+        }
+        .image-2{
+            position: absolute;
+            left: -90px;
+            bottom: 65px;
+            margin-bottom: 0;
+            border-radius: 500px;
+            overflow: hidden;
+            img{
+                border-radius: 500px;
+                border: 10px solid var(--theme-color-light);
+            }
+            @include media-breakpoint-down(xl){
+                position: relative;
+                left: 0;
+                bottom: 0;
+                margin-top: 0px;
+            }
+            @include media-breakpoint-down(lg){
+                display: none;
+            }
+        }
+    }
+}
+
+
+/***
+
+====================================================================
+    Faq's Section Three
+====================================================================
+
+***/
+
+.faq-section-three{
+    padding: 120px 0 70px;
+    overflow: hidden;
+    .faq-column {
+        margin-bottom: 50px;
+        .inner-column {
+            padding-right: 20px;
+            padding-top: 20px;
+        }
+    }
+    .image-column{
+        margin-bottom: 50px;
+        .image-box{
+            position: relative;
+            margin-right: -315px;
+            margin-left: -20px;
+            @include media-breakpoint-down(lg){
+                margin: 0;
+            }
+            .image{
+                img{
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,16 @@
+{% extends 'dossier.html.twig' %}
+
+{% block title %}Démarche n°{{demande.id}}	#{{ demande.demarche }} {{demande.statut}}{% endblock %}
+{% block titre %}Démarche n°{{demande.id}}#{{ demande.demarche }} {{demande.statut}}{% endblock %}
+
+{% block right %}
+	<a href="{{path('demande_dossier_juridique', {id: demande.id})}}" class="theme-btn btn-style-two radius-btn" aria-current="page">
+		<span class="btn-title">
+			<i class="fa fa-folder-open"></i>&nbsp;Dossier juridique
+		</span>
+	</a>
+{% endblock %}
+
+{% block body %}
+	{% include "user/demande/_infos.html.twig" %}
+{% endblock %}

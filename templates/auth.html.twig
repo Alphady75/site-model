@@ -2,80 +2,78 @@
 <html lang="fr">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block title %}{{ apropo().siteName }}{% endblock %}</title>
-    <link rel="shortcut icon" type="image/png" href="{{ asset('themes/admin/assets/images/logos/favicon.png') }}" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('themes/admin/assets/css/styles.min.css') }}" />
-    {% block stylesheets %}
-    {{ encore_entry_link_tags('app') }}
-    {% endblock %}
+	<!-- Basic Page Info -->
+	<meta charset="utf-8">
+	<title>
+		{% block title %}{% endblock %}
+	</title>
+	<!-- Site favicon -->
+	<link rel="apple-touch-icon" sizes="180x180" href="{{asset('img/logo.png')}}">
+	<link rel="icon" type="image/png" sizes="32x32" href="{{asset('img/logo.png')}}">
+	<link rel="icon" type="image/png" sizes="16x16"	href="{{asset('img/logo.png')}}">
+
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<!-- Google Font -->
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+		rel="stylesheet">
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="{{asset('themes/admin/vendors/styles/core.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('themes/admin/vendors/styles/icon-font.min.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('themes/admin/vendors/styles/style.css')}}">
+	<link href="{{asset('themes/base/css/style.css')}}" rel="stylesheet">
+
+	{% block stylesheets %}
+	{{ encore_entry_link_tags('app') }}
+	{{ encore_entry_link_tags('admin') }}
+	{{ encore_entry_link_tags('responsive') }}
+	{% endblock %}
 </head>
 
-<body class="bg-light">
-    <!--  Body Wrapper -->
-    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
-        data-sidebar-position="fixed" data-header-position="fixed">
-        <div
-            class="position-relative overflow-hidden radial-gradient min-vh-100 d-flex align-items-center justify-content-center">
-            <div class="d-flex align-items-center justify-content-center w-100">
-                <div class="row justify-content-center w-100">
-                    <div class="col-sm-3">
-                        <div class="card mb-0">
-                            <div class="card-body">
-                                <a href="{{ path('accueil') }}" class="text-nowrap logo-img text-center d-block py-3 w-100">
-                                    <img src="{{ asset('themes/admin/assets/images/logos/dark-logo.svg') }}" width="180" alt="">
-                                </a>
-                                <p class="text-center">{{ apropo().siteName }}</p>
-                                {% block body %}{% endblock %}
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <script src="{{ asset('themes/admin/assets/libs/jquery/dist/jquery.min.js') }}"></script>
-    <script src="{{ asset('themes/admin/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
-    <script>
-        // <![CDATA[  <-- For SVG support
-        if ('WebSocket' in window) {
-            (function () {
-                function refreshCSS() {
-                    var sheets = [].slice.call(document.getElementsByTagName("link"));
-                    var head = document.getElementsByTagName("head")[0];
-                    for (var i = 0; i < sheets.length; ++i) {
-                        var elem = sheets[i];
-                        var parent = elem.parentElement || head;
-                        parent.removeChild(elem);
-                        var rel = elem.rel;
-                        if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
-                            var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
-                            elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
-                        }
-                        parent.appendChild(elem);
-                    }
-                }
-                var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
-                var address = protocol + window.location.host + window.location.pathname + '/ws';
-                var socket = new WebSocket(address);
-                socket.onmessage = function (msg) {
-                    if (msg.data == 'reload') window.location.reload();
-                    else if (msg.data == 'refreshcss') refreshCSS();
-                };
-                if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
-                    console.log('Live reload enabled.');
-                    sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
-                }
-            })();
-        }
-        else {
-            console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
-        }
-        // ]]>
-    </script>
+<body class="login-page bg-white auth-footer pt-0" data-turbo="false">
+	<div class="login-wrap d-flex align-items-center flex-wrap justify-content-center mt-0 pt-0" style="height: 100%;">
+		<div class="container">
+			<div class="row align-items-center mt-0 pt-0">
+				<div class="col-md-5 ml-auto block-logo text-center">
+					<a href="{{path('accueil')}}"><img src="{{asset('img/logo.png')}}" alt="Logo {{appName}}"></a>
+				</div>
+				<div class="col-md-5 mr-auto">
+					<div class="login-box pt-4 bg-white box-shadow border-radius-10 mb-0 pb-4" style="max-width:100%">
+						<div class="login-title mb-0 pb-0">
+							<h1 class="text-center text-primary titre-auth mb-2"> {% block titre %}{% endblock %}</h1>
+							<p class="small text-center">{% block text %}{% endblock %}</p>
+						</div>
+						{% include "partials/_flash.html.twig" %}
+						{% block body %}{% endblock %}
+					</div>
+				</div>
+			</div>
+		</div>
+		<footer class="text-center pt-4">
+			<div class="text-center pb-0 mb-0">
+				<p class="pb-0 mb-0">Si vous avez des questions ou des suggestions, n'hésitez pas à nous contacter à
+					<a href="mailto:{{appEmail}}">{{appEmail}}</a>. <br> Nous sommes toujours là pour vous aider. Besoin d'aide ?
+					Consultez :
+				</p>
+			</div>
+			<nav class="nav justify-content-center">
+				<a href="{{ absolute_url(path('faqs')) }}" class="nav-link">FAQ</a>
+				<a href="{{ absolute_url(path('cgu')) }}" class="nav-link">Conditions générales d'utilisation</a>
+				<a href="{{ absolute_url(path('politiques')) }}" class="nav-link">Politique de confidentialité</a>
+			</nav>
+			<p style="text-align: center;">©{{ appName }}
+				- Tous droits réservés</p>
+		</footer>
+	</div>
+	<!-- js -->
+	<script src="{{asset('themes/admin/vendors/scripts/core.js')}}"></script>
+	<script src="{{asset('themes/admin/vendors/scripts/script.min.js')}}"></script>
+	<script src="{{asset('themes/admin/vendors/scripts/process.js')}}"></script>
+	<script src="{{asset('themes/admin/vendors/scripts/layout-settings.js')}}"></script>
+	{% block javascripts %}
+	{{ encore_entry_script_tags('desablebtn') }}
+	{% endblock %}
 </body>
 
 </html>

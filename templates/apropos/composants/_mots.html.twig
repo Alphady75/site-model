@@ -1,0 +1,31 @@
+<section class="volunteer-section">
+	<div class="container">
+		<div class="outer-box pt-0">
+			<!--Sec Title-->
+			<div class="sec-title centered">
+				<div class="icon-box"><img src="images/icons/sec-title.png" alt=""></div>
+				<h1>Mot du
+					<span>Fondateur</span>
+				</h1>
+				<div class="text">{{appName}}</div>
+			</div>
+			<div class="row m-0">
+				<div class="col-lg-7 p-0">
+					<div class="text-block-two p-4 h-100">
+						<h3>{{apropo().responsableName}}</h3>
+						<h4>Président fondateur</h4>
+						<div class="text">{{apropo().mots|u.truncate(400, '...')}}</div>
+						<div class="link-btn">
+							<a href="{{path('apropos')}}" class="theme-btn btn-style-two">En savoir plus</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-5 p-0">
+					{% if apropo().image %}
+						<div class="image h-100"><img src="{{ vich_uploader_asset(apropo(), 'imageFile' ) | imagine_filter('responsable') }}" class="h-100 w-100" alt=""></div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

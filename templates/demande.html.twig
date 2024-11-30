@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<!-- Basic Page Info -->
+	<meta charset="utf-8">
+	<title>
+		{{demande.demarche}}:
+		{{demande.statut}}
+	</title>
+	<!-- Site favicon -->
+	<link rel="apple-touch-icon" sizes="180x180" href="{{asset('img/logo.png')}}">
+	<link rel="icon" type="image/png" sizes="32x32" href="{{asset('img/logo.png')}}">
+	<link rel="icon" type="image/png" sizes="16x16" href="{{asset('img/logo.png')}}">
+
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<!-- Google Font -->
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+		rel="stylesheet">
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="{{asset('themes/admin/vendors/styles/core.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('themes/admin/vendors/styles/icon-font.min.css')}}">
+	<link rel="stylesheet" type="text/css" href="{{asset('themes/admin/vendors/styles/style.css')}}">
+	<link href="{{asset('themes/base/css/style.css')}}" rel="stylesheet">
+
+	{% block stylesheets %}
+	{{ encore_entry_link_tags('app') }}
+	{{ encore_entry_link_tags('admin') }}
+	{{ encore_entry_link_tags('responsive') }}
+	{% endblock %}
+</head>
+
+<body class="bg-white demande">
+
+	{% include "demande/composants/_header.html.twig" %}
+
+	<div class="container">
+
+		<div class="row text-center">
+			<div class="col-sm-9 mx-auto">
+				<h1 class="titre text-center mb-0 pt-3"> {% block titre %}{% endblock %}</h1>
+				{% block text %}{% endblock %}
+				{% include "partials/_flash.html.twig" %}
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-{% block col %}6{% endblock %} mx-auto">
+				<div class="py-4"> {% block body %}{% endblock %}
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- js -->
+	<script src="{{asset('themes/admin/vendors/scripts/core.js')}}"></script>
+	<script src="{{asset('themes/admin/vendors/scripts/script.min.js')}}"></script>
+	<script src="{{asset('themes/admin/vendors/scripts/process.js')}}"></script>
+	<script src="{{asset('themes/admin/vendors/scripts/layout-settings.js')}}"></script>
+	<script>
+		document.getElementById("go-back").addEventListener("click", () => {
+			history.back();
+		});
+	</script>
+	<script src="https://js.stripe.com/v3/"></script>
+	{% block javascripts %}
+	{{ encore_entry_script_tags('app') }}
+	{{ encore_entry_script_tags('collection') }}
+	{{ encore_entry_script_tags('desablebtn') }}
+	{% endblock %}
+</body>
+
+</html>

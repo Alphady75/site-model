@@ -1,0 +1,55 @@
+<div class="row">
+	<div class="col-sm-4 pb-3">
+		<div class="pb-3">
+			<span class="d-block text-muted">Prénom</span>
+			<strong>{{ app.user.prenom ?? '...' }}</strong>
+		</div>
+
+		<div class="pb-3">
+			<span class="d-block text-muted">Nom</span>
+			<strong>{{ app.user.nom ?? '...' }}</strong>
+		</div>
+
+		<div class="pb-3">
+			<span class="d-block text-muted">Téléphone</span>
+			<strong>{{ app.user.telephone ?? '...' }}</strong>
+		</div>
+
+		<div class="pb-3">
+			<span class="d-block text-muted">Adresse</span>
+			<strong>{{ app.user.adresse ?? '...' }}</strong>
+		</div>
+
+	</div>
+	<div class="col-sm-4 pb-3">
+		<div class="pb-3">
+			<span class="d-block text-muted">Adresse email</span>
+			<strong>{{ app.user.email ?? '...' }}</strong>
+		</div>
+
+		<div class="pb-3">
+			<span class="d-block text-muted">Numéro de téléphone</span>
+			<strong>{{ app.user.telephone ?? '...' }}</strong>
+		</div>
+
+		{% if app.request.attributes.get('_route') == 'compte' %}
+
+			<div class="pb-3">
+				<span class="d-block text-muted">Mot de passe</span>
+				<strong>
+					<i class="fa fa-key"></i>
+					****</strong>
+				<a href="{{ path('acces') }}" class="btn custom-btn btn-light radius">
+					<i class="fa fa-key"></i>
+					Mettez à jour vos accès</a>
+			</div>
+
+		{% endif %}
+	</div>
+</div>
+
+<div class="text-center">
+	<a href="{{ path('compte') }}" class="btn custom-btn btn-success p-2 radius">
+		<i class="fa fa-user-edit"></i>
+		Mettre à jour votre compte</a>
+</div>

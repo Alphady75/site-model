@@ -1,0 +1,343 @@
+@font-face {
+  font-family: poppins;
+  src: url('font/poppins/Poppins-Regular.ttf');
+}
+
+:root {
+  --primary-color: #008540 !important;
+  --secondary-color: #FDF03F !important;
+  --light-color: #e4e2e0 !important;
+  --white-color: #fff !important;
+  --aqua-color: #f0f6fe !important;
+  --dark-color: #2d2d2d !important;
+  --gray-color: #535050 !important;
+  --semigray-color: #9e9e9e !important;
+  --whatsapp-color: #2ca53b !important;
+}
+
+.titre {
+  font-size: 40px;
+  line-height: 60px;
+  font-weight: bold !important;
+}
+
+.titre-md {
+  font-size: 30px;
+  padding: 20px 0;
+  font-weight: bold !important;
+}
+
+.radius {
+  border-radius: 8px !important;
+  overflow: hidden !important;
+}
+
+.card .btn {
+  max-width: max-content !important;
+}
+
+.form-control {
+  border-radius: 10px !important;
+  border: 1px solid rgb(206, 206, 206);
+  background: transparent !important;
+  font-size: 15px;
+  padding: 14px 15px !important;
+}
+
+input.form-control {
+  border-radius: 10px !important;
+  font-size: 15px;
+  height: 60px;
+  width: 100%;
+}
+
+.phone-input {
+  border: 1px solid rgb(206, 206, 206) !important;
+}
+
+.sidebar-menu .submenu li a {
+  color: var(--dark-color) !important;
+}
+
+.phone-input input {
+  border-color: transparent !important;
+}
+
+.sticky {
+  position: sticky !important;
+  top: 70px !important;
+  padding-top: 8px;
+  z-index: 3 !important;
+}
+
+.picture-img .btn {
+  position: absolute;
+  z-index: 0;
+  right: -10px;
+  bottom: -10px;
+  background: var(--white-color) !important;
+  border-radius: 10px !important;
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.08);
+  border-radius: 50%;
+}
+
+.picture-img .btn:hover {
+  background: var(--primary-color) !important;
+}
+
+.picture-img {
+  width: 220px;
+  height: 220px;
+  border-radius: 15px;
+  margin: auto;
+  position: relative;
+  display: block;
+  cursor: pointer;
+  background: var(--light-color);
+}
+
+.picture-img img {
+  width: 220px;
+  height: 220px;
+  border-radius: 15px;
+}
+
+.hidden-file,
+.hidden-file .img {
+  height: 1px;
+  width: 1px;
+  visibility: hidden;
+}
+
+.mCS-dark-2.mCSB_scrollTools .mCSB_draggerRail {
+  background: transparent !important;
+}
+
+.left-side-bar .mCS-dark-2.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+  background: var(--primary-color) !important;
+  visibility: hidden !important;
+}
+
+.brand-logo a {
+  background: var(--white-color);
+  color: var(--primary-color) !important;
+  /*border-bottom-color: var(--white-color);*/
+}
+
+.brand-logo {
+  width: 280px;
+  height: 70px;
+  border-bottom: 1px solid var(--light-color) !important;
+}
+
+.sidebar-menu .sidebar-small-cap {
+  color: var(--semigray-color);
+}
+
+.chat-box .chat-desc ul,
+.pd-ltr-20 {
+  padding: 20px 20px 0 0;
+  ;
+}
+
+.sidebar-menu .dropdown-toggle {
+  padding: 10px 15px 10px 67px;
+}
+
+.form-body form {
+  padding: 20px;
+}
+
+.modal form,
+table form {
+  padding: 0 !important;
+}
+
+.table thead {
+  text-transform: uppercase;
+}
+
+.input-group-text {
+  border: 1px solid var(--light-color);
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  margin-left: -5px;
+  border-left: none;
+}
+
+label.required::after {
+  content: '*';
+  color: red;
+}
+
+.header {
+  box-shadow: none !important;
+  background: var(--white-color);
+}
+
+.left-side-bar {
+  border-right: 1px solid var(--light-color);
+}
+
+.sidebar-menu,
+.left-side-bar {
+  background: var(--white-color) !important;
+  translate: 0px;
+  transition: translate 0.3s;
+}
+
+.sidebar-menu {
+  padding: 10px;
+}
+
+.box-shadow {
+  box-shadow: rgba(45, 60, 86, 0.2) 0px 0px 20px !important;
+}
+
+.sidebar-menu .submenu li a.active,
+.sidebar-menu .submenu li a:hover,
+.sidebar-menu .dropdown-toggle:hover,
+.sidebar-menu .show>.dropdown-toggle {
+  background: var(--primary-color) !important;
+  border-radius: 10px !important;
+  color: var(--white-color) !important;
+}
+
+.sidebar-menu .dropdown-toggle .micon {
+  color: var(--primary-color);
+}
+
+.radius-btn {
+  border-radius: 30px !important;
+}
+
+.sidebar-menu .dropdown-toggle {
+  color: var(--dark-color);
+}
+
+.left-side-bar .sidebar-menu .dropdown-toggle {
+  border-radius: 10px !important;
+}
+
+.left-side-bar .sidebar-menu .dropdown-toggle.active,
+.left-side-bar .sidebar-menu .dropdown-toggle:hover {
+  background-color: var(--primary-color) !important;
+}
+
+fieldset .col-form-label {
+  padding: 0.25rem !important;
+}
+
+.badge {
+  padding: 8px !important;
+  font-size: 12px !important;
+  font-weight: 700;
+  border-radius: 25px !important;
+}
+
+.font-small {
+  font-size: .9em;
+  font-weight: 500;
+}
+
+.card-box .media .media-icon {
+  display: inline-block;
+  height: 60px;
+  width: 60px;
+  padding: 0;
+  line-height: 60px;
+  text-align: center;
+  font-size: 2rem;
+  background: var(--primary-color);
+  color: var(--white-color);
+  border-radius: 10px;
+  margin-right: 20px;
+  box-shadow: 0 0 28px rgba(0, 0, 0, .08);
+}
+
+.card-box .media .media-body span {
+  font-size: 1em;
+  color: var(--primary-color);
+}
+
+.card-box .media h3 {
+  color: var(--dark-color);
+  font-size: 1.5em;
+}
+
+.login-wrap {
+  overflow: inherit;
+}
+
+.btn-primary.disabled,
+.btn-primary:disabled {
+  color: #fff;
+  background-color: var(--light-color);
+  border-color: var(--light-color);
+}
+
+.btn-primary.disabled:hover {
+  cursor: cell !important;
+}
+
+.titre-auth {
+  font-size: 35px;
+}
+
+.dropdown-toggle.end .micon {
+  background: var(--primary-color);
+  color: var(--white-color);
+  border-radius: 30px;
+}
+
+.etapes .nav-link {
+  margin-right: 20px;
+  font-weight: 500;
+  font-size: 1em;
+  padding-right: 20px;
+  padding-left: 20px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  background: var(--white-color);
+}
+
+.etapes .box span {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  padding: 0;
+  font-size: 1.5em;
+  text-align: center;
+  border-radius: 50%;
+  background: var(--primary-color);
+  color: var(--white-color);
+  margin-right: 10px;
+}
+
+.etapes .nav-link.active {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+}
+
+.btn {
+  border-radius: 15px;
+}
+
+input[type=checkbox],
+input[type=radio] {
+  width: 20px;
+  height: 20px;
+  background-color: initial;
+  cursor: default;
+  appearance: auto;
+}
+
+.form-check-label {
+  margin-left: 10px;
+}
+
+.turbo-progress-bar {
+  background: var(--secondary-color) !important;
+  height: 6px;
+}

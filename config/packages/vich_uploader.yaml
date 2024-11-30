@@ -27,12 +27,27 @@ vich_uploader:
             upload_destination: '%kernel.project_dir%/public/images/medias'
             namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
 
-        architectures:
-            uri_prefix: /images/architectures
-            upload_destination: '%kernel.project_dir%/public/images/architectures'
+        pieces:
+            uri_prefix: /images/pieces
+            upload_destination: '%kernel.project_dir%/public/images/pieces'
             namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
 
         membres:
             uri_prefix: /images/membres
             upload_destination: '%kernel.project_dir%/public/images/membres'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
+        temoignages:
+            uri_prefix: /images/temoignages
+            upload_destination: '%kernel.project_dir%/public/images/temoignages'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
+        partenaires:
+            uri_prefix: /images/partenaires
+            upload_destination: '%kernel.project_dir%/public/images/partenaires'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
+        documents:
+            uri_prefix: /images/documents
+            upload_destination: '%kernel.project_dir%/public/images/documents'
             namer: Vich\UploaderBundle\Naming\SmartUniqueNamer

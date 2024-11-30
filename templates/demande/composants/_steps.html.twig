@@ -1,0 +1,52 @@
+<div class="sc-fzpans kp0h12-12 kkeBwd d-flex align-items-center mt-0 pt-4">
+	<a href="#" id="go-back" class="fDdMTL sc-fzoLsD jBqKdA kp0h12-8 kp0h12-9 gbsbae">
+		<svg viewbox="15 15 20 20" width="0.5em" height="0.5em">
+			<path d="M27.3 34.7L17.6 25l9.7-9.7 1.4 1.4-8.3 8.3 8.3 8.3z" fill="currentColor"></path>
+		</svg>
+		Précédent
+	</a>
+	<div class="sc-fzpans kp0h12-0 fDdMTL section-item {{etape and etape == 'projet' ? 'activate' : ''}}">
+		<span class="sc-fzoLsD jBqKdA kp0h12-1 eyKwfl section-index-icon {% if demande is not null and demande.activite %}fUJHYC{% endif %}">1</span>
+		<span class="sc-fzoLsD fAaGTU kp0h12-2 buQLca section-name">Projet</span>
+		<span class="sc-fzoLsD jBqKdA kp0h12-3 gFctwC section-arrow-icon">
+			<svg viewbox="15 15 20 20" width="0.5em" height="0.5em">
+				<path d="M22.7 34.7l-1.4-1.4 8.3-8.3-8.3-8.3 1.4-1.4 9.7 9.7z" fill="#5B6067"></path>
+			</svg>
+		</span>
+	</div>
+	<div class="sc-fzpans kp0h12-0 fDdMTL section-item {{etape and etape == 'service' ? 'activate' : ''}}">
+		<span class="sc-fzoLsD jBqKdA kp0h12-1 eyKwfl section-index-icon {% if demande is not null and demande.comptaStart %}fUJHYC{% endif %}">2</span>
+		<span class="sc-fzoLsD fAaGTU kp0h12-2 buQLca section-name">Services</span>
+		<span class="sc-fzoLsD jBqKdA kp0h12-3 gFctwC section-arrow-icon">
+			<svg viewbox="15 15 20 20" width="0.5em" height="0.5em">
+				<path d="M22.7 34.7l-1.4-1.4 8.3-8.3-8.3-8.3 1.4-1.4 9.7 9.7z" fill="#5B6067"></path>
+			</svg>
+		</span>
+	</div>
+	<div class="sc-fzpans kp0h12-0 fDdMTL section-item {{etape and etape == 'dossier' ? 'activate' : ''}}">
+		<span class="sc-fzoLsD jBqKdA kp0h12-1 eyKwfl section-index-icon {% if demande is not null and demande.dossierJuridique %}fUJHYC{% endif %}">3</span>
+		<span class="sc-fzoLsD fAaGTU kp0h12-2 buQLca section-name">Dossier Juridique</span>
+		<span class="sc-fzoLsD jBqKdA kp0h12-3 gFctwC section-arrow-icon">
+			<svg viewbox="15 15 20 20" width="0.5em" height="0.5em">
+				<path d="M22.7 34.7l-1.4-1.4 8.3-8.3-8.3-8.3 1.4-1.4 9.7 9.7z" fill="#5B6067"></path>
+			</svg>
+		</span>
+	</div>
+	<div class="sc-fzpans kp0h12-0 fDdMTL section-item {{etape and etape == 'commande' ? 'activate' : ''}}">
+		<span class="sc-fzoLsD jBqKdA kp0h12-1 eyKwfl section-index-icon {% if demande is not null and demande.payer %}fUJHYC{% endif %}">4</span>
+		<span class="sc-fzoLsD fAaGTU kp0h12-2 buQLca section-name">Commande</span>
+		<span class="sc-fzoLsD jBqKdA kp0h12-3 gFctwC section-arrow-icon">
+			<svg viewbox="15 15 20 20" width="0.5em" height="0.5em">
+				<path d="M22.7 34.7l-1.4-1.4 8.3-8.3-8.3-8.3 1.4-1.4 9.7 9.7z" fill="#5B6067"></path>
+			</svg>
+		</span>
+	</div>
+	<div class="sc-fzpans kp0h12-0 fDdMTL section-item {{etape and etape == 'validation' ? 'activate' : ''}}">
+		<span class="sc-fzoLsD jBqKdA kp0h12-1 eyKwfl section-index-icon {% if demande is not null and demande.validate %}fUJHYC{% endif %}">5</span>
+		<span class="sc-fzoLsD fAaGTU kp0h12-2 buQLca section-name">Validation</span>
+	</div>
+	<!--span class="sc-fzoLsD jBqKdA kp0h12-8 kp0h12-10 ilEect">Suivant <svg viewbox="15 15 20 20" width="0.5em" height="0.5em">
+					<path d="M22.7 34.7l-1.4-1.4 8.3-8.3-8.3-8.3 1.4-1.4 9.7 9.7z" fill="currentColor"></path>
+				</svg>
+			</span-->
+</div>

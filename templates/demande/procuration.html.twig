@@ -1,0 +1,33 @@
+{% extends 'demande.html.twig' %}
+
+{% block titre %}Procuration{% endblock %}
+{% block col %}7{% endblock %}
+
+{% block body %}
+
+	{% if questionnaire %}
+		{{ form_start(form, {attr: {class: 'questionnaire'}}) }}
+		<p>
+			Votre
+			<strong class="text-primary">PROCURATION</strong>
+			est disponible.
+			<br>
+			Vous pouvez maintenant la télécharger et l'utiliser selon vos besoins.
+			<br>
+			Merci de vérifier que toutes les informations sont correctes avant de la soumettre.
+		</p>
+		{{ form_widget(form) }}
+		<button class="theme-btn btn-style-two radius-btn mr-2" data-turbo="false">
+			<span class="btn-title">Télécharger la procuration
+				<i class="fa fa-long-arrow-right"></i>
+			</span>
+		</button>
+		<a href="{{path('demande_document')}}" class="theme-btn btn-style-one radius-btn">
+			<span class="btn-title">Continuez
+				<i class="fa fa-long-arrow-right"></i>
+			</span>
+		</a>
+		{{ form_end(form) }}
+	{% endif %}
+
+{% endblock %}

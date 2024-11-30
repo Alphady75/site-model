@@ -1,113 +1,96 @@
-<aside class="left-sidebar">
-   <!-- Sidebar scroll-->
-   <div>
-      <div class="brand-logo d-flex align-items-center justify-content-between">
-         <a href="{{ path('dashboard') }}" class="text-nowrap logo-img">
-            <img src="{{ asset('img/logo.png') }}" width="180" alt="" />
-         </a>
-         <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
-            <i class="ti ti-x fs-8"></i>
-         </div>
-      </div>
-
-      <!-- Sidebar navigation-->
-      <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
-         <ul id="sidebarnav">
-            <li class="nav-small-cap">
-               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-               <span class="hide-menu">CONTENU</span>
-            </li>
-            <li class="sidebar-item">
-               <a class="sidebar-link" href="{{ path('dashboard') }}" aria-expanded="false">
-                  <span>
-                     <i class="ti ti-layout-dashboard"></i>
-                  </span>
-                  <span class="hide-menu">Tableau de bord</span>
-               </a>
-            </li>
-            <li class="sidebar-item">
-               <a class="sidebar-link" href="{{ path('apropos_index') }}" aria-expanded="false">
-                  <span>
-                     <i class="ti ti-article"></i>
-                  </span>
-                  <span class="hide-menu">A propos</span>
-               </a>
-            </li>
-            <li class="sidebar-item">
-               <a class="sidebar-link" href="{{ path('service_index') }}" aria-expanded="false">
-                  <span>
-                     <i class="ti ti-typography"></i>
-                  </span>
-                  <span class="hide-menu">Services</span>
-               </a>
-            </li>
-            <li class="sidebar-item">
-               <a class="sidebar-link" href="{{ path('architecture_index') }}" aria-expanded="false">
-                  <span>
-                     <i class="fa fa-home"></i>
-                  </span>
-                  <span class="hide-menu">Architectures</span>
-               </a>
-            </li>
-            <li class="sidebar-item">
-               <a class="sidebar-link" href="{{ path('membre_index') }}" aria-expanded="false">
-                  <span>
-                     <i class="fa fa-users"></i>
-                  </span>
-                  <span class="hide-menu">Membres</span>
-               </a>
-            </li>
-            <li class="sidebar-item">
-               <a class="sidebar-link" href="{{ path('categorie_index') }}" aria-expanded="false">
-                  <span>
-                     <i class="fa fa-tags"></i>
-                  </span>
-                  <span class="hide-menu">Catégories</span>
-               </a>
-            </li>
-            <li class="sidebar-item">
-               <a class="sidebar-link" href="{{ path('projet_index') }}" aria-expanded="false">
-                  <span>
-                     <i class="fa fa-folder-open"></i>
-                  </span>
-                  <span class="hide-menu">Réalisations</span>
-               </a>
-            </li>
-            <li class="nav-small-cap">
-               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-               <span class="hide-menu">RACOURCIS</span>
-            </li>
-            <li class="sidebar-item">
-               <a class="sidebar-link" href="{{ path('accueil') }}" target="_blank" aria-expanded="false">
-                  <span>
-                     <i class="ti ti-login"></i>
-                  </span>
-                  <span class="hide-menu">Ouvrire site</span>
-               </a>
-            </li>
-            <li class="nav-small-cap">
-               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-               <span class="hide-menu">COMPTES</span>
-            </li>
-            <li class="sidebar-item">
-               <a class="sidebar-link" href="{{ path('user_index') }}" aria-expanded="false">
-                  <span>
-                     <i class="ti ti-user-plus"></i>
-                  </span>
-                  <span class="hide-menu">Comptes utilisateurs</span>
-               </a>
-            </li>
-            <li class="sidebar-item">
-               <a class="sidebar-link" href="{{ path('app_logout') }}" aria-expanded="false">
-                  <span>
-                     <i class="ti ti-aperture"></i>
-                  </span>
-                  <span class="hide-menu">Déconnexion</span>
-               </a>
-            </li>
-         </ul>
-      </nav>
-      <!-- End Sidebar navigation -->
-   </div>
-   <!-- End Sidebar scroll-->
-</aside>
+<div class="left-side-bar">
+	<div class="brand-logo">
+		<a href="{{ path('dashboard') }}">
+			<img src="{{asset('img/logo.png')}}" width="50" alt=""> <strong class="text-uppercase font-weight-bold">{{appName}}</strong>
+		</a>
+		<div class="close-sidebar" data-toggle="left-sidebar-close">
+			<i class="ion-close-round"></i>
+		</div>
+	</div>
+	<div class="menu-block customscroll box-shadow">
+		<div class="sidebar-menu pt-3">
+			<ul id="accordion-menu">
+				<li>
+					<a class="dropdown-toggle no-arrow {{ app.request.attributes.get('_route') == 'admin_demande_index' ? 'active' : '' }}{{ app.request.attributes.get('_route') == 'admin_demande_index_edit' ? 'active' : '' }}{{ app.request.attributes.get('_route') == 'demande_dossier_juridique' ? 'active' : '' }}{{ app.request.attributes.get('_route') == 'user_demande_show' ? 'active' : '' }}" href="{{ path('admin_demande_index') }}">
+						<span class="micon dw dw-house-1"></span>
+						<span class="mtext">Démarches</span>
+					</a>
+				</li>
+				{% if is_granted('ROLE_ADMIN') %}
+					<li>
+						<a class="dropdown-toggle no-arrow {{ app.request.attributes.get('_route') == 'apropos_index' ? 'active' : '' }}{{ app.request.attributes.get('_route') == 'apropos_edit' ? 'active' : '' }}" href="{{ path('apropos_index') }}">
+							<span class="micon fa fa-text-height"></span>
+							<span class="mtext">{{appName}}</span>
+						</a>
+					</li>
+				{% endif %}
+				<li>
+					<a class="dropdown-toggle no-arrow {{ app.request.attributes.get('_route') == 'statut_index' ? 'active' : '' }}{{ app.request.attributes.get('_route') == 'statut_edit' ? 'active' : '' }}" href="{{ path('statut_index') }}">
+						<span class="micon fa fa-folder-open"></span>
+						<span class="mtext">Formes juridique</span>
+					</a>
+				</li>
+				<li>
+					<a class="dropdown-toggle no-arrow {{ app.request.attributes.get('_route') == 'service_index' ? 'active' : '' }}{{ app.request.attributes.get('_route') == 'service_edit' ? 'active' : '' }}" href="{{ path('service_index') }}">
+						<span class="micon fa fa-tags"></span>
+						<span class="mtext">Services</span>
+					</a>
+				</li>
+				<li>
+					<a class="dropdown-toggle no-arrow {{ app.request.attributes.get('_route') == 'tarification_index' ? 'active' : '' }}{{ app.request.attributes.get('_route') == 'tarification_edit' ? 'active' : '' }}" href="{{ path('tarification_index') }}">
+						<span class="micon fa fa-dollar"></span>
+						<span class="mtext">Formules</span>
+					</a>
+				</li>
+				<li>
+					<a class="dropdown-toggle no-arrow {{ app.request.attributes.get('_route') == 'activite_index' ? 'active' : '' }}{{ app.request.attributes.get('_route') == 'activite_edit' ? 'active' : '' }}" href="{{ path('activite_index') }}">
+						<span class="micon fa fa-analytics"></span>
+						<span class="mtext">Activités</span>
+					</a>
+				</li>
+				{% if is_granted('ROLE_ADMIN') %}
+					<li>
+						<a class="dropdown-toggle no-arrow {{ app.request.attributes.get('_route') == 'membre_index' ? 'active' : '' }}{{ app.request.attributes.get('_route') == 'membre_edit' ? 'active' : '' }}" href="{{ path('membre_index') }}">
+							<span class="micon fa fa-user"></span>
+							<span class="hide-menu">Membres</span>
+						</a>
+					</li>
+				{% endif %}
+				<li>
+					<a class="dropdown-toggle no-arrow {{ app.request.attributes.get('_route') == 'temoignages_index' ? 'active' : '' }}{{ app.request.attributes.get('_route') == 'temoignages_edit' ? 'active' : '' }}" href="{{ path('temoignages_index') }}">
+						<span class="micon fa fa-comments"></span>
+						<span class="hide-menu">Avis clients</span>
+					</a>
+				</li>
+				{% if is_granted('ROLE_ADMIN') %}
+					<li>
+						<a class="dropdown-toggle no-arrow {{ app.request.attributes.get('_route') == 'partenaires_index' ? 'active' : '' }}{{ app.request.attributes.get('_route') == 'partenaires_edit' ? 'active' : '' }}" href="{{ path('partenaires_index') }}">
+							<span class="micon fa fa-heart"></span>
+							<span class="hide-menu">Partenaires</span>
+						</a>
+					</li>
+				{% endif %}
+				<li>
+					<a class="dropdown-toggle no-arrow {{ app.request.attributes.get('_route') == 'accueil' ? 'active' : '' }}" href="{{ path('accueil') }}" target="_blank">
+						<span class="micon fa fa-arrow-alt-right"></span>
+						<span class="mtext">Aller sur le site</span>
+					</a>
+				</li>
+				{% if is_granted('ROLE_ADMIN') %}
+					<li>
+						<a class="dropdown-toggle no-arrow {{ app.request.attributes.get('_route') == 'user_index' ? 'active' : '' }}{{ app.request.attributes.get('_route') == 'user_edit' ? 'active' : '' }}" href="{{ path('user_index') }}">
+							<span class="micon fa fa-user-circle"></span>
+							<span class="hide-menu">Utilisateurs</span>
+						</a>
+					</li>
+				{% endif %}
+				<li>
+					<a class="dropdown-toggle no-arrow" href="{{ path('app_logout') }}">
+						<span class="micon fa fa-power-off"></span>
+						<span class="hide-menu">Déconnexion</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

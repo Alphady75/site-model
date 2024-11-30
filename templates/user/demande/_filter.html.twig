@@ -1,0 +1,15 @@
+{{ form_start(form, {attr: {class: ''}}) }}
+<div class="row">
+	<div class="col-sm-3">{{ form_row(form.query) }}</div>
+	<div class="col-sm-2">{{ form_row(form.minDate) }}</div>
+	<div class="col-sm-2">{{ form_row(form.maxDate) }}</div>
+	<div class="col-sm-3">{{ form_row(form.limit) }}</div>
+	<div class="col-sm-2">
+		<button type="submit" class="theme-btn btn-style-three radius-btn">
+			<span class="btn-title">
+				{{ button_label|default('Trier') }} <i class="fa fa-filter"></i>
+			</span>
+		</button>
+	</div>
+</div>
+{{ form_end(form) }}

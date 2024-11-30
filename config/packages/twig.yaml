@@ -1,17 +1,20 @@
 twig:
     default_path: '%kernel.project_dir%/templates'
-    form_themes: ['bootstrap_5_layout.html.twig']
+    form_themes: ['bootstrap_4_layout.html.twig']
     #form_themes: ['bootstrap_4_Horizontal_layout.html.twig']
     globals:
-        appName: "Ruglech construction"
-        currency: " $"
+        appName: "Formel SN"
+        appAbreviation: "Formel SN"
+        appSite: "https://www.site.com"
+        appEmail: "formel-sn@gmail.com"
+        currency: " Fcfa"
         codepays: "+242"
-        pays: "Congo-Brazzaville"
-        concepteur: "Peniel communication"
-        mtnMomo: "+242 06 535 65 26"
-        airtelMomo: "En attente"
-        fonction: "Web developer"
+        pays: "Republique du Sénégal"
+        concepteur: "Alphady Mondzali"
         locales: '%app.locales%'
+        app_environement: '%env(APP_ENV)%'
+        stripe_public_key_test: '%env(STRIPE_PUBLIC_KEY_TEST)%'
+        stripe_public_key_live: '%env(STRIPE_SECRET_KEY_TEST)%'
 
 when@test:
     twig:

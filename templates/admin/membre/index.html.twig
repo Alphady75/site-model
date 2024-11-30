@@ -1,60 +1,62 @@
-{% extends 'admin.html.twig' %}
+{% extends 'dashboard.html.twig' %}
 
 {% block title %}Membres
 {% endblock %}
+{% block titre %}Membres
+{% endblock %}
+{% block text %}Membres
+{% endblock %}
+
+{% block right %}
+	<button type="button" class="theme-btn btn-style-one radius-btn" data-toggle="modal" data-target="#staticBackdrop">
+		<span class="btn-title">
+			<i class="fa fa-plus-circle mr-2"></i>
+			Ajouter
+		</span>
+	</button>
+{% endblock %}
 
 {% block body %}
-	<div class="row d-flex align-items-center">
-		<div class="col-sm-6">
-			<h1>Membres</h1>
-		</div>
-		<div class="col-sm-6 text-end">
-			<a href="{{ path('membre_new') }}" class="btn btn-primary">Ajouter un membre</a>
+	<!-- Modal -->
+	<div class="modal" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="staticBackdropLabel">Ajouter un #membre</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					{% include "admin/membre/_form.html.twig" %}
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-light border" data-dismiss="modal">Fermer</button>
+				</div>
+			</div>
 		</div>
 	</div>
 
-	<table class="table">
-		<thead>
-			<tr>
-				<th>Id</th>
-				<th>Image</th>
-				<th>Nom</th>
-				<th>Fonction</th>
-				<th>Visibilité</th>
-				<th>Date de création</th>
-				<th>Date de mise à jour</th>
-				<th>actions</th>
-			</tr>
-		</thead>
-		<tbody>
-			{% for membre in membres %}
-				<tr>
-					<td>{{ membre.id }}</td>
-					<td>
-						<img src="{% if membre.image %}{{ vich_uploader_asset(membre, 'imageFile' ) | imagine_filter('small') }}{% else %}{{ asset('img/img-def-min.png') | imagine_filter('small') }}{% endif %}" alt="" class="img-fluid rounded border">
-					</td>
-					<td>{{ membre.nom }}</td>
-					<td>{{ membre.fonction }}</td>
-					<td>
-						<span class="badge bg-{{ membre.online ? 'success' : 'light text-dark' }}">{{ membre.online ? 'En ligne' : 'Hors ligne' }}</span>
-					</td>
-					<td>{{ membre.created ? membre.created|date('Y-m-d H:i:s') : '' }}</td>
-					<td>{{ membre.updated ? membre.updated|date('Y-m-d H:i:s') : '' }}</td>
-					<td>
-
-						<a href="{{ path('membre_edit', {'id': membre.id}) }}" class="btn btn-light">
+	<div class="row clearfix mt-4">
+		{% for membre in membres %}
+			<div class="col-lg-3 col-md-6 col-sm-12 mb-30">
+				<div class="card card-box border-0">
+					<img class="card-img-top" src="{% if membre.image %}{{ vich_uploader_asset(membre, 'imageFile')}}{% else %}{{ asset('img/document.svg')}}{% endif %}" alt="Card image cap">
+					<div class="card-body p-2 text-left">
+						<span class="badge badge-{{ membre.online ? 'success' : 'secondary' }} rounded-pill">
+							<i class="fa fa-{{ membre.online ? 'eye' : 'eye-slash' }}"></i>
+							{{ membre.online ? 'En ligne' : 'Hors ligne' }}
+						</span>
+						<strong class="mb-2 font-small d-block pt-2">{{membre}}</strong>
+						<p class="mb-0 text-primary mb-3">{{ membre.fonction }}</p>
+						<a href="{{ path('membre_edit', {'id': membre.id}) }}" class="btn btn-light border">
 							<i class="fa fa-edit"></i>
-							Mettre à jour</a>
-
+						</a>
 						{{ include('admin/membre/_delete_form.html.twig') }}
-					</td>
-				</tr>
-			{% else %}
-				<tr>
-					<td colspan="6">Aucun membre</td>
-				</tr>
-			{% endfor %}
-		</tbody>
-	</table>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
 
 {% endblock %}

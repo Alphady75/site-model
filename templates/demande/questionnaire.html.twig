@@ -1,0 +1,39 @@
+{% extends 'demande.html.twig' %}
+
+{% block titre %}Questionnaire pour
+	<span class="text-primary">{{demande.statut}}</span>
+{% endblock %}
+{% block col %}8
+{% endblock %}
+
+{% block body %}
+	<div class="questionnaire">
+		{% if demande.statut == "SNC" %}
+			{% include "demande/questionnaire/_snc.html.twig" %}
+		{% endif %}
+
+		{% if demande.statut == "SASU" %}
+			{% include "demande/questionnaire/_sasu.html.twig" %}
+		{% endif %}
+
+		{% if demande.statut == "SAS" %}
+			{% include "demande/questionnaire/_sas.html.twig" %}
+		{% endif %}
+
+		{% if demande.statut == "GIE" %}
+			{% include "demande/questionnaire/_gie.html.twig" %}
+		{% endif %}
+
+		{% if demande.statut == "SARL 3 ASSOCIES" %}
+			{% include "demande/questionnaire/_sarl.html.twig" %}
+		{% endif %}
+
+		{% if demande.statut == "ENTREPRISE INDIVIDUELLE" %}
+			{% include "demande/questionnaire/_entreprise_individuelle.html.twig" %}
+		{% endif %}
+
+		{% if demande.statut == "SA" %}
+			{% include "demande/questionnaire/_sa.html.twig" %}
+		{% endif %}
+	</div>
+{% endblock %}

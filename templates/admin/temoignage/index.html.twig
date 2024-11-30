@@ -1,0 +1,85 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Temoignages clients ({{ temoignages.getTotalItemCount }})
+{% endblock %}
+{% block titre %}Temoignages clients ({{ temoignages.getTotalItemCount }})
+{% endblock %}
+
+{% block right %}
+	<button type="button" class="theme-btn btn-style-one radius-btn" data-toggle="modal" data-target="#staticBackdrop">
+		<span class="btn-title">
+			<i class="fa fa-plus-circle mr-2"></i>
+			Ajouter
+		</span>
+	</button>
+{% endblock %}
+
+{% block body %}
+	<!-- Modal -->
+	<div class="modal" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="staticBackdropLabel">Ajouter un #témoignage client</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					{% include "admin/temoignage/_form.html.twig" %}
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-light border" data-dismiss="modal">Fermer</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="table-responsive">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>#ID</th>
+					<th>Photo</th>
+					<th>Nom(s)</th>
+					<th>Commentaire</th>
+					<th>Statut</th>
+					<th class="text-right">actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for temoignage in temoignages %}
+					<tr>
+						<td>{{ temoignage.id }}</td>
+						<td>
+							<img src="{% if temoignage.image %}{{ vich_uploader_asset(temoignage, 'imageFile' )}}{% else %}{{ asset('img/document.svg')}}{% endif %}" alt="" class="img-fluid img-thumbnail" width="60">
+						</td>
+						<td>
+							<strong>{{ temoignage.noms }}</strong>
+						</td>
+						<td>
+							<q class="text-muted">{{ temoignage.commentaire|u.truncate(50, '...') }}</q>
+						</td>
+						<td>
+							<span class="badge badge-{{ temoignage.online ? 'success' : 'light' }} rounded-pill">
+								<i class="fa fa-{{ temoignage.online ? 'eye' : 'eye-slash' }}"></i>
+								{{ temoignage.online ? 'En ligne' : 'Hors ligne' }}
+							</span>
+						</td>
+						<td class="text-right">
+							<a href="{{ path('temoignages_edit', {'id': temoignage.id}) }}" class="btn btn-light border">
+								<i class="fa fa-edit"></i>
+							</a>
+							{{ include('admin/temoignage/_delete_form.html.twig') }}
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+	{{ knp_pagination_render(temoignages, null, {}, {
+                    'align': 'center',
+                    'size': 'medium',
+                    'rounded': true,
+                    }) }}
+{% endblock %}

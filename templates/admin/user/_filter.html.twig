@@ -1,0 +1,15 @@
+{{ form_start(formFilter, {attr: {class: ''}}) }}
+<div class="row">
+	<div class="col-sm-3">{{ form_row(formFilter.query) }}</div>
+	<div class="col-sm-3">{{ form_row(formFilter.compte) }}</div>
+	<div class="col-sm-2">{{ form_row(formFilter.isVerified) }}</div>
+	<div class="col-sm-2">{{ form_row(formFilter.limit) }}</div>
+	<div class="col-sm-2">
+		<button type="submit" class="theme-btn btn-style-three radius-btn">
+			<span class="btn-title">
+				{{ button_label|default('Trier') }} <i class="fa fa-filter"></i>
+			</span>
+		</button>
+	</div>
+</div>
+{{ form_end(form) }}

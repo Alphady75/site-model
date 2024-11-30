@@ -1,0 +1,32 @@
+<ul id="accordion-menu">
+	<li>
+		<a href="{{path('user_demande_projet', {id: demande.id})}}" class="dropdown-toggle no-arrow {% if demande is not null and demande.activite %}end{% endif %} {{ app.request.attributes.get('_route') == 'user_demande_projet' ? 'active' : '' }}">
+			<span class="micon">1</span>
+			<span class="mtext">Projet</span>
+		</a>
+	</li>
+	<li>
+		<a href="{{path('user_demande_services', {id: demande.id})}}" class="dropdown-toggle no-arrow {% if demande is not null and demande.comptaStart %}end{% endif %} {{ app.request.attributes.get('_route') == 'user_demande_services' ? 'active' : '' }}">
+			<span class="micon">2</span>
+			<span class="mtext">Services</span>
+		</a>
+	</li>
+	<li>
+		<a href="{{path('user_demande_commande', {id: demande.id})}}" class="dropdown-toggle no-arrow {% if demande is not null and demande.payer %}end{% endif %} {{ app.request.attributes.get('_route') == 'user_demande_commande' ? 'active' : '' }}">
+			<span class="micon">3</span>
+			<span class="mtext">Commande</span>
+		</a>
+	</li>
+	<li>
+		<a  href="{{path('demande_dossier_juridique', {id: demande.id})}}" class="dropdown-toggle no-arrow {% if demande is not null and demande.dossierJuridique %}end{% endif %} {{ app.request.attributes.get('_route') == 'demande_dossier_juridique' ? 'active' : '' }}">
+			<span class="micon">4</span>
+			<span class="mtext">Dossier Juridique</span>
+		</a>
+	</li>
+	<li>
+		<a href="{{path('demande_validation', {id: demande.id})}}" class="dropdown-toggle no-arrow {% if demande is not null and demande.validate %}end{% endif %} {{ app.request.attributes.get('_route') == 'demande_validation' ? 'active' : '' }}">
+			<span class="micon">5</span>
+			<span class="mtext">Validation</span>
+		</a>
+	</li>
+</ul>

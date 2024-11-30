@@ -1,74 +1,87 @@
 {% extends 'admin.html.twig' %}
 
-{% block title %}Comptes utilisateurs{% endblock %}
+{% block title %}Comptes utilisateurs ({{ users.getTotalItemCount }})
+{% endblock %}
+{% block titre %}Comptes utilisateurs ({{ users.getTotalItemCount }})
+{% endblock %}
+{% block text %}Comptes utilisateurs ({{ users.getTotalItemCount }})
+{% endblock %}
+
+{% block right %}
+	<button type="button" class="theme-btn btn-style-one radius-btn" data-toggle="modal" data-target="#staticBackdrop">
+		<span class="btn-title">
+			<i class="fa fa-plus-circle mr-2"></i>
+			Ajouter
+		</span>
+	</button>
+{% endblock %}
 
 {% block body %}
 
-<div class="row d-flex align-items-center">
-    <div class="col-sm-6">
-        <h1>Comptes utilisateurs</h1>
-    </div>
-    <div class="col-sm-6 text-end">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-            Créer un compte
-        </button>
-    </div>
-</div>
-<!-- Button trigger modal -->
-
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Créer un nouveau compte</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                {{ include('admin/user/_form.html.twig') }}
-            </div>
-        </div>
-    </div>
-</div>
-
-<table class="table">
-    <thead class="bg-light">
-        <tr>
-            <th>Id</th>
-            <th>Email</th>
-            <th>Roles</th>
-            <th>Password</th>
-            <th class="text-end">actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for user in users %}
-        <tr>
-            <td>{{ user.id }}</td>
-            <td>{{ user.email }}</td>
-            <td>
-                {% for role in user.roles %}
-                    {% if role == 'ROLE_ADMIN' %}
-                        <span class="badge bg-success">ADMINISTRATEUR</span>
-                    {% elseif role == 'ROLE_MODERATEUR' %}
-                        <span class="badge bg-rimary">MODERATEUR(TRICE)</span>
-                    {% endif %}
-                {% endfor %}
-            </td>
-            <td><i class="fa fa-key"></i>****</td>
-            <td class="text-end">
-                <a href="{{ path('user_edit', {'id': user.id}) }}" class="btn btn-light"><i class="fa fa-edit"></i>
-                    Mettre à jour
-                </a>
-            </td>
-        </tr>
-        {% else %}
-        <tr>
-            <td colspan="5">Aucune donnée</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-
+	<!-- Modal -->
+	<div class="modal" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="staticBackdropLabel">Créer un nouveau compte utilisateur</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					{{ include('admin/user/_form.html.twig') }}
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-light border" data-dismiss="modal">Fermer</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	{{ include('admin/user/_filter.html.twig') }}
+	<div class="table-responsive">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>#ID</th>
+					<th>Utilisateur</th>
+					<th>Rôles</th>
+					<th>Mot de passe</th>
+					<th class="text-right">actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for user in users %}
+					<tr>
+						<td>{{ user.id }}</td>
+						<td>
+							<div class="d-flex align-items-center">
+								<i class="fa fa-user-circle fa-2x mr-2" style="color: #ededed;"></i>
+								{{ user }}
+							</div>
+						</td>
+						<td>
+							<span class="badge badge-warning rounded-pill text-uppercase">
+								<i class="fa fa-user"></i>
+								{{user.compte}}
+							</span>
+						</td>
+						<td>
+							<i class="fa fa-key"></i>****
+						</td>
+						<td class="text-right">
+							<a href="{{ path('user_edit', {'id': user.id}) }}" class="btn btn-light border">
+								<i class="fa fa-edit"></i>
+							</a>
+							{{ include('admin/user/_delete_form.html.twig') }}
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+	{{ knp_pagination_render(users, null, {}, {
+                    'align': 'center',
+                    'size': 'medium',
+                    'rounded': true,
+                    }) }}
 {% endblock %}

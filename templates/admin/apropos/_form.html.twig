@@ -1,52 +1,53 @@
 {{ form_start(form, {attr: {class: ''}}) }}
-
-<div class="mb-4">
-    <h3 class="text-dark py-3">Informations de base</h3>
-    <div class="card card-body">
-        <div class="row">
-            <div class="col-sm-4">{{ form_row(form.imageFile) }}</div>
-            <div class="col-sm-4">{{ form_row(form.photoFile) }}</div>
-            <div class="col-sm-4">{{ form_row(form.anneeExperience) }}</div>
-            <div class="col-sm-4">{{ form_row(form.email) }}</div>
-            <div class="col-sm-4">{{ form_row(form.telephone) }}</div>
-            <div class="col-sm-4">{{ form_row(form.whatsapp) }}</div>
-            <div class="col-sm-12">{{ form_row(form.bureau) }}</div>
-            <div class="col-sm-12">
-                <h3 class="text-dark py-3">A propos</h3>
-                {{ form_row(form.presentation) }}
-            </div>
-        </div>
-    </div>
+<div class="row">
+	<div class="col-sm-6">{{ form_row(form.responsableName) }}</div>
+	<div class="col-sm-6">{{ form_row(form.name) }}</div>
+	<div class="col-sm-6">{{ form_row(form.anneeExperience) }}</div>
+	<div class="col-sm-6">{{ form_row(form.email) }}</div>
+	<div class="col-sm-6">{{ form_row(form.telephone) }}</div>
+	<div class="col-sm-6">{{ form_row(form.whatsapp) }}</div>
+	<div class="col-sm-6">{{ form_row(form.bureau) }}</div>
+	<div class="col-sm-6">{{ form_row(form.boitePostal) }}</div>
+	<div class="col-sm-6">{{ form_row(form.donsOfferts) }}</div>
+	<div class="col-sm-6">{{ form_row(form.donsRecus) }}</div>
+	<div class="col-sm-6">{{ form_row(form.partenariats) }}</div>
+	<div class="col-sm-6">{{ form_row(form.projets) }}</div>
+	<div class="col-sm-12">
+		{{ form_row(form.mots) }}
+		{{ form_row(form.presentation) }}
+		{{ form_row(form.objectif) }}
+		{{ form_row(form.apropos) }}
+	</div>
 </div>
 
-<div class="mb-4">
-    <h3 class="text-dark py-3">Réseaux sociaux</h3>
-    <div id="communautes" class="row" data-prototype="{{ include("admin/apropos/collection/_communaute.html.twig", {form: form.communautes.vars.prototype})|e("html_attr") }}" data-index="{{ form.communautes|length > 0 ? form.communautes|last.vars.name + 1 : 0 }}">
+<div class="mb-3">
+	<h3 class="text-dark py-3 h5">Réseaux sociaux</h3>
+	<div id="communautes" class="row" data-prototype="{{ include("admin/apropos/collection/_communaute.html.twig", {form: form.communautes.vars.prototype})|e("html_attr") }}" data-index="{{ form.communautes|length > 0 ? form.communautes|last.vars.name + 1 : 0 }}">
 
-        {% for communaute in form.communautes %}
-        <div class="col-12">
-            {{ include("admin/apropos/collection/_communaute.html.twig", {form: communaute}) }}
-        </div>
-        {% endfor %}
+		{% for communaute in form.communautes %}
+			<div class="col-sm-6">
+				{{ include("admin/apropos/collection/_communaute.html.twig", {form: communaute}) }}
+			</div>
+		{% endfor %}
 
-    </div>
-    {{ form_errors(form.communautes) }}
-    <div class="py-3">
-        <button type="button" class="btn-new btn btn-light py-3" data-collection="#communautes">
-            <i class="fa fa-plus-circle"></i> Ajouter une communaute/réseau social
-        </button>
-    </div>
+	</div>
+	{{ form_errors(form.communautes) }}
+	<div class="py-3">
+		<button type="button" class="btn-new btn btn-light" data-collection="#communautes">
+			<i class="fa fa-plus-circle"></i>
+			Ajouter un réseau social
+		</button>
+	</div>
 </div>
 
 <div>
-    {{ form_widget(form._token) }}
-    {{ form_errors(form) }}
+	{{ form_widget(form._token) }}
+	{{ form_errors(form) }}
 </div>
 
-<div class="mb-4">
-    <h3 class="text-dark py-3">Actions</h3>
-    {{ form_row(form.online) }}
-
-    <button class="btn btn-primary py-3">{{ button_label|default('Enregistrer') }}</button>
-</div>
+<button type="submit" class="theme-btn btn-style-one radius-btn">
+	<span class="btn-title">
+		{{ button_label|default('Enregistrer') }}
+	</span>
+</button>
 {{ form_end(form, {render_rest: false}) }}

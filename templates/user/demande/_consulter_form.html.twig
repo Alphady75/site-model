@@ -1,0 +1,8 @@
+{% if app.user == demande.user %}
+<form method="post" class="d-inline p-0 form" action="{{ path('user_demande_consulter', {'id': demande.id}) }}">
+	<input type="hidden" name="_token" value="{{ csrf_token('consulter' ~ demande.id) }}">
+	<button class="btn btn-light border">Reprendre <i class="fa fa-arrow-right"></i></button>
+</form>
+{% else %}
+<button type="button" class="btn btn-secondary" disabled>Reprendre <i class="fa fa-arrow-right"></i></button>
+{% endif %}

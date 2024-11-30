@@ -1,0 +1,77 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Nos partenaires/Banques
+{% endblock %}
+{% block titre %}Nos partenaires/Banques
+{% endblock %}
+{% block text %}Nos partenaires/Banques
+{% endblock %}
+
+{% block right %}
+	<button type="button" class="theme-btn btn-style-one radius-btn" data-toggle="modal" data-target="#staticBackdrop">
+		<span class="btn-title">
+			<i class="fa fa-plus-circle mr-2"></i>
+			Ajouter
+		</span>
+	</button>
+{% endblock %}
+
+{% block body %}
+	<!-- Modal -->
+	<div class="modal" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="staticBackdropLabel">Ajouter un(e) #partenaire/Banque</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					{% include "admin/partenaire/_form.html.twig" %}
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-light border" data-dismiss="modal">Fermer</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="table-responsibe">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>#ID</th>
+					<th>Logo</th>
+					<th>Partenaire</th>
+					<th>Statut</th>
+					<th class="text-right">actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for partenaire in partenaires %}
+					<tr>
+						<td>{{ partenaire.id }}</td>
+						<td>
+							<img src="{% if partenaire.logo %}{{ vich_uploader_asset(partenaire, 'imageFile' )}}{% else %}{{ asset('img/document.svg')}}{% endif %}" alt="" class="img-fluid img-thumbnail" width="60">
+						</td>
+						<td>{{ partenaire.name }}</td>
+						<td>
+							<span class="badge badge-{{ partenaire.online ? 'success' : 'light' }} rounded-pill">
+								<i class="fa fa-{{ partenaire.online ? 'eye' : 'eye-slash' }}"></i>
+								{{ partenaire.online ? 'En ligne' : 'Hors ligne' }}
+							</span>
+						</td>
+						<td class="text-right">
+							<a href="{{ path('partenaires_edit', {'slug': partenaire.slug}) }}" class="btn btn-light border">
+								<i class="fa fa-edit"></i>
+							</a>
+							{{ include('admin/partenaire/_delete_form.html.twig') }}
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+
+{% endblock %}

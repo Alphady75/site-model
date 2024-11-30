@@ -1,0 +1,21 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}
+	{{partenaire}}
+{% endblock %}
+{% block titre %}
+	{{partenaire}}
+{% endblock %}
+{% block text %}
+	Mise à jour du partenaire #{{partenaire}}
+{% endblock %}
+
+{% block right %}
+	{{ include('admin/partenaire/_delete_form.html.twig') }}
+{% endblock %}
+
+{% block body %}
+
+	{{ include('admin/partenaire/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+{% endblock %}

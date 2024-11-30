@@ -22,12 +22,13 @@ class ContactController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $mailer->sendDevisNotification(
+            
+            /*$mailer->sendDevisNotification(
                 $form->get('nom')->getData(),
                 $form->get('email')->getData(),
                 $form->get('sujet')->getData(),
                 $form->get('message')->getData(),
-            );
+            );*/
 
             $this->addFlash('success', "Votre message a bien été envoyer, vous aurez un retour dans un délais treès cours");
         }

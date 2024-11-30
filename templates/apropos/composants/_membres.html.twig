@@ -1,0 +1,66 @@
+<section class="our-team sp-one pt-0">
+	<div
+		class="container">
+		<!--Sec Title-->
+		<div class="sec-title centered">
+			<div class="icon-box"><img src="images/icons/sec-title.png" alt=""></div>
+			<h1>Notre
+				<span>équipe</span>
+			</h1>
+			<div class="text">Notre équipe est composée de professionnels dévoués et passionnés
+				<br>
+				chacun apportant son expertise unique pour soutenir notre mission.
+			</div>
+		</div>
+		<div
+			class="four-item-carousel owl-carousel owl-theme owl-nav-none owl-dot-style-one">
+			<!-- team block -->
+			{% for membre in membres %}
+				<div class="team-block">
+					<div class="inner-box">
+						<div class="image">
+							<img
+							src="{% if membre.image %}{{ vich_uploader_asset(membre, 'imageFile' ) | imagine_filter('membre') }}{% else %}{{ asset('img/document.svg') | imagine_filter('membre') }}{% endif %}" alt="">
+						<!--div class="overlay-box">
+															<ul class="social-icon-one">
+																<li>
+																	<a href="#">
+																		<span class="fab fa-twitter"></span>
+																	</a>
+																</li>
+																<li>
+																	<a href="#">
+																		<span class="fab fa-facebook"></span>
+																	</a>
+																</li>
+																<li>
+																	<a href="#">
+																		<span class="fab fa-google-plus"></span>
+																	</a>
+																</li>
+																<li>
+																	<a href="#">
+																		<span class="fab fa-youtube"></span>
+																	</a>
+																</li>
+																<li>
+																	<a href="#">
+																		<span class="fab fa-pinterest-p"></span>
+																	</a>
+																</li>
+															</ul>
+														</!div-->
+						</div>
+						<div class="lower-box">
+							<div class="designation">{{membre.fonction}}</div>
+							<h4>
+								<a href="#">{{membre}}</a>
+							</h4>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+			<!-- team block -->
+		</div>
+	</div>
+</section>

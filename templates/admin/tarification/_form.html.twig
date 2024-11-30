@@ -1,0 +1,42 @@
+{{ form_start(form, {attr: {class: ''}}) }}
+<div class="row">
+	<div class="col-sm-6">{{ form_row(form.statut) }}</div>
+	<div class="col-sm-6">{{ form_row(form.name) }}</div>
+	<div class="col-sm-6">{{ form_row(form.cout) }}</div>
+	<div class="col-sm-6">{{ form_row(form.typeCout) }}</div>
+</div>
+{{ form_row(form.description) }}
+
+<div>
+	{{ form_widget(form._token) }}
+	{{ form_errors(form) }}
+</div>
+
+<div class="mb-3">
+	<h3 class="text-dark py-3 h5">Options</h3>
+	<div id="formules" class="row" data-prototype="{{ include("admin/tarification/collection/_formule.html.twig", {form: form.formules.vars.prototype})|e("html_attr") }}" data-index="{{ form.formules|length > 0 ? form.formules|last.vars.name + 1 : 0 }}">
+
+		{% for formule in form.formules %}
+			<div class="col-sm-6">
+				{{ include("admin/tarification/collection/_formule.html.twig", {form: formule}) }}
+			</div>
+		{% endfor %}
+
+	</div>
+	{{ form_errors(form.formules) }}
+	<div class="py-3">
+		<button type="button" class="btn-new btn btn-light" data-collection="#formules">
+			<i class="fa fa-plus-circle"></i>
+			Ajouter du formule
+		</button>
+	</div>
+</div>
+{{ form_row(form.recommander) }}
+{{ form_row(form.online) }}
+
+<button type="submit" class="theme-btn btn-style-one radius-btn">
+	<span class="btn-title">
+		{{ button_label|default('Enregistrer') }}
+	</span>
+</button>
+{{ form_end(form, {render_rest: false}) }}

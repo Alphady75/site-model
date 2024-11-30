@@ -1,0 +1,13 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Démarches ({{ demandes.getTotalItemCount }}){% endblock %}
+{% block titre %}Démarches ({{ demandes.getTotalItemCount }}){% endblock %}
+{% block right %}{% endblock %}
+
+{% block body %}
+
+	{% include "user/demande/_filter.html.twig" %}
+
+	{% include "user/demande/_data.html.twig" %}
+
+{% endblock %}

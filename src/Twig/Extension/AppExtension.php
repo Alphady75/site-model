@@ -23,10 +23,14 @@ class AppExtension extends AbstractExtension
     {
         return [
             new TwigFunction('services', [AppExtensionRuntime::class, 'getServices']),
-            new TwigFunction('categories', [AppExtensionRuntime::class, 'getCategories']),
             new TwigFunction('apropo', [AppExtensionRuntime::class, 'getApropos']),
-            new TwigFunction('projets', [AppExtensionRuntime::class, 'getProjets']),
             new TwigFunction('membres', [AppExtensionRuntime::class, 'getMembres']),
+            new TwigFunction('partenaires', [AppExtensionRuntime::class, 'getPartenaires']),
+            new TwigFunction('statuts', [AppExtensionRuntime::class, 'getStatuts']),
+            new TwigFunction('activites', [AppExtensionRuntime::class, 'getActivites']),
+            new TwigFunction('tarifications', [AppExtensionRuntime::class, 'getTarifications']),
+            new TwigFunction('temoignages', [AppExtensionRuntime::class, 'getTemoignages']),
+            new TwigFunction('StatutTarification', [AppExtensionRuntime::class, 'getTarificationByStatut']),
         ];
     }
 }

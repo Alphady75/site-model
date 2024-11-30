@@ -1,0 +1,55 @@
+{{ form_start(form) }}
+<h6>Noms et prénoms et professions des membres fondateurs</h6>
+<div class="row">
+	<div class="col-sm-12">{{ form_row(form.fondateur) }}</div>
+	<div class="col-sm-12">{{ form_row(form.fondateur2) }}</div>
+	<div class="col-sm-12">{{ form_row(form.denomination) }}</div>
+	<div class="col-sm-6">{{ form_row(form.duree) }}</div>
+	<div class="col-sm-6">{{ form_row(form.siegesociale) }}</div>
+	<div class="col-sm-12">{{ form_row(form.objetsocial) }}</div>
+</div>
+
+{{ form_row(form.capitalsocial) }}
+<div class="row">
+	<div class="col-6 col-sm-3">{{ form_row(form.numeraires) }}</div>
+	<div class="col-6 col-sm-3">{{ form_row(form.nature) }}</div>
+	<div class="col-6 col-sm-3">{{ form_row(form.industrie) }}</div>
+	<div class="col-6 col-sm-3">{{ form_row(form.part) }}</div>
+	<div class="col-6 col-sm-3">{{ form_row(form.partintervale) }}</div>
+</div>
+
+<h6>EXERCICES SOCIAUX : Du 1er Janvier au 31 Décembre</h6>
+<p>Exceptionnellement, l’exercice social des sociétés constituées à partir du mois de Juin d’une année est prolongée jusqu’au 31 décembre de l’année suivante.</p>
+
+<h6>REPARTITION DU CAPITAL:</h6>
+<div class="row">
+	<div class="col-sm-8">{{ form_row(form.actionnaire) }}</div>
+	<div class="col-sm-4">{{ form_row(form.actionnairepart) }}</div>
+	<div class="col-sm-8">{{ form_row(form.actionnaire2) }}</div>
+	<div class="col-sm-4">{{ form_row(form.actionnaire2part) }}</div>
+</div>
+
+<h6>MODE D’ADMINISTRATION
+</h6>
+<div class="row">
+	<div class="col-sm-12">{{ form_row(form.modeAdmin) }}</div>
+</div>
+
+<h6>ORGANES DIRECTEURS</h6>
+<p>Etat civil complet à fournir, selon fiche de renseignements ci-jointe.</p>
+{{ form_row(form.etatCivilNom) }}
+
+<h6>CONTROLE
+</h6>
+{{ form_row(form.commissaireTitulaire) }}
+{{ form_row(form.commissaireSuppleant) }}
+
+{{ form_rest(form) }}
+<div class="text-center pt-4">
+	<button class="theme-btn btn-style-one">
+		<span class="btn-title">{{ button_label|default('Envoyer') }}
+			<i class="fa fa-long-arrow-right"></i>
+		</span>
+	</button>
+</div>
+{{ form_end(form) }}

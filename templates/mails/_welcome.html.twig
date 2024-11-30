@@ -1,0 +1,27 @@
+{% extends "mails.html.twig" %}
+
+{% block body %}
+
+	Objet : Bienvenue dans notre communauté ! 🎉
+
+Bonjour [Nom du destinataire],
+
+Nous sommes ravis de vous compter parmi nous ! 🎊
+
+Merci de vous être inscrit(e) à [Nom de votre plateforme ou service]. Vous faites désormais partie d'une communauté dynamique et engagée, et nous avons hâte de vous accompagner dans cette aventure.
+
+Voici ce que vous pouvez faire dès maintenant :
+
+[Mettre en avant une action clé, par exemple "Complétez votre profil"]
+[Ajouter une autre action importante, par exemple "Explorez nos services"]
+N'hésitez pas à nous contacter si vous avez la moindre question ou besoin d'aide.
+
+Encore une fois, bienvenue et merci de votre confiance !
+
+Cordialement,
+
+	<p>L’équipe
+		<strong>{{appName}}</strong>
+	</p>
+
+{% endblock %}

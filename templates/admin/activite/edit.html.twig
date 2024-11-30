@@ -1,0 +1,18 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Mise à jour activité #{{ activite }}
+{% endblock %}
+{% block titre %}Mise à jour activité #{{ activite }}
+{% endblock %}
+{% block text %}Mise à jour activité #{{ activite }}
+{% endblock %}
+
+{% block right %}
+	{{ include('admin/activite/_delete_form.html.twig') }}
+{% endblock %}
+
+{% block body %}
+
+	{{ include('admin/activite/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+{% endblock %}

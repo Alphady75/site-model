@@ -1,0 +1,26 @@
+{% extends 'demande.html.twig' %}
+
+{% block titre %}Quelle sera la
+	<span class="text-primary">forme juridique</span>
+	de votre société ?
+{% endblock %}
+{% block text %}
+	<p>Choisissez la forme juridique de votre entreprise.</p>
+{% endblock %}
+
+{% block body %}
+	<div class="grid-four">
+		{% for statut in statuts %}
+			<!-- Service Block Two -->
+			<div class="service-block-two {{demande.statut and statut.id == demande.statut.id ? 'active' : ''}} statut wow fadeInUp">
+				<a href="{{path('user_demande_statut', {reponse: statut.id})}}">
+					<div class="inner-box d-block">
+						<h4 class="title">
+							{{statut}}
+						</h4>
+					</div>
+				</a>
+			</div>
+		{% endfor %}
+	</div>
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends 'auth.html.twig' %}
+
+{% block title %}Créer votre compte{% endblock %}
+{% block titre %}Créer votre compte{% endblock %}
+{% block text %}Pour commencer à utiliser {{appName}} et bénéficier de nos services, veuillez créer un compte en remplissant le formulaire ci-dessous.{% endblock %}
+
+{% block body %}
+	{% for flash_error in app.flashes('verify_email_error') %}
+		<div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+	{% endfor %}
+
+	{{ form_start(registrationForm) }}
+	<div class="row">
+		<div class="col-sm-6">
+			{{ form_row(registrationForm.prenom) }}
+		</div>
+		<div class="col-sm-6">
+			{{ form_row(registrationForm.nom) }}
+		</div>
+	</div>
+	<div class="input-group flex-nowrap radius phone-input">
+		<span class="input-group-text bg-transparent border-0 pays" id="addon-wrapping">
+			{{ form_widget(registrationForm.pays) }}
+		</span>
+		{{ form_widget(registrationForm.telephone) }}
+	</div>
+	{{ form_errors(registrationForm.telephone) }}
+
+	<div class="input-group custom">
+		{{ form_widget(registrationForm.email) }}
+		<div class="input-group-append custom">
+			<span class="input-group-text border-0 bg-transparent">
+				<i class="icon-copy dw dw-user1"></i>
+			</span>
+		</div>
+	</div>
+	{{ form_errors(registrationForm.email) }}
+
+	<div class="input-group custom">
+		{{ form_widget(registrationForm.plainPassword) }}
+		<div class="input-group-append custom">
+			<span class="input-group-text border-0 bg-transparent">
+				<i class="icon-copy dw dw-padlock1"></i>
+			</span>
+		</div>
+	</div>
+
+	{{ form_errors(registrationForm.plainPassword) }}
+
+	<div class="">
+		{{ form_rest(registrationForm) }}
+	</div>
+
+	<div class="text-center pt-1 pb-0">
+		<button type="submit" class="theme-btn btn-style-one w-100 button radius-btn">
+			<span class="btn-title">
+				{{ button_label|default('Envoyer') }}
+				<i class="fa fa-long-arrow-right"></i>
+			</span>
+		</button>
+		<div class="text-center pt-4 pb-0 mb-0">
+			<a href="{{path('app_login')}}">J'ai déjà un compte Me connecter !</a>
+		</div>
+	</div>
+	{{ form_end(registrationForm) }}
+
+{% endblock %}

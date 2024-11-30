@@ -1,11 +1,14 @@
 {% extends 'admin.html.twig' %}
 
-{% block title %}Nouveau membre{% endblock %}
+{% block title %}Nouveau membre
+{% endblock %}
+{% block titre %}Nouveau membre
+{% endblock %}
+{% block text %}Nouveau membre
+{% endblock %}
 
 {% block body %}
 
-    <h1>Ajouter un nouveau membre</h1>
-
-    {{ include('admin/membre/_form.html.twig') }}
+	{{ include('admin/membre/_form.html.twig') }}
 
 {% endblock %}

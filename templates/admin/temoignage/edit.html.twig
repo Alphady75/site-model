@@ -1,0 +1,15 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Témoignage de #{{temoignage}}{% endblock %}
+{% block titre %}Témoignage de #{{temoignage}}{% endblock %}
+{% block text %}Mise à jour du témoignage de #{{temoignage}}{% endblock %}
+
+{% block right %}
+	{{ include('admin/temoignage/_delete_form.html.twig') }}
+{% endblock %}
+
+{% block body %}
+
+	{{ include('admin/temoignage/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+{% endblock %}

@@ -1,0 +1,34 @@
+<!-- Testimonial Section Nine -->
+<section class="testimonial-section-nine">
+	<div class="sec-title text-center">
+		<span class="sub-title">Témoignages de nos clients</span>
+		<h2>Ce qu'ils pensent de nous.</h2>
+	</div>
+
+	<div class="auto-container">
+		<div class="row">
+			{% for temoignage in temoignages() %}
+				<div class="testimonial-block-nine col-lg-6 col-md-12 col-sm-12">
+					<div class="inner-box">
+						<div class="info-box">
+							<span class="quote-icon fa fa-quote-right"></span>
+							<figure class="thumb"><img src="{% if temoignage.image %}{{ vich_uploader_asset(temoignage, 'imageFile' ) }}{% else %}{{ asset('img/document.svg') }}{% endif %}" alt=""></figure>
+							<h4 class="name text-dark">{{temoignage.noms}}</h4>
+							<span class="designation">{{temoignage.fonction}}</span>
+						</div>
+						<div class="text">{{temoignage.commentaire}}</div>
+						<div class="rating">
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<i class="fa fa-star"></i>
+							<span>5.0</span>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+</section>
+<!-- End Testimonial Section -->

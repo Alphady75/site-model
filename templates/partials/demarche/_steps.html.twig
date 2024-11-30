@@ -1,0 +1,32 @@
+<ul id="accordion-menu">
+	<li>
+		<a class="dropdown-toggle no-arrow {% if demande is not null and demande.partenaire %}end{% endif %} {{etape and etape == 'projet' ? 'active' : ''}}" href="#">
+			<span class="micon">1</span>
+			<span class="mtext">Projet</span>
+		</a>
+	</li>
+	<li>
+		<a class="dropdown-toggle no-arrow {% if demande is not null and demande.comptaStart %}end{% endif %} {{etape and etape == 'service' ? 'active' : ''}}" href="#">
+			<span class="micon">2</span>
+			<span class="mtext">Services</span>
+		</a>
+	</li>
+	<li>
+		<a class="dropdown-toggle no-arrow {% if demande is not null and demande.commande %}end{% endif %} {{etape and etape == 'commande' ? 'active' : ''}}" href="#">
+			<span class="micon">3</span>
+			<span class="mtext">Commande</span>
+		</a>
+	</li>
+	<li>
+		<a class="dropdown-toggle no-arrow {% if demande is not null and demande.dossierJuridique %}end{% endif %} {{etape and etape == 'dossier' ? 'active' : ''}}" href="#">
+			<span class="micon">4</span>
+			<span class="mtext">Dossier Juridique</span>
+		</a>
+	</li>
+	<li>
+		<a class="dropdown-toggle no-arrow {% if demande is not null and demande.validate %}end{% endif %} {{etape and etape == 'validation' ? 'active' : ''}}" href="#">
+			<span class="micon">5</span>
+			<span class="mtext">Validation</span>
+		</a>
+	</li>
+</ul>

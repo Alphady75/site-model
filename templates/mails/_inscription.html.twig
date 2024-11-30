@@ -1,0 +1,18 @@
+{% extends "mails.html.twig" %}
+
+{% block body %}
+
+	<p>Félicitations ! Votre compte
+		<strong>{{appName}}</strong>
+		a été créé avec succès !</p>
+
+	<p>Bonjour cher(e) Membre,</p>
+
+	<p>Nous sommes ravis de vous accueillir dans la communauté de
+		<strong>{{appName}}</strong>
+		! Votre compte
+		<span style="border-radius: 8px;display:inline-block;color:white;background:#8d1636;padding:3px">{{user.compte}}</span>
+		a été créé avec succès et vous êtes maintenant prêt à profiter de toutes les fonctionnalités que nous offrons.
+	</p>
+
+{% endblock %}

@@ -7,10 +7,63 @@
 	</div>
 	<div class="row">
 		{% for service in services %}
-		<div class="col-lg-6 col-md-6 wow fadeInUp pb-3" data-wow-delay="0.1s">
-			{% include "service/composants/_card.html.twig" %}
-		</div>
+			<div class="col-lg-6 col-md-6 wow fadeInUp pb-3" data-wow-delay="0.1s">
+				{% include "service/composants/_card.html.twig" %}
+			</div>
 		{% endfor %}
 	</div>
 </div>
 <!-- Service End -->
+
+<!-- Mission Section -->
+<section class="mission-section sp-one" style="background-image: url({{asset('themes/base/images/background/2.jpg')}})">
+	<div
+		class="container">
+		<!--Sec Title-->
+		<div class="sec-title centered">
+			<div class="icon-box"><img src="{{asset('themes/base/images/icons/sec-title.png')}}" alt=""></div>
+			<h1>Nos
+				<span>Services</span>
+			</h1>
+			<div class="text">Many children and poor people are at high risk of severe malnutrition</div>
+		</div>
+		<div class="row">
+			<div class="col-xl-9">
+				<div class="row clearfix">
+					<!-- Mission block -->
+					{% for service in services %}
+					<div class="col-xl-4 col-lg-6 col-md-6 mission-block">
+						<div class="inner-box">
+							<div class="image">
+								<div class="caption">
+									<div>
+										<div class="icon-box">
+											<span class="flaticon-love-and-romance"></span>
+										</div>
+										<h4>{{service}}</h4>
+									</div>
+
+								</div>
+
+								<div class="overlay-box">
+									<div class="overlay-inner">
+										<div class="content">
+											<div class="text">Nostrud exercitation ullamco laboris nisi utm aliquip sed duis aute lorem ipsum.</div>
+											<h4>{{service}}</h4>
+											<div class="icon-box">
+												<span class="flaticon-love-and-romance"></span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+					<!-- Mission block -->
+				</div>
+			</div>
+		</div>
+
+	</div>
+</section>

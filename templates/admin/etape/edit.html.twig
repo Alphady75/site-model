@@ -1,0 +1,9 @@
+{% extends 'dossier.html.twig' %}
+
+{% block title %}{{etape.dossierJuridique}} {{etape}}{% endblock %}
+{% block titre %}{{etape.dossierJuridique}} {{etape}}{% endblock %}
+{% block right %}{{ include('admin/etape/_delete_form.html.twig') }}{% endblock %}
+
+{% block body %}
+    {% include "user/dossier_juridique/composants/_etape_form.html.twig" %}
+{% endblock %}

@@ -36,11 +36,12 @@ class ContactType extends AbstractType
                 ]
             ])
             ->add('sujet', EntityType::class, [
-                'label' => 'raison',
+                'label' => 'Service',
+                #'expanded' => true,
                 'placeholder' => 'choisir',
                 'class' => Service::class,
-                'query_builder' => function (ServiceRepository $eleve): QueryBuilder {
-                    return $eleve->createQueryBuilder('s')
+                'query_builder' => function (ServiceRepository $serv): QueryBuilder {
+                    return $serv->createQueryBuilder('s')
                         ->andWhere('s.online = 1')
                         ->orderBy('s.position', 'ASC');
                 },
@@ -51,7 +52,7 @@ class ContactType extends AbstractType
             ])
             ->add('message', TextareaType::class, [
                 'attr' => [
-                    'rows' => 5,
+                    'class' => "h-100",
                     'placeholder' => 'Ecrivez votre message...',
                 ]
             ]);

@@ -1,0 +1,22 @@
+{% extends 'espace.html.twig' %}
+
+{% block title %}Mes accès{% endblock %}
+{% block titre %}Mes accès{% endblock %}
+{% block col %}7{% endblock %}
+{% block titreCol %}12{% endblock %}
+
+{% block body %}
+
+	{{ form_start(form, {attr: {class: 'form'}}) }}
+
+	{{ form_widget(form) }}
+	<div class="text-center pt-4">
+		<button type="submit" class="theme-btn btn-style-one radius-btn">
+			<span class="btn-title">
+				{{ button_label|default('Mettre à jour') }}
+			</span>
+		</button>
+	</div>
+	{{ form_end(form) }}
+
+{% endblock %}

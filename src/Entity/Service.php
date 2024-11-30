@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Entity\Traits\Timestamp;
 use App\Repository\ServiceRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
@@ -48,6 +50,29 @@ class Service
 
     #[ORM\Column(nullable: true)]
     private ?bool $online = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $resume = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $tarif = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $mensualite = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $avantage = null;
+
+    #[ORM\Column(length: 30, nullable: true)]
+    private ?string $inscription = null;
+
+    #[ORM\OneToMany(mappedBy: 'service', targetEntity: Demande::class, cascade: ['persist'])]
+    private Collection $demandes;
+
+    public function __construct()
+    {
+        $this->demandes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -148,5 +173,95 @@ class Service
     public function getImageFile(): ?File
     {
         return $this->imageFile;
+    }
+
+    public function getResume(): ?string
+    {
+        return $this->resume;
+    }
+
+    public function setResume(?string $resume): self
+    {
+        $this->resume = $resume;
+
+        return $this;
+    }
+
+    public function getTarif(): ?string
+    {
+        return $this->tarif;
+    }
+
+    public function setTarif(?string $tarif): self
+    {
+        $this->tarif = $tarif;
+
+        return $this;
+    }
+
+    public function getMensualite(): ?string
+    {
+        return $this->mensualite;
+    }
+
+    public function setMensualite(?string $mensualite): self
+    {
+        $this->mensualite = $mensualite;
+
+        return $this;
+    }
+
+    public function getAvantage(): ?string
+    {
+        return $this->avantage;
+    }
+
+    public function setAvantage(?string $avantage): self
+    {
+        $this->avantage = $avantage;
+
+        return $this;
+    }
+
+    public function getInscription(): ?string
+    {
+        return $this->inscription;
+    }
+
+    public function setInscription(?string $inscription): self
+    {
+        $this->inscription = $inscription;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Demande>
+     */
+    public function getDemandes(): Collection
+    {
+        return $this->demandes;
+    }
+
+    public function addDemande(Demande $demande): self
+    {
+        if (!$this->demandes->contains($demande)) {
+            $this->demandes->add($demande);
+            $demande->setService($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDemande(Demande $demande): self
+    {
+        if ($this->demandes->removeElement($demande)) {
+            // set the owning side to null (unless already changed)
+            if ($demande->getService() === $this) {
+                $demande->setService(null);
+            }
+        }
+
+        return $this;
     }
 }

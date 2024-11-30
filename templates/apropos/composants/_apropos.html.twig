@@ -1,0 +1,41 @@
+<section class="about-us pb-0">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-5 image-block-one">
+				{% if apropo().image %}
+				<div class="image big-image"><img
+						src="{{asset('img/group4.png')}}" alt=""></div>
+				{% endif %}
+				{% if apropo().photo %}
+				<div class="image small-image"><img
+						src="{{asset('img/group3.png')}}" alt=""></div>
+				{% endif %}
+			</div>
+			<div class="col-lg-6 offset-lg-1">
+				<div class="pl-lg-5">
+					<!-- sec-title -->
+					<div class="sec-title style-two">
+						<h4>Mot du Responsable</h4>
+						<h1>Nous sommes
+							<span>{{appName}}</span>
+						</h1>
+					</div>
+					<!-- about block -->
+					<div class="about-block">
+						<div class="inner-box">
+							<div class="text">
+								{{apropo().apropos|raw}}
+							</div>
+							<div class="author">
+								<div class="inner-box">
+									<h5>{{apropo().responsableName}}</h5>
+								</div>
+								<div class="sign"><img src="{{asset('themes/base/images/resource/sign.png')}}" alt=""></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

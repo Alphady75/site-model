@@ -1,0 +1,61 @@
+<div class="left-side-bar">
+	<div class="brand-logo">
+		<a href="{{ path('user_demande_index') }}">
+			<img src="{{asset('img/logo.png')}}" width="50" alt="">
+			<strong class="text-uppercase font-weight-bold">{{appName}}</strong>
+		</a>
+		<div class="close-sidebar" data-toggle="left-sidebar-close">
+			<i class="ion-close-round"></i>
+		</div>
+	</div>
+	<div class="menu-block customscroll box-shadow">
+		<div class="sidebar-menu pt-3">
+			<ul id="accordion-menu">
+				<li>
+					<a class="dropdown-toggle no-arrow {{ app.request.attributes.get('_route') == 'user_demande_index' ? 'active' : '' }}{{ app.request.attributes.get('_route') == 'user_demande_show' ? 'active' : '' }}{{ app.request.attributes.get('_route') == 'demande_dossier_juridique' ? 'active' : '' }}{{ app.request.attributes.get('_route') == 'user_demande_show' ? 'active' : '' }}" href="{{ path('user_demande_index') }}">
+						<span class="micon dw dw-house-1"></span>
+						<span class="mtext">Mes démarches</span>
+					</a>
+				</li>
+				<li>
+					<a class="dropdown-toggle no-arrow {{ app.request.attributes.get('_route') == 'user_aide' ? 'active' : '' }}" href="{{ path('user_aide') }}">
+						<span class="micon dw dw-headphones"></span>
+						<span class="mtext">Besoin d'aide?</span>
+					</a>
+				</li>
+				<li>
+					<a class="dropdown-toggle no-arrow {{ app.request.attributes.get('_route') == 'user_commandes' ? 'active' : '' }}" href="{{ path('user_commandes') }}">
+						<span class="micon dw dw-shopping-bag"></span>
+						<span class="mtext">Mes commandes</span>
+					</a>
+				</li>
+				<li class="dropdown">
+					<a href="javascript:;" class="dropdown-toggle {{ app.request.attributes.get('_route') == 'compte' ? 'active' : '' }}{{ app.request.attributes.get('_route') == 'acces' ? 'active' : '' }}" data-option="on">
+						<span class="micon dw dw-user"></span>
+						<span class="mtext">Mon compte</span>
+					</a>
+					<ul class="submenu">
+						<li>
+							<a href="{{path('compte')}}">Informations actionnairelles</a>
+						</li>
+						<li>
+							<a href="{{path('acces')}}">Mes accès</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a class="dropdown-toggle no-arrow" href="{{ path('accueil') }}">
+						<span class="micon fa fa-arrow-alt-right"></span>
+						<span class="hide-menu">Aller sur accueil</span>
+					</a>
+				</li>
+				<li>
+					<a class="dropdown-toggle no-arrow" href="{{ path('app_logout') }}">
+						<span class="micon fa fa-power-off"></span>
+						<span class="hide-menu">Me déconnecter</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

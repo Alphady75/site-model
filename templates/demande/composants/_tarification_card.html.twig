@@ -1,0 +1,25 @@
+<div class="pricing-block {{demande.tarification and tarification.id == demande.tarification.id ? 'active' : ''}}">
+	<div class="inner-box">
+		<div class="title-box">
+			<h4 class="title {{tarification.recommander ? 'text-primary'}}">{{tarification}}</h4>
+			<h4 class="price">{{ tarification.cout|number_format(0, '', ' ') ~ currency }}<sup>
+					{{ tarification.typeCout }}</sup>
+			</h4>
+			<div class="text">{{tarification.description}}</div>
+		</div>
+		<ul class="features-list border-0">
+			{% for formule in tarification.formules %}
+				<li>
+					<i class="fa fa-check {{formule.etat == 'Exclu' ? 'text-danger' : 'text-primary'}} bg-transparent"></i>
+					{{formule}}</li>
+			{% endfor %}
+		</ul>
+    {% if demande.tarification is empty %}
+		<button class="theme-btn btn-style-one">
+			<span class="btn-title">Choisir la formule
+				<i class="fa fa-arrow-right"></i>
+			</span>
+		</button>
+    {% endif %}
+	</div>
+</div>

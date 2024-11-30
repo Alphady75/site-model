@@ -1,0 +1,129 @@
+{% extends 'dossier.html.twig' %}
+
+{% block title %}Dossier juridique pour la #création de
+	{{demande.statut}}
+{% endblock %}
+{% block titre %}Dossier juridique
+{% endblock %}
+{% block statut %}
+	<div class="pb-4">
+		<span class="badge badge-{{dossier.statutBg}}">{{dossier.statut}}</span>
+	</div>
+{% endblock %}
+
+{% block right %}
+	{% if is_granted('ROLE_ADMIN') %}
+		<button type="button" class="theme-btn btn-style-one radius-btn" data-toggle="modal" data-target="#staticBackdrop">
+			<span class="btn-title">
+				Ajouter une étape
+			</span>
+		</button>
+	{% endif %}
+{% endblock %}
+
+{% block body %}
+
+	{% if etapes is not empty and is_granted('ROLE_ADMIN') %}
+		<button type="button" class="theme-btn btn-style-two radius-btn" data-toggle="modal" data-target="#dossierBackdrop">
+			<span class="btn-title">
+				Administrer
+			</span>
+		</button>
+	{% endif %}
+	<ul class="nav nav-tabs etapes align-items-center border-0" id="nav-tabContent" role="tablist">
+		{% for etape in etapes %}
+			<li class="nav-item box" role="presentation">
+				<button class="nav-link border {{etape.name == dossier.statut ? 'active' : ''}}" id="tab-{{etape.id}}-tab" data-toggle="pill" data-target="#tab-{{etape.id}}" type="button" role="tab" aria-controls="tab-{{etape.id}}" aria-selected="true">
+					<span>{{etape.position}}</span>
+					{{etape.name == 'Valider' ? "En cours de validation" : etape}}
+				</button>
+			</li>
+		{% endfor %}
+
+	</ul>
+	<div class="tab-content" id="nav-tabContent">
+		{% for etape in etapes %}
+			<div class="tab-pane fade show {{etape.name == dossier.statut ? 'active' : ''}} " id="tab-{{etape.id}}" role="tabpanel" aria-labelledby="tab-{{etape.id}}-tab">
+				<h4 class="pt-4">Description</h4>
+				{{etape.description|raw}}
+				<h4 class="pt-4">Pièces jointe</h4>
+				{% for document in etape.documentJuridiques %}
+					<div class="mb-2">
+						<a href="{{vich_uploader_asset(document, 'documentFile' )}}" target="_blank">
+							<i class="fa fa-folder-open"></i>
+							{{document}}
+						</a>
+					</div>
+				{% else %}
+					<div class="mb-2">
+						<h6>Aucune pièce...</h6>
+					</div>
+				{% endfor %}
+
+				{% if is_granted('ROLE_ADMIN') %}
+					<div class="pt-4">
+						<a href="{{path('admin_etape_edit', {id: etape.id})}}" class="theme-btn btn-style-two bg-light radius-btn">
+							<span class="btn-title">
+								<i class="fa fa-edit mr-3"></i>
+								Mettre à jour
+							</span>
+						</a>
+					</div>
+				{% endif %}
+			</div>
+		{% else %}
+			<div class="text-center">
+				<i class="fa fa-folder-open fa-3x"></i>
+				<h5 class="lead">Nos experts valident votre dossier
+					<br>
+					et s'occupent des démarches administratives.</h5>
+			</div>
+		{% endfor %}
+	</div>
+
+	<!-- Modal -->
+	<div class="modal" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="staticBackdropLabel">
+						Etapes
+					</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					{% include "user/dossier_juridique/composants/_etape_form.html.twig" %}
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-light border" data-dismiss="modal">Fermer</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Modal -->
+	<div class="modal" id="dossierBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="dossierBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="dossierBackdropLabel">
+						Statut du dossier juridique
+					</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<h3 class="titre-md pt-0 pb-0">Informer le client sur l'avancement de son dossier juridique</h3>
+					{% include "user/dossier_juridique/composants/_dossier_form.html.twig" %}
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-light border" data-dismiss="modal">Fermer</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

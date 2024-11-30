@@ -1,0 +1,92 @@
+/* Cregency | Creative Agency HTML Template
+
+Template Name: Cregency
+Version: 1.0.0
+License: copyright commercial
+/************ TABLE OF CONTENTS ***************
+1. Fonts
+2. Reset
+3. Global Settings
+4. Main Header / One to Ten
+5. Sticky Header 
+6. Mega Menu 
+7. Mobile Menu
+8. Hidden Sidebar style
+9. Section Title
+10. Banner Section / One to Ten
+11. About Section / One to Eleven
+12. Services Section / One to Twelve
+13. Projects section / One to Nine
+14. Process section / Two
+15. Fun Fact Section / One to Ten
+16. Subscribe Section / One to Seven
+17. Call To Action / Two
+18. Faq's Section / Two / Three
+19. Testimonial Section / One to Ten
+20. Pricing Section  / One to Six
+21, team Section / One to Ten
+22. Why Choose Us / Two / Three / Four
+23. News Section / One to Ten
+24. Work Section
+25. Clients Section / Two
+26. Main Footer / One to Ten
+**********************************************/
+
+@import "scss-bootstrap/functions";
+@import "scss-bootstrap/variables";
+@import "scss-bootstrap/mixins";
+@import "common/root.scss";
+@import "common/mixing.scss";
+@import "common/loader.scss";
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
+
+@import url('animate.css');
+@import url('owl.css');
+@import url('swiper.min.css');
+@import url('jquery.fancybox.min.css');
+@import url('linear.css');
+@import url('fontawesome.css');
+@import url('flaticon.css');
+@import url('tm-bs-mp.css');
+@import url('tm-utility-classes.css');
+
+// import SCSS components one by one
+@import "reset.scss";
+@import "button.scss";
+@import "animate-icon.scss";
+@import "search-popup.scss";
+@import "header.scss";
+@import "mega-menu.scss";
+@import "mobile-menu.scss";
+@import "section-title.scss";
+@import "banner.scss";
+@import "about.scss";
+@import "services.scss";
+@import "projects.scss";
+@import "process.scss";
+@import "funfact.scss";
+@import "subscribe.scss";
+@import "call-to-action.scss";
+@import "faqs.scss";
+@import "testimonials.scss";
+@import "pricing.scss";
+@import "team.scss";
+@import "why-choose-us.scss";
+@import "news.scss";
+@import "work.scss";
+@import "clients.scss";
+@import "footer.scss";
+
+@import "shop/loader.scss";
+
+//inner
+@import "inner/page-title.scss";
+@import "inner/404.scss";
+@import "inner/contact-page.scss";
+@import "inner/service-details.scss";
+@import "inner/project-details.scss";
+@import "inner/news-details.scss";
+@import "inner/news-sidebar.scss";
+@import "inner/news-comment.scss";
+@import "inner/team-details.scss";

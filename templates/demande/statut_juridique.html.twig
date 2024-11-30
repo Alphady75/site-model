@@ -1,0 +1,38 @@
+{% extends 'demande.html.twig' %}
+
+{% block titre %}Quelle sera la
+	<span class="text-primary">forme juridique</span>
+	de votre société ?
+{% endblock %}
+{% block col %}8{% endblock %}
+{% block text %}
+	<p>Choisissez la forme juridique de votre entreprise.</p>
+{% endblock %}
+
+{% block body %}
+	<div class="grid-four">
+		{% for statut in statuts() %}
+			<!-- Service Block Two -->
+			<div class="service-block-two {{demande.statut and statut.id == demande.statut.id ? 'active' : ''}} statut wow fadeInUp">
+				<a href="{{path('demande_statut', {reponse: statut.id})}}">
+					<div class="inner-box d-block text-center">
+						<img src="{% if statut.icon %}{{ vich_uploader_asset(statut, 'imageFile' ) }}{% else %}{{ asset('img/document.svg') }}{% endif %}" alt="" class="img-fluid img-thumbnail" width="40">
+						<h4 class="title">
+							{{statut}}
+						</h4>
+						<p class="text-center small">{{statut.description|u.truncate(60, '...')}}</p>
+					</div>
+				</a>
+			</div>
+		{% endfor %}
+	</div>
+	{% if demande.statut %}
+		<div class="text-center pt-5">
+			<a href="{{path('demande_declarant')}}" class="theme-btn btn-style-one">
+				<span class="btn-title">Continuez
+					<i class="fa fa-long-arrow-right"></i>
+				</span>
+			</a>
+		</div>
+	{% endif %}
+{% endblock %}

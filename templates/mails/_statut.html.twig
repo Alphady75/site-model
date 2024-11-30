@@ -1,0 +1,21 @@
+{% extends "mails.html.twig" %}
+
+{% block body %}
+
+	<p>Bonjour {{user}},</p>
+
+	<p>Nous souhaitons vous informer que le statut de votre dossier juridique a été mis à jour.</p>
+
+	<p>Dossier : {{dossier.name}}</p>
+	<p>Ancien statut : {{dossier.lastStatut}}</p>
+	<p>Nouveau statut : {{dossier.statut}}</p>
+
+	<p>Cette modification a été effectuée par notre administrateur. Pour plus de détails ou pour consulter les informations récentes liées à votre dossier, veuillez cliquer sur le lien suivant : <a href="{{absolute_url(path('demande_dossier_juridique', {id: dossier.demande.id}))}}">{{dossier}}</a>.</p>
+
+	<p>Si vous avez des questions ou avez besoin d’assistance supplémentaire, n’hésitez pas à contacter notre support à l’adresse <a href="mailto:{{appEmail}}">{{appEmail}}</a>.</p>
+	
+	<p>Merci de votre attention.</p>
+	
+	<p>Cordialement,	L’équipe {{appName}}</p>
+
+{% endblock %}

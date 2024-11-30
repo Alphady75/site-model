@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit DossierJuridique
+{% endblock %}
+
+{% block body %}
+	<h1>Edit DossierJuridique</h1>
+
+	{{ include('user/dossier_juridique/_form.html.twig', {'button_label': 'Update'}) }}
+
+	<a href="{{ path('dossier_juridique_index') }}">back to list</a>
+
+	{{ include('user/dossier_juridique/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<!-- Basic Page Info -->
+	<meta charset="utf-8">
+	<title>
+		Espace client
+		{{ apropo().name }}
+		-
+		{% block title %}{% endblock %}
+	</title>
+
+	<!-- Site favicon -->
+	<link rel="apple-touch-icon" sizes="180x180" href="{{asset('img/logo.png')}}">
+	<link rel="icon" type="image/png" sizes="32x32" href="{{asset('img/logo.png')}}">
+	<link rel="icon" type="image/png" sizes="16x16"	href="{{asset('img/logo.png')}}">
+
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<!-- Google Font -->
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+		rel="stylesheet">
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="{{ asset('themes/admin/vendors/styles/core.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('themes/admin/vendors/styles/icon-font.min.css') }}">
+	<link rel="stylesheet" type="text/css"
+		href="{{ asset('themes/admin/src/plugins/datatables/css/dataTables.bootstrap4.min.css') }}">
+	<link rel="stylesheet" type="text/css"
+		href="{{ asset('themes/admin/src/plugins/datatables/css/responsive.bootstrap4.min.css') }}">
+	<link rel="stylesheet" type="text/css"
+		href="{{ asset('themes/admin/src/plugins/fancybox/dist/jquery.fancybox.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('themes/admin/vendors/styles/style.css') }}">
+	<link href="{{asset('themes/base/css/style.css')}}" rel="stylesheet">
+	{% block stylesheets %}
+	{{ encore_entry_link_tags('app') }}
+	{{ encore_entry_link_tags('admin') }}
+	{{ encore_entry_link_tags('responsive') }}
+	{% endblock %}
+</head>
+
+<body class="admin bg-white" data-turbo="false">
+
+	{% include "partials/user/_header2.html.twig" %}
+
+	{% include "partials/user/_sidebar.html.twig" %}
+
+	<div class="mobile-menu-overlay"></div>
+
+	<div class="main-container">
+		<div class="pd-ltr-20 pb-5">
+
+			<div class="row">
+				<div class="col-sm-{% block col %}11{% endblock %} mx-auto">
+					<div class="row d-flex align-items-center mb-4 mt-0">
+						<div class="col-sm-{% block titreCol %}8{% endblock %}">
+							<h4 class="titre">
+								{% block titre %}{% endblock %}
+							</h4>
+						</div>
+						<div class="col-sm-4 text-right">
+							{% block right %}{% endblock %}
+						</div>
+					</div>
+					{% include "partials/_flash.html.twig" %}
+					{% block filters %}{% endblock %}
+					{% block body %}{% endblock %}
+					{% block pagination %}{% endblock %}
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<!-- js -->
+	<script src="{{ asset('themes/admin/vendors/scripts/core.js') }}"></script>
+	<script src="{{ asset('themes/admin/vendors/scripts/script.min.js') }}"></script>
+	<script src="{{ asset('themes/admin/vendors/scripts/process.js') }}"></script>
+	<script src="{{ asset('themes/admin/vendors/scripts/layout-settings.js') }}"></script>
+	<script src="{{ asset('themes/admin/src/plugins/fancybox/dist/jquery.fancybox.js') }}"></script>
+	<script src="https://cdn.ckeditor.com/ckeditor5/41.3.1/classic/ckeditor.js"></script>
+	{% block javascripts %}
+	{{ encore_entry_script_tags('app') }}
+	{{ encore_entry_script_tags('collection') }}
+	{{ encore_entry_script_tags('picture') }}
+	{{ encore_entry_script_tags('desablebtn') }}
+	{% endblock %}
+</body>
+
+</html>

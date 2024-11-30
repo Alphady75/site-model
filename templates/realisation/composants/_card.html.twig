@@ -1,8 +1,0 @@
-<div class="service-item bg-light overflow-hidden h-100">
-	<img class="img-fluid" src="{% if projet.image %}{{ vich_uploader_asset(projet, 'imageFile' ) | imagine_filter('realisation') }}{% else %}{{ asset('img/img-def-min.png') | imagine_filter('realisation') }}{% endif %}" alt=""/>
-	<div class="service-text position-relative text-center h-100 p-4">
-		<h5 class="mb-3">{{ projet.name }}</h5>
-		<a class="small" href="">LIRE PLUS<i class="fa fa-arrow-right ms-3"></i>
-		</a>
-	</div>
-</div>

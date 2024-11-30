@@ -1,0 +1,104 @@
+<div class="card card-body p-0">
+	<div class="table-responsive">
+		<table class="table">
+			<tbody>
+				<tr>
+					<th>N°dossier</th>
+					<td>{{ demande.id }}</td>
+				</tr>
+				<tr>
+					<th>Prénom(s)</th>
+					<td>{{ demande.prenom }}</td>
+				</tr>
+				<tr>
+					<th>Nom(s)</th>
+					<td>{{ demande.nom }}</td>
+				</tr>
+				<tr>
+					<th>Email</th>
+					<td>{{ demande.email }}</td>
+				</tr>
+				<tr>
+					<th>Téléphone</th>
+					<td>{{ demande.telephone }}</td>
+				</tr>
+				<tr>
+					<th>Quelle sera la forme juridique de votre société ?</th>
+					<td>{{ demande.statut }}</td>
+				</tr>
+				<tr>
+					<th>Pour démarrer, quand souhaitez-vous créer votre entreprise ?</th>
+					<td>{{ demande.periodeDemarage }}</td>
+				</tr>
+				<tr>
+					<th>Avez vous déjà créé une entreprise ?</th>
+					<td>{{ demande.dejaCreeEntreprise }}</td>
+				</tr>
+				<tr>
+					<th>Vous êtes actuellement...</th>
+					<td>{{ demande.professionDeclarant }}</td>
+				</tr>
+				<tr>
+					<th>Quel est le nom de votre société ?</th>
+					<td>{{ demande.nomSociete }}</td>
+				</tr>
+				<tr>
+					<th>Voulez-vous protéger le nom de votre société en déposant votre marque ?</th>
+					<td>{{ demande.marque }}</td>
+				</tr>
+				<tr>
+					<th>Quelle sera l'activité de votre société ?</th>
+					<td>{{ demande.activite }}</td>
+				</tr>
+				<tr>
+					<th>Votre activité est-elle artisanale ?</th>
+					<td>{{ demande.typeActivite }}</td>
+				</tr>
+				<tr>
+					<th>Êtes-vous déclaré en tant qu'auto-entrepreneur ?</th>
+					<td>{{ demande.statutAe }}</td>
+				</tr>
+				<tr>
+					<th>Dans quelle banque souhaitez-vous ouvrir le compte de votre entreprise ?</th>
+					<td>{{ demande.partenaire }}</td>
+				</tr>
+				<tr>
+					<th>Les services essentiels pour bien gérer votre société</th>
+					<td>{{ demande.service }}</td>
+				</tr>
+				<tr>
+					<th>Souhaitez-vous être mis en relation avec un expert-comptable ?</th>
+					<td>{{ demande.comptastart }}</td>
+				</tr>
+				<tr>
+					<th>Formule</th>
+					<td>
+						<div class="title-box">
+							<h4 class="title {{demande.tarification.recommander ? 'text-primary'}}">{{demande.tarification}}</h4>
+							<h4 class="price">{{ demande.tarification.cout|number_format(0, '', ' ') ~ currency }}<sub>
+									{{ demande.tarification.typeCout }}</sub>
+							</h4>
+							<div class="text">{{demande.tarification.description}}</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th>Validater</th>
+					<td>{{ demande.validate ? 'Oui' : 'Non' }}</td>
+				</tr>
+				<tr>
+					<th>Date</th>
+					<td>
+						<span class="badge bg-info rounded-pill text-light">
+							Soumis le :{{ demande.created ? demande.created|date('d/m/Y') : '' }}
+						</span>
+						<span class="badge bg-info rounded-pill text-light">
+							Mise à jour le :{{ demande.updated ? demande.updated|date('d/m/Y') : '' }}
+						</span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	{{ include('user/demande/_delete_form.html.twig') }}
+</div>

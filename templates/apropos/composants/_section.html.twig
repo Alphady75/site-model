@@ -1,41 +1,33 @@
-<div class="py-5">
+<section class="ftco-section">
 	<div class="container">
-		{% if app.request.attributes.get('_route') == 'apropos' %}
-			<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb" class="mb-4">
-				<ol class="breadcrumb">
-					<li class="breadcrumb-item">
-						<a href="{{ path('accueil') }}">Accueil</a>
-					</li>
-					<li class="breadcrumb-item active" aria-current="page">Apropos</li>
-				</ol>
-			</nav>
-		{% endif %}
-		<div class="row">
-			<div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-				<div class="position-relative overflow-hidden ps-5 pt-5 h-100" style="min-height: 400px">
-					<img class="position-absolute w-100 h-100" src="{% if apropo().image %}{{ vich_uploader_asset(apropo(), 'imageFile' ) }}{% else %}{{ asset('img/slide-1.png') }}{% endif %}" alt="" style="object-fit: cover"/>
-					<div class="position-absolute top-0 start-0 bg-white pe-3 pb-3" style="width: 200px; height: 200px">
-						<div class="d-flex flex-column justify-content-center text-center bg-primary h-100 p-3">
-							<h1 class="text-white">{{ apropo() ? apropo().anneeExperience : 10 }}</h1>
-							<h2 class="text-white">ans</h2>
-							<h5 class="text-white mb-0">D'expériences</h5>
-						</div>
-					</div>
-				</div>
+		<div class="row d-flex">
+			<div class="col-md-6 d-flex ftco-animate">
+				<div class="img img-about align-self-stretch" style="background-image: url({{ asset('img/about.png') }}); width: 100%;"></div>
 			</div>
-			<div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
-				<div class="h-100">
-					<div class="border-start border-5 border-primary ps-4 mb-5">
-						<h6 class="text-body text-uppercase mb-2">À propos de nous</h6>
-						<h1 class="display-6 mb-0">
-							Solutions uniques pour les secteurs résidentiels et industriels !
-						</h1>
-					</div>
-					{% if apropo() != null %}
-					<p style="text-align: justify;">{{ apropo().presentation|u.truncate(900, '...') }}</p>
-					{% endif %}
-				</div>
+			<div class="col-md-6 pl-md-5 ftco-animate">
+				<h2 class="mb-4">Historique de Panval-Groupe</h2>
+				<p>Érigée il y a maintenant une demi-décennie, Panval-groupe s'illustre comme un phare dans le domaine
+																				des formations professionnelles d'excellence. Notre épopée entrepreneuriale se dévoile à travers une
+																				kyrielle d'exemples tant professionnels que actionnairels, témoignant de notre parcours exceptionnel.</p>
+				<p>Au fil des années, nous avons façonné les compétences des cadres émérites d'entreprises, participant
+															ainsi activement à la montée en puissance du leadership professionnel au Congo Brazzaville. Citons, par
+															exemple, la formation pointue dispensée à des juristes d'entreprise qui, armés de notre savoir-faire, ont
+															contribué à élever les standards du secteur juridique local.</p>
+				<p>Notre empreinte s'étend bien au-delà des salles de formation. Nous avons tissé des liens durables avec
+										des entreprises renommées, lesquelles ont bénéficié de notre expertise pour dynamiser leur capital humain. Les témoignages élogieux de nos partenaires, soulignant l'impact tangible de nos programmes
+										sur leurs performances, sont autant de jalons attestant de notre efficacité.
+				</p>
+				<p>Au-delà du professionnel, notre engagement envers l'épanouissement actionnairel des apprenants se
+										manifeste par des approches pédagogiques novatrices et des programmes sur mesure. Chaque succès
+										story individuelle, chaque carrière propulsée vers de nouveaux sommets, constitue pour nous la plus belle
+										récompense.
+				</p>
+				<p>Ainsi, au cœur de notre aventure, la crédibilité s'est forgée à travers des partenariats fructueux, en autres
+										MTN CONGO, AIRTEL CONGO, BLACK MUTUAL, BLACK PILLARS CAPITAL, BILLENUIM, AG
+										GROUPE… des réussites D’entreprises, individuelles et une constante quête d'excellence.
+					<strong>{{ appName }}</strong>, bien plus qu'une simple entreprise de formation, incarne une véritable ode à l'ascension
+												professionnelle au Congo Brazzaville</p>
 			</div>
 		</div>
 	</div>
-</div>
+</section>

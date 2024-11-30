@@ -1,0 +1,71 @@
+{% extends 'dossier.html.twig' %}
+
+{% block title %}Projet
+{% endblock %}
+{% block titre %}Projet
+{% endblock %}
+
+{% block body %}
+	<h5 class="titre-md">La
+		<span class="text-primary">Forme juridique</span>
+	</h5>
+	<div class="row">
+		<div class="col-sm-4 service-block-two active statut wow fadeInUp">
+			<div class="inner-box d-block">
+				<img src="{% if demande.statut.icon %}{{ vich_uploader_asset(demande.statut, 'imageFile' ) }}{% else %}{{ asset('img/document.svg') }}{% endif %}" alt="" class="img-fluid img-thumbnail" width="40" height="40">
+				<h4 class="title">
+					{{demande.statut}}
+				</h4>
+				<p class="text-center small">{{demande.statut.description|u.truncate(60, '...')}}</p>
+			</div>
+		</div>
+	</div>
+	<h5 class="titre-md">Qui effectue la démarche sur
+		<span class="text-primary">{{appName}}</span>
+		?</h5>
+	<div class="row">
+		<div class="col-sm-9">
+			<div class="row">
+				<div class="col-6">
+					<div class="form-group">
+						<input type="email" class="form-control" disabled value="{{ demande.prenom }}">
+					</div>
+				</div>
+				<div class="col-6">
+					<div class="form-group">
+						<input type="email" class="form-control" disabled value="{{ demande.nom }}">
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<input type="email" class="form-control" disabled value="{{ demande.email }}">
+			</div>
+			<div class="input-group flex-nowrap radius phone-input">
+				<span class="input-group-text bg-transparent border-0" id="addon-wrapping">
+					<span class="btn btn-light btn-sm rounded-4 border">{{demande.pays}}</span>
+				</span>
+				<input type="text" class="form-control" disabled value="{{demande.telephone}}">
+			</div>
+		</div>
+	</div>
+	<h5 class="titre-md">Le nom de la
+		<span class="text-primary">société</span>
+		?</h5>
+	<div class="row">
+		<div class="col-sm-5">
+			<div class="inner-box d-block">
+				<input type="text" value="{{ demande.nomSociete }}" disabled class="form-control">
+			</div>
+		</div>
+	</div>
+	<h5 class="titre-md">L'activité de la société</h5>
+	<div class="row">
+		<div class="col-sm-4 service-block-two active wow fadeInUp">
+			<div class="inner-box d-block">
+				<h4 class="title">
+					{{ demande.activite }}
+				</h4>
+			</div>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tarification
+{% endblock %}
+
+{% block body %}
+	<h1>Tarification</h1>
+
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>Id</th>
+				<td>{{ tarification.id }}</td>
+			</tr>
+			<tr>
+				<th>Name</th>
+				<td>{{ tarification.name }}</td>
+			</tr>
+			<tr>
+				<th>Cout</th>
+				<td>{{ tarification.cout }}</td>
+			</tr>
+			<tr>
+				<th>TypeCout</th>
+				<td>{{ tarification.typeCout }}</td>
+			</tr>
+			<tr>
+				<th>Description</th>
+				<td>{{ tarification.description }}</td>
+			</tr>
+			<tr>
+				<th>Recommander</th>
+				<td>{{ tarification.recommander ? 'Yes' : 'No' }}</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<a href="{{ path('tarification_index') }}">back to list</a>
+
+	<a href="{{ path('tarification_edit', {'id': tarification.id}) }}">edit</a>
+
+	{{ include('admin/tarification/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,91 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Demande
+{% endblock %}
+
+{% block body %}
+	<h1>Demande</h1>
+
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>Id</th>
+				<td>{{ demande.id }}</td>
+			</tr>
+			<tr>
+				<th>Prenom</th>
+				<td>{{ demande.prenom }}</td>
+			</tr>
+			<tr>
+				<th>Nom</th>
+				<td>{{ demande.nom }}</td>
+			</tr>
+			<tr>
+				<th>Email</th>
+				<td>{{ demande.email }}</td>
+			</tr>
+			<tr>
+				<th>Telephone</th>
+				<td>{{ demande.telephone }}</td>
+			</tr>
+			<tr>
+				<th>PeriodeDemarage</th>
+				<td>{{ demande.periodeDemarage }}</td>
+			</tr>
+			<tr>
+				<th>Marque</th>
+				<td>{{ demande.marque }}</td>
+			</tr>
+			<tr>
+				<th>StatutAe</th>
+				<td>{{ demande.statutAe }}</td>
+			</tr>
+			<tr>
+				<th>Domiciliation</th>
+				<td>{{ demande.domiciliation }}</td>
+			</tr>
+			<tr>
+				<th>Comptastart</th>
+				<td>{{ demande.comptastart }}</td>
+			</tr>
+			<tr>
+				<th>NomSociete</th>
+				<td>{{ demande.nomSociete }}</td>
+			</tr>
+			<tr>
+				<th>ProfessionDeclarant</th>
+				<td>{{ demande.professionDeclarant }}</td>
+			</tr>
+			<tr>
+				<th>TypeActivite</th>
+				<td>{{ demande.typeActivite }}</td>
+			</tr>
+			<tr>
+				<th>Validate</th>
+				<td>{{ demande.validate ? 'Yes' : 'No' }}</td>
+			</tr>
+			<tr>
+				<th>DejaCreeEntreprise</th>
+				<td>{{ demande.dejaCreeEntreprise }}</td>
+			</tr>
+			<tr>
+				<th>Payer</th>
+				<td>{{ demande.payer ? 'Yes' : 'No' }}</td>
+			</tr>
+			<tr>
+				<th>Created</th>
+				<td>{{ demande.created ? demande.created|date('Y-m-d H:i:s') : '' }}</td>
+			</tr>
+			<tr>
+				<th>Updated</th>
+				<td>{{ demande.updated ? demande.updated|date('Y-m-d H:i:s') : '' }}</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<a href="{{ path('admin_demande_index') }}">back to list</a>
+
+	<a href="{{ path('admin_demande_edit', {'id': demande.id}) }}">edit</a>
+
+	{{ include('admin/demande/_delete_form.html.twig') }}
+{% endblock %}

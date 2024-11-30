@@ -1,0 +1,79 @@
+{% extends 'demande.html.twig' %}
+
+{% block titre %}Paiement de votre commande (2/2)
+{% endblock %}
+{% block col %}10{% endblock %}
+
+{% block body %}
+	{{ form_start(form) }}
+	<div class="row">
+		<div class="col-sm-8 me-auto">
+			<h4>Informations de facturation</h4>
+			<div class="row">
+				<div class="col-sm-6">
+					{{ form_row(form.prenom) }}
+				</div>
+				<div class="col-sm-6">
+					{{ form_row(form.nom) }}
+				</div>
+				<div class="col-sm-6">
+					{{ form_row(form.email) }}
+				</div>
+				<div class="col-sm-6">
+					<div class="input-group flex-nowrap radius phone-input">
+						<span class="input-group-text bg-transparent border-0 pays" id="addon-wrapping">
+							{{ form_widget(form.pays) }}
+						</span>
+						{{ form_widget(form.telephone) }}
+					</div>
+					{{ form_errors(form.telephone) }}
+				</div>
+			</div>
+			<div class="input-group flex-nowrap radius phone-input">
+				<span class="input-group-text bg-transparent border-0" id="addon-wrapping">
+					<i class="fa fa-map-marker-alt"></i>
+				</span>
+				{{ form_widget(form.adresse) }}
+			</div>
+			{{ form_errors(form.adresse) }}
+
+			<div class="py-4">
+				{{ form_rest(form) }}
+			</div>
+		</div>
+		<div class="col-sm-4">
+			<div class="pricing-block">
+				<div class="inner-box text-dark">
+					<div class="title-box">
+						<h4 class="title">Récapitulatif</h4>
+					</div>
+					<div class="d-flex justify-content-between">
+						<small>Total commande HT</small>
+						<small>{{ tarification.cout|number_format(0, '', ' ') ~ currency }}</small>
+					</div>
+					<div class="d-flex justify-content-between">
+						<small>TVA</small>
+						<small>{{tva}}
+							{{currency}}</small>
+					</div>
+					<div class="d-flex justify-content-between mb-3">
+						<small>Total TTC</small>
+						<small class="f font-weight-800">{{total|number_format(0, '', ' ') ~ currency}}</small>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="text-center pt-3">
+		<button class="theme-btn btn-style-one mb-3" data-turbo="false">
+			<span class="btn-title">{{ button_label|default('Payer') }}
+				{{total|number_format(0, '', ' ') ~ currency}}
+				<i class="fa fa-long-arrow-right"></i>
+			</span>
+		</button>
+		<p class="text-center">(dont
+			{{tva|number_format(0, '', ' ') ~ currency}}
+			de TVA)</p>
+	</div>
+	{{ form_end(form) }}
+{% endblock %}

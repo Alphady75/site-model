@@ -1,0 +1,34 @@
+{% extends 'demande.html.twig' %}
+
+{% block title %}Commande réussie : Votre demande de {{commande}} est en Cours de Traitement ! 🎉
+{% endblock %}
+{% block titre %}
+	<i class="fa fa-check-circle text-success"></i>
+	Commande réussie : Votre demande de <span class="text-primary">{{commande}}</span> est en Cours de Traitement ! 🎉
+{% endblock %}
+{% block text %}Félicitations, votre demande de
+	{{commande}}
+	a été soumise avec succès !
+{% endblock %}
+
+{% block body %}
+	<div class="text-center">
+		<p>Nous avons bien reçu toutes les informations nécessaires pour le traitement de votre dossier. Notre équipe d'experts est en train de les vérifier et vous serez informé(e) par email de l'avancement à chaque étape.</p>
+		<h6>Détails de votre commande :</h6>
+		<ul class="mb-4">
+			<li>Numéro de dossier :
+				{{demande.id}}</li>
+			<li>Date de soumission :
+				{{commande.created|date('d/m/Y')}}</li>
+			<li>Statut actuel :
+				<span class="badge badge-{{demande.statutBg}} rounded-pill text-light">{{demande.etat}}</span>
+			</li>
+		</ul>
+		<a href="{{path('demande_dossier_juridique', {id: demande.id})}}" data-turbo="false" class="theme-btn btn-style-one">
+			<span class="btn-title">
+        Suivre mon Dossier Juridique
+				<i class="fa fa-folder-open"></i>
+			</span>
+		</a>
+	</div>
+{% endblock %}

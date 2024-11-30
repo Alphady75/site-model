@@ -1,0 +1,25 @@
+{% extends 'demande.html.twig' %}
+
+{% block title %}Commande Annulée{% endblock %}
+{% block titre %}
+	<i class="fa fa-triangle-exclamation text-warning"></i>
+	Commande Annulée
+{% endblock %}
+{% block text %}Votre commande a bien été annulée. Si vous avez annulé votre commande par erreur ou si vous souhaitez passer une nouvelle commande, vous pouvez le faire en retournant à la page de commande.
+{% endblock %}
+
+{% block body %}
+	<div class="text-center">
+		<h6>Que faire ensuite ?</h6>
+		<ul class="mb-4">
+			<li>Si vous avez besoin d’assistance, n’hésitez pas à nous contacter.</li>
+			<li>Vous pouvez également consulter votre compte pour vérifier l’état de vos autres commandes.</li>
+		</ul>
+
+		<a href="{{path('demande_commande')}}" class="theme-btn btn-style-one">
+			<span class="btn-title">Passer à la caisse
+				<i class="fa fa-arrow-right"></i>
+			</span>
+		</a>
+	</div>
+{% endblock %}

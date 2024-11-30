@@ -1,0 +1,15 @@
+<div class="left-side-bar">
+	<div class="brand-logo">
+		<a href="{{ path('app_redirection') }}">
+			<img src="{{asset('img/logo.png')}}" width="50" alt=""> <strong class="text-uppercase font-weight-bold">{{appName}}</strong>
+		</a>
+		<div class="close-sidebar" data-toggle="left-sidebar-close">
+			<i class="ion-close-round"></i>
+		</div>
+	</div>
+	<div class="menu-block customscroll box-shadow">
+		<div class="sidebar-menu pt-3">
+			{% include "partials/demarche/_steps.html.twig" %}
+		</div>
+	</div>
+</div>

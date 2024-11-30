@@ -1,0 +1,112 @@
+<div class="table-responsive">
+	<table class="table table-bordered">
+		<tr>
+			<th>Forme juridique</th>
+			<td>{{demande.statut}}</td>
+		</tr>
+	</table>
+</div>
+<h5 class="py-2">Informations du déclarent</h5>
+<div class="table-responsive">
+	<table class="table table-striped">
+		<tr>
+			<th>Prénom</th>
+			<td>{{ demande.prenom }}</td>
+		</tr>
+		<tr>
+			<th>Nom</th>
+			<td>{{ demande.nom }}</td>
+		</tr>
+		<tr>
+			<th>Email</th>
+			<td>{{ demande.email }}</td>
+		</tr>
+		<tr>
+			<th>Téléphone</th>
+			<td>{{ demande.pays }}
+				{{ demande.telephone }}</td>
+		</tr>
+		<tr>
+			<th>Le nom de la société</th>
+			<td>{{ demande.nomSociete }}</td>
+		</tr>
+		<tr>
+			<th>L'activité de la société</th>
+			<td>{{ demande.activite }}</td>
+		</tr>
+		<tr>
+			<th>Service</th>
+			<td>{{ demande.service }}</td>
+		</tr>
+		<tr>
+			<th>Besoin d'être mis en relation avec un expert-comptable</th>
+			<td>{{ demande.comptastart }}</td>
+		</tr>
+		<tr>
+			<th>Formules</th>
+			<td>
+				<strong>{{demande.tarification}}</strong>
+				<p>{{ demande.tarification.cout|number_format(0, '', ' ') ~ currency }}<sup>
+						{{ demande.tarification.typeCout }}</sup>
+				</p>
+			</td>
+		</tr>
+	</table>
+</div>
+<h5 class="py-2">Fiche pour personne</h5>
+<div></div>
+{% if fiche %}
+	{{ form_start(formDeclaration, {attr: {class: 'questionnaire mb-4'}}) }}
+	<h5 class="py-2">Déclaration par l'honneur</h5>
+	<p>
+		Votre
+		<strong class="text-primary">DECLARATION SUR L’HONNEUR</strong>
+		est disponible.
+		<br>
+		Vous pouvez maintenant la télécharger et l'utiliser selon vos besoins.
+		<br>
+		Merci de vérifier que toutes les informations sont correctes avant de la soumettre.
+	</p>
+	{{ form_widget(formDeclaration) }}
+	<button class="theme-btn btn-style-two radius-btn mr-2" data-turbo="false">
+		<span class="btn-title">Télécharger la déclaration
+			<i class="fa fa-long-arrow-right"></i>
+		</span>
+	</button>
+	{{ form_end(formDeclaration) }}
+{% endif %}
+
+{% if questionnaire %}
+	{{ form_start(formProcuration, {attr: {class: 'questionnaire'}}) }}
+	<h5 class="py-2">Procuration</h5>
+	<p>
+		Votre
+		<strong class="text-primary">PROCURATION</strong>
+		est disponible.
+		<br>
+		Vous pouvez maintenant la télécharger et l'utiliser selon vos besoins.
+	</p>
+	{{ form_widget(formProcuration) }}
+	<button class="theme-btn btn-style-two radius-btn mr-2" data-turbo="false">
+		<span class="btn-title">Télécharger la procuration
+			<i class="fa fa-long-arrow-right"></i>
+		</span>
+	</button>
+	{% if demande.completed %}
+	{% else %}
+	<a href="{{path('demande_document')}}" class="theme-btn btn-style-one radius-btn">
+		<span class="btn-title">Soumettre la procuration
+			<i class="fa fa-long-arrow-right"></i>
+		</span>
+	</a>
+	{% endif %}
+	{{ form_end(formProcuration) }}
+{% endif %}
+
+{% if commande.user == app.user %}
+	{% if commande and commande.payer == false %}
+		<div class="pt-4">
+			{{ include('user/demande/_payer_form.html.twig') }}
+		</div>
+	{% endif %}
+{% endif %}

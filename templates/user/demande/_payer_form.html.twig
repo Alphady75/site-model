@@ -1,0 +1,9 @@
+<form method="post" class="d-inline p-0 form" action="{{ path('user_demande_payer', {'id': demande.id}) }}">
+	<input type="hidden" name="_token" value="{{ csrf_token('payer' ~ demande.id) }}">
+	<button type="submit" class="theme-btn btn-style-one radius-btn">
+		<span class="btn-title">
+			Payer
+			<i class="fa fa-credit-card"></i>
+		</span>
+	</button>
+</form>

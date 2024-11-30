@@ -1,0 +1,37 @@
+{% extends 'demande.html.twig' %}
+
+{% block titre %}Joindre une copie CNI ou Passeport{% endblock %}
+{% block col %}7{% endblock %}
+
+{% block body %}
+
+{{ form_start(form, {attr: {class: 'questionnaire'}}) }}
+{% if fiche and fiche.pieceRecto %}
+<div class="row mb-3">
+  <div class="col-6 col-sm-4">
+    <img src="{{ vich_uploader_asset(fiche, 'rectoFile')}}" class="img-fluid">
+  </div>
+  {% if fiche.pieceVerso %}
+  <div class="col-6 col-sm-4">
+    <img src="{{ vich_uploader_asset(fiche, 'versoFile')}}" class="img-fluid">
+  </div>
+  {% endif %}
+</div>
+{% endif %}
+<div class="row">
+  <div class="col-sm-12">{{ form_row(form.typePiece) }}</div>
+  <div class="col-sm-6">{{ form_row(form.numPiece) }}</div>
+  <div class="col-sm-6">{{ form_row(form.pieceDelivre) }}</div>
+  <div class="col-sm-12">{{ form_row(form.rectoFile) }}</div>
+  <div class="col-sm-12">{{ form_row(form.versoFile) }}</div>
+</div>
+{{ form_rest(form) }}
+<div class="text-center pt-4">
+  <button class="theme-btn btn-style-one" data-turbo="false">
+    <span class="btn-title">{{ button_label|default('Continuer') }}
+      <i class="fa fa-long-arrow-right"></i>
+    </span>
+  </button>
+</div>
+{{ form_end(form) }}
+{% endblock %}

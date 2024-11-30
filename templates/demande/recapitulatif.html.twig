@@ -1,0 +1,73 @@
+{% extends 'demande.html.twig' %}
+
+{% block titre %}Votre
+	<span class="text-primary">commande</span>
+	(1/2)
+{% endblock %}
+{% block col %}10
+{% endblock %}
+
+{% block body %}
+	<div class="row">
+		<div class="col-sm-7 me-auto">
+			<div class="d-flex align-content-center justify-content-between pb-3">
+				<div>
+					<h4>Frais administratifs</h4>
+				</div>
+				<span>
+					Prix
+					{{ tarification.typeCout }}
+				</span>
+			</div>
+			<div class="d-flex align-content-center justify-content-between pb-3">
+				<h4>Création de
+					{{demande.statut}}</h4>
+				<a href="{{path('demande_formules')}}">Modifier</a>
+			</div>
+			<div class="d-flex align-content-center justify-content-between ">
+				<h6>Pack
+					{{tarification}}
+				</h6>
+				<strong class="font-weight-800">
+					{{ tarification.cout|number_format(0, '', ' ') ~ currency }}
+				</strong>
+			</div>
+			<div>
+				<p>{{tarification.description}}</p>
+			</div>
+			<div>
+				<h6>
+					<i class="fa fa-info-circle text-primary"></i>
+					Frais administratifs obligatoires</h6>
+			</div>
+			<hr>
+		</div>
+		<div class="col-sm-4">
+			<div class="pricing-block">
+				<div class="inner-box text-dark">
+					<div class="title-box">
+						<h4 class="title">Récapitulatif</h4>
+					</div>
+					<div class="d-flex justify-content-between">
+						<small>Total commande HT</small>
+						<small>{{ tarification.cout|number_format(0, '', ' ') ~ currency }}</small>
+					</div>
+					<div class="d-flex justify-content-between">
+						<small>TVA</small>
+						<small>{{tva}}
+							{{currency}}</small>
+					</div>
+					<div class="d-flex justify-content-between mb-3">
+						<small>Total TTC</small>
+						<small class="f font-weight-800">{{total|number_format(0, '', ' ') ~ currency}}</small>
+					</div>
+					<a href="{{path('demande_commande')}}" class="theme-btn btn-style-one">
+						<span class="btn-title">Valider
+							<i class="fa fa-arrow-right"></i>
+						</span>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

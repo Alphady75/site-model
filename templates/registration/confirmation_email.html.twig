@@ -1,0 +1,16 @@
+{% extends 'mails.html.twig' %}
+
+{% block body %}
+	<p>Bonjour ! <strong>{{appName}}</strong></p>
+
+	<p>Nous sommes ravis de vous accueillir dans notre communauté ! Pour finaliser votre inscription et commencer à profiter de tous les avantages de <strong>{{appName}}</strong>, nous vous prions de bien vouloir confirmer votre adresse e-mail.</p>
+	<p>
+		Veuillez cliquer sur le lien ci-dessous pour activer votre compte :
+	</p>
+	<p><a href="{{ signedUrl|raw }}">Confirmer mon email</a>.</p>
+	<p> Ce lien expirera dans {{ expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle') }}</p>
+
+	<p>Si vous avez des questions ou si vous rencontrez des difficultés, n’hésitez pas à contacter notre support à l’adresse <strong>{{appName}}</strong>.</p>
+
+	<p>Merci de rejoindre [Nom de votre service/plateforme] et à très bientôt !</p>
+{% endblock %}

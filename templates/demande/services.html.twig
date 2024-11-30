@@ -1,0 +1,38 @@
+{% extends 'demande.html.twig' %}
+
+{% block titre %}Les
+	<span class="text-primary">services</span>
+	essentiels pour bien gérer votre société
+{% endblock %}
+{% block col %}12{% endblock %}
+{% block text %}
+	<p>Gérer son entreprise implique de suivre sa comptabilité et de respecter un certain nombre d'obligations  Formel SNs. Dans les deux pages suivantes, on vous présente deux abonnements pour partir du bon pied.</p>
+{% endblock %}
+
+{% block body %}
+
+	<div class="row">
+		{% for service in services() %}
+			<div class="service-block-two col-sm-6 h-100 {{demande.service and service.id == demande.service.id ? 'active' : ''}} wow fadeInUp mx-auto mb-3">
+				<a href="{{path('demande_services', {reponse: service.id})}}">
+					<div class="inner-box d-block">
+						<h4 class="title">
+							{{service}}
+						</h4>
+						<p>{{service.resume|u.truncate(100, '...')}}</p>
+					</div>
+				</a>
+			</div>
+		{% endfor %}
+	</div>
+
+	{% if demande.service %}
+		<div class="text-center pt-5">
+			<a href="{{path('demande_espertcomptable')}}" class="theme-btn btn-style-one">
+				<span class="btn-title">Continuez
+					<i class="fa fa-long-arrow-right"></i>
+				</span>
+			</a>
+		</div>
+	{% endif %}
+{% endblock %}

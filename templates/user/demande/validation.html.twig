@@ -1,0 +1,51 @@
+{% extends 'dossier.html.twig' %}
+
+{% block title %}Validation
+{% endblock %}
+{% block titre %}Validation
+{% endblock %}
+
+{% block body %}
+	<div class="row">
+		<div class="col-sm-10 mx-auto service-block-two statut wow fadeInUp">
+			<div class="inner-box d-block h-100 {{ demande.validate ? 'border border-success' : '' }} pt-4">
+				{% if demande.validate %}
+					<i class="fa fa-check-circle text-success fa fa-3x"></i>
+					<h4 class="title">
+						Félicitations !
+						<br>
+						Votre démarche de création d'entreprise est maintenant validée
+					</h4>
+					<p>Nous avons le plaisir de vous annoncer que votre démarche de création d'entreprise a été entièrement validée par nos administrateurs. 🎉</p>
+
+					<p>Détails de votre entreprise :</p>
+
+					<p>Nom de l'entreprise :
+						<strong>{{demande.nomSociete}}</strong>
+					</p>
+					<p>Référence du dossier :
+						<span class="badge badge-info">Dossier n°{{demande.id}}</span>
+					</p>
+					<p>Date de validation :
+						<span>{{demande.updated|date('d/m/Y')}}</span>
+					</p>
+				{% else %}
+					<i class="fa fa-exclamation-triangle text-warning fa fa-3x"></i>
+					<h4 class="titre">Mise à jour de votre démarche de création d'entreprise</h4>
+					<p>Nous tenons à vous informer que votre démarche de création d'entreprise est actuellement
+						<span class="badge badge-{{demande.statutBg}} rounded-pill text-light">{{demande.etat}}</span>, mais n’a pas encore été validée par nos administrateurs.</p>
+					<p>Détails de votre entreprise :</p>
+					<p>Nom de l'entreprise :
+						<strong>{{demande.nomSociete}}</strong>
+					</p>
+					<p>Référence du dossier :
+						<span class="badge badge-info">Dossier n°{{demande.id}}</span>
+					</p>
+					<p>Date de la demande :
+						<span>{{demande.created|date('d/m/Y')}}</span>
+					</p>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+{% endblock %}

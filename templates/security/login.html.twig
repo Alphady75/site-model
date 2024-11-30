@@ -1,67 +1,72 @@
-{% extends 'base.html.twig' %}
+{% extends 'auth.html.twig' %}
 
-{% block title %}Connexion{% endblock %}
-
-{% block class %}
-    bg-light    
+{% block title %}Connexion
 {% endblock %}
-
-{% block header %}
-    <div class="text-center">
-        <img src="{{ asset('img/logo.png') }}" alt="" class="img-fluid">
-    </div>
+{% block titre %}Connexion
 {% endblock %}
-
-{% block footer %}{% endblock %}
 
 {% block body %}
+	<form method="post">
+		{% if error %}
+			<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}
+			</div>
+		{% endif %}
 
-	<div class="container">
-		<div class="row mb-3 wow fadeInUp" data-wow-delay="0.1s">
-			<div class="col-lg-6 mx-auto">
-				<h1 class="h4 py-4 mb-0 text-center">Connexion</h1>
+		{% if app.user %}
+			<div class="mb-3">
+				Vous êtes connecter en tant
+				{{ app.user.userIdentifier }},
+				<a href="{{ path('app_logout') }}">Déconnexion</a>
+			</div>
+		{% endif %}
+		<div class="input-group custom">
+			<input type="email" value="{{ last_username }}" name="email" class="form-control form-control-lg" placeholder="Adresse e-mail" aria-describedby="emailHelp" autocomplete="false" required autofocus>
+			<div class="input-group-append custom">
+				<span class="input-group-text border-0 bg-transparent">
+					<i class="icon-copy dw dw-user1"></i>
+				</span>
+			</div>
+		</div>
+		<div class="input-group custom">
+			<input type="password" name="password" class="form-control form-control-lg focus" placeholder="**********">
+			<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+			<div class="input-group-append custom">
+				<span class="input-group-text border-0 bg-transparent">
+					<i class="dw dw-padlock1"></i>
+				</span>
+			</div>
+		</div>
+		<div class="row pb-30 text-auth">
+			<div class="col-6">
+				<div class="custom-control custom-checkbox">
+					<input type="checkbox" class="custom-control-input" id="customCheck1" name="_remember_me">
+					<label class="custom-control-label" for="customCheck1">Rester connecter</label>
+				</div>
+			</div>
+			<div class="col-6">
+				<div class="forgot-password">
+					<a href="{{ path('app_forgot_password_request') }}">
+						Mot de passe oublié!
+					</a>
+				</div>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-sm-5 wow fadeInUp mx-auto" data-wow-delay="0.3s">
-				<form method="post" class="radius shadow-sm h-100 py-4 bg-white">
-					<div class="p-4 pb-0">
-						{% if error %}
-							<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}
-							</div>
-						{% endif %}
-
-						{% if app.user %}
-							<div class="mb-3">
-								Vous êtes connecter en tant
-								{{ app.user.userIdentifier }},
-								<a href="{{ path('app_logout') }}">Déconnexion</a>
-							</div>
-						{% endif %}
-
-						<div class="form-floating radius mb-3">
-							<input type="email" value="{{ last_username }}" name="email" class="form-control" id="exampleInputEmail1" placeholder="{{ 'email'|trans }}" aria-describedby="emailHelp" autocomplete="false" required autofocus>
-							<label for="exampleInputEmail1" class="form-label">{{ 'email'|trans }}</label>
-						</div>
-						<div class="form-floating radius mb-4">
-							<input type="password" name="password" autocomplete="current-password" required class="form-control" placeholder="{{ 'password'|trans }}" id="exampleInputPassword1">
-							<label for="exampleInputPassword1" class="form-label">{{ 'password'|trans }}</label>
-						</div>
-						<a class="text-primary fw-bold mb-4 d-block" href="{{ path('app_forgot_password_request') }}">{{ 'passwordoublie'|trans }}</a>
-
-						<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-						<div class="mb-3 form-check">
-							<input type="checkbox" name="_remember_me" class="form-check-input" id="exampleCheck1">
-							<label class="form-check-label" for="exampleCheck1">{{ 'souvenir'|trans }}</label>
-						</div>
-
-						<button type="submit" class="btn btn-dark w-100 p-3 fs-5 mb-4 radius">
+			<div class="col-sm-12">
+				<div class="form-group mb-0">
+					<button type="submit" class="theme-btn btn-style-one w-100 button radius-btn">
+						<span class="btn-title">
+							<i class="fa fa-globe mr-2"></i>
 							Connexion
-						</button>
-					</div>
-				</form>
+						</span>
+					</button>
+				</div>
+
+				<div class="pt-3 text-center">
+					<a href="{{path('app_register')}}" class="btn">Créer un nouveau compte !</a>
+				</div>
 			</div>
 		</div>
-	</div>
+	</form>
 
 {% endblock %}

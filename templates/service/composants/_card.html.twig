@@ -1,9 +1,14 @@
-<div class="position-relative">
-	<img class="img-fluid w-100" src="{% if service.image %}{{ vich_uploader_asset(service, 'imageFile' ) | imagine_filter('large') }}{% else %}{{ asset('img/1.png') | imagine_filter('large') }}{% endif %}" alt=""/>
-	<div class="facts-overlay">
-		<h1 class="display-1">0{{ service.position }}</h1>
-		<h4 class="text-white mb-3">{{ service.name }}</h4>
-		<a class="text-white small" href="{{ path('services_details', {slug: service.slug}) }}">LIRE PLUS<i class="fa fa-arrow-right ms-3"></i>
-		</a>
+<div class="blog-entry align-self-stretch">
+	<a href="{{ path('services_details', {slug: service.slug}) }}" class="block-20" style="background-image: url('{% if service.image %}{{ vich_uploader_asset(service, 'imageFile' ) | imagine_filter('large') }}{% else %}{{ asset('img/serv.png') | imagine_filter('large') }}{% endif %}');"></a>
+	<div class="text p-4 d-block">
+		<div class="meta mb-3">
+			<div>
+				<a href="#">{{appName}}</a>
+			</div>
+		</div>
+		<h3 class="heading mt-3">
+			<a href="{{ path('services_details', {slug: service.slug}) }}">{{service}}</a>
+		</h3>
+		<p>{{service.resume|u.truncate(60, '...')}}</p>
 	</div>
 </div>

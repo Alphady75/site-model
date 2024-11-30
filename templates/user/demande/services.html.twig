@@ -1,0 +1,28 @@
+{% extends 'dossier.html.twig' %}
+
+{% block title %}Services{% endblock %}
+{% block titre %}Services{% endblock %}
+
+{% block body %}
+	<h5 class="titre-md">Service essentiels pour bien gérer la société</h5>
+		<div class="row">
+			<div class="col-sm-4 service-block-two active wow fadeInUp">
+				<div class="inner-box d-block">
+					<h4 class="title">
+						{{ demande.service }}
+					</h4>
+					<p>{{demande.service.resume}}</p>
+				</div>
+			</div>
+		</div>
+		<h5 class="titre-md">Besoin d'être mis en relation avec un expert-comptable</h5>
+		<div class="row">
+			<div class="col-sm-4 service-block-two active wow fadeInUp">
+				<div class="inner-box d-block">
+					<h4 class="title">
+						{{ demande.comptastart }}
+					</h4>
+				</div>
+			</div>
+		</div>
+{% endblock %}

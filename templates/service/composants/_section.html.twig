@@ -20,14 +20,14 @@
 			</div>
 		</div>
 		<div class="col-lg-4 text-lg-end wow fadeInUp" data-wow-delay="0.3s">
-			<a class="btn btn-primary py-3 px-5" href="{{ path('contact') }}">Obtenir un devis</a>
+			<a class="btn btn-primary px-5" href="{{ path('contact') }}">Obtenir un devis</a>
 		</div>
 	</div>
 	<div class="row g-0">
 		{% for service in services() %}
-		<div class="col-xl-4 col-sm-6 wow fadeIn" data-wow-delay="0.1s">
-			{% include "service/composants/_card.html.twig" %}
-		</div>			
+			<div class="col-xl-4 col-sm-6 wow fadeIn" data-wow-delay="0.1s">
+				{% include "service/composants/_card.html.twig" %}
+			</div>
 		{% endfor %}
 	</div>
 </div>

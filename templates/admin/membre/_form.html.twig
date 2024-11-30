@@ -1,4 +1,25 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
+{{ form_start(form, {attr: {class: ''}}) }}
+<div class="row">
+	<div class="col-sm-4 order-last">
+		<label for="membre_imageFile_file" class="picture-img">
+			<img src="{% if membre.image %}{{ vich_uploader_asset(membre, 'imageFile' ) | imagine_filter('news') }}{% else %}{{ asset('img/document.svg') }}{% endif %}" class="photo img-fluid img-thumbnail">
+			<label class="btn btn-outline-primary" for="membre_imageFile_file">
+				<i class="fa fa-camera"></i>
+				<small>Joindre une photo</small>
+			</label>
+		</label>
+		{{ form_errors(form.imageFile) }}
+		<div class="hidden-file">
+			{{ form_widget(form.imageFile) }}
+		</div>
+	</div>
+	<div class="col-sm-8 order-first">
+		{{ form_rest(form) }}
+		<button type="submit" class="theme-btn btn-style-one radius-btn">
+			<span class="btn-title">
+				{{ button_label|default('Enregistrer') }}
+			</span>
+		</button>
+	</div>
+</div>
 {{ form_end(form) }}

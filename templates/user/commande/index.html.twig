@@ -1,0 +1,54 @@
+{% extends 'espace.html.twig' %}
+
+{% block title %}Mes commandes ({{ commandes.getTotalItemCount }})
+{% endblock %}
+{% block titre %}Mes commandes ({{ commandes.getTotalItemCount }})
+{% endblock %}
+{% block right %}{% endblock %}
+
+{% block body %}
+
+	<div class="table-responsive">
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Démarches</th>
+					<th>Commande</th>
+					<th>Formule</th>
+					<th>Date</th>
+					<th>Statut</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for commande in commandes %}
+					<tr>
+						<td><span class="text-uppercase">{{ commande }}</span>
+						</td>
+						<td>
+							<span class="badge bg-warning rounded-pill text-light mr-2">N°de commande :
+								{{commande.id}}</span>
+						</td>
+						<td>
+							<strong class="f font-weight-bold">{{commande.montant|number_format(0, '', ' ') ~ currency}}</strong>
+						</td>
+						<td>
+							<span>Le
+								{{ commande.updated ? commande.updated|date('d/m/Y') : '' }}</span>
+						</td>
+						<td>
+							<span class="text-success font-weight-800">
+								<i class="dw dw-check"></i>
+								Payer</span>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+	{{ knp_pagination_render(commandes, null, {}, {
+                    'align': 'center',
+                    'size': 'medium',
+                    'rounded': true,
+                    }) }}
+
+{% endblock %}

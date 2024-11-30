@@ -1,0 +1,111 @@
+/*** 
+
+====================================================================
+    Call To Action
+====================================================================
+
+***/
+
+.call-to-action {
+    position: relative;
+    padding: 90px 0 80px;
+    z-index: 10;
+    .outer-box {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: var(--theme-color3);
+        padding: 64px 74px;
+        @include media-breakpoint-down(md){
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 70px 20px;
+        }
+        &::before{
+            @include overlay;
+            background-repeat: no-repeat;
+            background-position: right top;
+            background-image: url(../images/icons/shape-1.png);
+            content: "";
+        }
+        .sec-title{
+            .sub-title{
+                display: block;
+                padding-left: 0;
+                margin-bottom: -5px;
+                &:after{display: none;}
+            }
+        }
+        .btn-box {
+            text-align: right;
+            @include media-breakpoint-down(md){
+                margin-top: 40px;
+            }
+        }
+    }
+}
+
+
+
+/*** 
+
+====================================================================
+    Call To Action Two
+====================================================================
+
+***/
+
+.call-to-action-two{
+    position: relative;
+    .outer-box{
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 90px 109px 67px;
+        background-color: rgb(89,86,233,0.4);
+        border-radius: 5px;
+        z-index: 10;
+        @include media-breakpoint-down(lg){
+            flex-direction: column;
+            padding: 40px 50px;
+            text-align: center;
+            br{display: none;}
+        }
+        .bg-image{
+            &:before{
+                @include overlay;
+                background-color: var(--bg-theme-color3);
+                opacity: 0.4;
+                content: "";
+            }
+        }
+        .sec-title{
+            .sub-title{
+                margin-bottom: 0;
+            }   
+            .title {
+                font-size: 45px;
+                line-height: 59px;
+                color: #E3E3E3;
+                @include media-breakpoint-down(md){
+                    font-size: 36px;
+                    line-height: 1.2em;
+                }
+            }
+        }
+        .btn-box {
+            text-align: right;
+            @include media-breakpoint-down(lg){
+                text-align: center;
+                margin-top: 30px;
+            }
+            .theme-btn {
+                border-radius: 45px;
+            }
+        }
+    }
+}

@@ -1,13 +1,20 @@
 {% extends 'admin.html.twig' %}
 
-{% block title %}Mettre à jour le profil du membre #{{ membre }}{% endblock %}
+{% block title %}
+	Mise à jour du membre #{{ membre }}
+{% endblock %}
+{% block titre %}
+	Mise à jour du membre #{{ membre }}
+{% endblock %}
+{% block text %}
+	Mise à jour du membre #{{ membre }}
+{% endblock %}
+{% block right %}
+	{{ include('admin/membre/_delete_form.html.twig') }}
+{% endblock %}
 
 {% block body %}
 
-    <h1>Mettre à jour le profil du membre #{{ membre }}</h1>
-
-    {{ include('admin/membre/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
-    <br>
-    {{ include('admin/membre/_delete_form.html.twig') }}
+	{{ include('admin/membre/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
 
 {% endblock %}

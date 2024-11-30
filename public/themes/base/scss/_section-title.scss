@@ -1,0 +1,101 @@
+/*** 
+
+====================================================================
+Section Title
+====================================================================
+
+***/
+
+.sec-title {
+    position: relative;
+    margin-bottom: 62px;
+    @include media-breakpoint-down(sm){
+        margin-bottom: 40px;
+    }
+    .sub-title {
+        position: relative;
+        display: inline-block;
+        top: -5px;
+        font-size: var(--sec-title-subtitle-font-size);
+        line-height: var(--sec-title-subtitle-line-height);
+        font-weight: var(--sec-title-subtitle-font-weight);
+        font-family: var(--sec-title-subtitle-font-family);
+        color: var(--sec-title-subtitle-color);
+        text-transform: capitalize;
+        padding-left: 55px;
+        margin-bottom: 15px;
+        @include media-breakpoint-down(lg){
+            font-size: 22px;
+        }
+        &:after,
+        &:before{
+            position: absolute;
+            left: 0;
+            top: 50%;
+            height: 3px;
+            width: 35px;
+            margin-top: -1px;
+            background-color: var(--theme-color1);
+            border-radius: 5px;
+            content: "";
+            font-family: 'Font Awesome 6 Pro';
+        }
+        &:before{display: none;}
+    }
+    h2 {
+        position: relative;
+        display: block;
+        font-size: var(--sec-title-font-size);
+        color: var(--sec-title-color);
+        font-family: var(--sec-title-font-family);
+        font-weight: var(--sec-title-font-weight);
+        letter-spacing: -0.017em;
+        text-transform: capitalize;
+        margin-bottom: 0;
+        @include media-breakpoint-down(lg){
+            font-size: 42px;
+        }
+        @include media-breakpoint-down(sm){
+            font-size: 38px;
+            line-height: 1.1em;
+            letter-spacing: -1px;
+            br{display: none;}
+        }
+    }
+    .text {
+        margin-top: 20px;
+    }
+
+    &.text-center{
+        .sub-title{
+            padding-right: 55px;
+            &::before {
+                display: block;
+                right: 0;
+                left: auto;
+            }
+        }
+    }
+
+    &.light{
+        .sub-title{
+            color: var(--theme-color2);
+        }
+        .text,
+        h2,
+        h1{
+            color: var(--theme-color-light);
+        }
+        .sub-title:before,
+        .sub-title:after{
+            background-color: var(--bg-theme-color2);
+        }
+    }
+    &.alt{
+        .sub-title{
+            padding: 0;
+            &::before,
+            &:after{display: none;}
+        }
+    }
+}
